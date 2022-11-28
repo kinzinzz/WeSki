@@ -1,4 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>places 테스트입니다.</h1>
+  <h1>places 테스트입니다.</h1>
+  <div class="row">
+    {% for place in places %}
+      <div class="col-4 my-3">
+        <div class="card">
+          {% if place.image %}
+            <img src="{{ place.imgae.url }}" class="card-img-top" alt="">
+          {% else %}
+            <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top" alt="">
+          {% endif %}
+          <div class="card-body">
+            <h2 class="card-title">
+              <a href="{% url 'places:detail' place.pk %}">{{ place.name }}</a>
+            </h2>
+            <p>{{ place.address }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}
