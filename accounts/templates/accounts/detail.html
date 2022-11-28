@@ -1,0 +1,45 @@
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block content %}
+  <div>
+    <div class="container">
+      <div class="d-flex justify-content-between accounts-detail-div">
+        <div class="d-flex justify-contennt-center">
+          {% if customer.image %}
+            <img class="accoutns-detail-img-div" src="{{customer.image.url}}" alt="customer.image.url">
+          {% else %}
+            <div>
+              <img class="accounts-detail-img-div" src="{% static 'images/.png' %}" alt="customer.image.url" height="100" width="100">
+            </div>
+          {% endif %}
+          <div>
+            <div>
+              <p class="detail_name_id">ID :
+                {{customer.username}}</p>
+              <p>email :
+                {{customer.email}}</p>
+            </div>
+            <p>회원가입일:{{customer.date_joined}}</p>
+          </div>
+        </div>
+        {% if request.user.pk == customer.pk %}
+          <div class="d-flex flex-column">
+            <div>
+              <a class="text-white " style="text-decoration: none;" href="{% url 'accounts:update' customer.pk %}">
+                <div class="accounts_detail_update text-center d-flex justify-content-center">
+                  <!-- <img class=" maple_icon " src="{% static 'images/.png' %}" alt=""> -->
+                  <p class="m-0">회원정보수정</p>
+                </div>
+              </a>
+              <!-- <a class="text-white" style="text-decoration: none;" href="{% url 'accounts:delete' customer.pk %}"> <div class="accounts_detail_delete text-center"> <p class="m-0">회원탈퇴</p> </div> -->
+            </a>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
