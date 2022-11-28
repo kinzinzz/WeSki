@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
-from .forms import SignupForm
+from .forms import SignupForm, ChangeUserForm
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login as user_login, logout as user_logout
+from django.contrib.auth import (
+    login as user_login,
+    logout as user_logout,
+    get_user_model,
+)
 
 # Create your views here.
 def signup(request):
@@ -35,3 +39,28 @@ def login(request):
 def logout(request):
     user_logout(request)
     return redirect("reviews:index")
+
+
+def detail(request, user_pk):
+    customer = get_user_model().objects.get(pk=user_pk)
+    context = {
+        "customer": customer,
+    }
+    return render(request, "accounts/detail.html", context)
+
+
+def update(request, user_pk):
+    infos = get_user_model().objects.get(pk=user_pk)
+    customer = infos
+    if request.method == "POST":
+        forms = ChangeUserForm(request.POST, request.FILES, instance=infos)
+        if forms.is_valid():
+            forms.save()
+            return redirect("accounts:detail", user_pk)
+    else:
+        forms = ChangeUserForm(instance=infos)
+    context = {
+        "forms": forms,
+        "customer": customer,
+    }
+    return render(request, "accounts/update.html", context)
