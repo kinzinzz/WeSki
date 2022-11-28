@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PlaceForm
 from .models import Place
-from django.contrib import messages
 
 
 def index(request):
