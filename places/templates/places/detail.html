@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>{{ place.name }}</h1>
+  <p>{{ place.address }}</p>
+  <p>{{ contact_number }}</p>
+  <p>{{ place.opening_time }}</p>
+  <p>{{ place.break_day }}</p>
+  <p>{{ place.price }}</p>
+  <p>{{ place.subtext }}</p>
+  <a href="{% url 'places:update' place.pk %}">수정하기</a>
+{% endblock %}
