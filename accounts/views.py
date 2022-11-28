@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import SignupForm
-from django.contrib.auth import login as user_login
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login as user_login, logout as user_logout
 
 # Create your views here.
 def signup(request):
@@ -17,3 +18,20 @@ def signup(request):
     }
 
     return render(request, "accounts/signup.html", context)
+
+
+def login(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user_login(request, form.get_user())
+            return redirect(request.GET.get("next") or "reviews:index")
+    else:
+        form = AuthenticationForm()
+    context = {"forms": form}
+    return render(request, "accounts/login.html", context)
+
+
+def logout(request):
+    user_logout(request)
+    return redirect("reviews:index")
