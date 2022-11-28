@@ -1,0 +1,74 @@
+/* 폰트 */
+@font-face { 
+	font-family: 'pre';
+	src: url('../fonts/web/static/woff/Pretendard-Black.woff');
+	font-weight: normal;
+}
+
+@font-face { 
+	font-family: 'b-pre';
+	src: url('../fonts/web/static/woff/Pretendard-Bold.woff');
+	font-weight: bold;
+}
+
+* {
+	font-family: 'b-pre', sans-serif;
+}
+/* 로그인 버튼 */
+.account_btn {
+ font-weight:bold;
+ background-color: #ffff;
+ color: black;
+ outline:#232323;
+ border: 1px solid #232323;
+ padding: 0 30px;
+ display: inline-block;
+ height: 60px;
+ line-height: 58px;
+ border-radius:0%;
+}
+
+.btn:hover {
+ background-color: #232323;
+ color:white;
+ outline: none;
+}
+
+.account_btn:focus {
+ background-color: #D9F1F1;
+ border-radius: 5rem;
+ outline: none;
+ box-shadow: 3px 3px 3px rgb(121, 121, 121);
+}
+
+/* 취소버튼 css */
+
+.btn2 {
+ background-color: #FAD4AE;
+ color: black;
+ border-radius: 5rem;
+ outline: none;
+ box-shadow: 3px 3px 3px rgb(121, 121, 121);
+}
+
+.btn2:hover {
+ background-color: #FDAFAB;
+ border-radius: 5rem;
+ outline: none;
+}
+
+.btn2:focus {
+ background-color: #FAD4AE;
+ border-radius: 5rem;
+ outline: none;
+ box-shadow: 3px 3px 3px rgb(121, 121, 121);
+}
+
+.head-img{
+ align-items: center;
+ height:200px;
+ width:800px;
+ background-image: url("https://cdn.pixabay.com/photo/2017/03/31/21/18/panorama-2192454__480.jpg");
+ background-repeat: no-repeat;
+ background-size: cover;
+}
