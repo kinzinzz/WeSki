@@ -2,4 +2,72 @@
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
-{% block content %}{% endblock %}
+{% block content %}
+  <div style="padding: 0 180px;">
+
+    <div class="d-flex justify-content-between">
+      <div class="align-items-center">
+        <h1 class="text-center accounts-update-title">회원정보수정
+        </h1>
+      </div>
+      <!--<img class="accoutns-update-img-div " src="{% static 'images/.png' %}" alt=""> -->
+    </div>
+    <hr>
+
+    <div>
+      <div class="container">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex justify-contennt-center">
+            <!-- {% if customer.image %} <img class="accoutns-detail-img-div" src="{{customer.image.url}}" alt="customer.image.url"> {% else %} -->
+            <div>
+              <!-- <img class="accoutns-detail-img-div" src="{% static 'images/.png' %}" alt="customer.image.url" height="100" width="100"> -->
+            </div>
+            <!-- {% endif %} -->
+            <div>
+              <div>
+                <p class="detail_name_id">ID :
+                  {{customer.username}}</p>
+                <p>email :
+                  {{customer.email}}</p>
+              </div>
+              <p>회원가입일:{{customer.date_joined}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <!-- <img src="{% static '/images/.png' %}" alt=""> -->
+    </div>
+    <div>
+      <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form forms %}
+        <input type="submit" class="pt-y rounded d-flex justify-content-center">
+      </form>
+    </div>
+
+    <style>
+      .accounts-update-title {
+        font-size: 40px;
+        margin-top: 60px;
+        margin-left: 100px;
+        font-weight: 700;
+
+      }
+
+      .accoutns-detail-img-div {
+        border-radius: 50%;
+        width: 150x;
+        height: 150px;
+        margin-right: 30px;
+      }
+
+      .detail_name_id {
+        font-weight: 700;
+        font-size: 30px;
+      }
+    </style>
+
+  {% endblock %}

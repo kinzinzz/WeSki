@@ -3,6 +3,7 @@
 {% load static %}
 {% block content %}
 
+
 <!-- carousel -->
 
   <div id="carouselExampleCaptions" class="carousel slide" data-interval="carousel">
@@ -49,8 +50,8 @@
           <div class="card" style="border: none">
             <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2178/image_p" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title" style="text-align: left"><b>22/23 스노우 파크 시즌 패스<br>2차 판매 오픈</b></h5>
-              <p class="card-text" style="text-align: left">프라임/프라임 플러스 시즌 패스로 누구보다 액티브한 겨울을 보내세요.</p>
+              <h5 class="card-title" style="text-align: left"><b>22/23 스노우 파크<br>시즌 패스 2차 판매 오픈</b></h5>
+              <p class="card-text" style="text-align: left">프라임/프라임 플러스 시즌 패스로<br>누구보다 액티브한 겨울을 보내세요.</p>
             </div>
           </div>
         </div>
@@ -59,7 +60,7 @@
             <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2327/image_p" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title" style="text-align: left"><b>[휘닉스 X HYBE]<br>인더숲 스테이 : 휘닉스 평창</b></h5>
-              <p class="card-text" style="text-align: left">포근한 겨울, 인더숲 스테이에서 잠시 쉼표</p>
+              <p class="card-text" style="text-align: left">포근한 겨울, 인더숲 스테이에서<br>잠시 쉼표</p>
             </div>
           </div>
         </div>
@@ -68,7 +69,7 @@
             <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2310/image_p" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title" style="text-align: left"><b>스노우 파크에서<br>짜릿한 겨울 보내기</b></h5>
-              <p class="card-text" style="text-align: left">스키, 보드, 눈썰매는 물론 사계절 온수풀, 맛있는 뷔페까지 즐겨보세요.</p>
+              <p class="card-text" style="text-align: left">스키, 보드, 눈썰매는 물론 사계절<br>온수풀, 맛있는 뷔페까지 즐겨보세요.</p>
             </div>
           </div>
         </div>
@@ -76,7 +77,7 @@
           <div class="card" style="border: none">
             <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2323/image_p" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title" style="text-align: left"><b>스키하우스 라운지 아프레스키 공연 라인업</b></h5>
+              <h5 class="card-title" style="text-align: left"><b>스키하우스 라운지<br>아프레스키 공연 라인업</b></h5>
               <p class="card-text" style="text-align: left">22/23 WINTER AGAIN<br>- 다시 ON, 겨울을 듣다~</p>
             </div>
           </div>
@@ -85,7 +86,7 @@
           <div class="card" style="border: none">
             <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2129/image_p" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title" style="text-align: left"><b>[평창] 추계<br>올인클루시브 프리미엄</b></h5>
+              <h5 class="card-title" style="text-align: left"><b>[평창] 추계 올인클루시브<br>프리미엄</b></h5>
               <p class="card-text" style="text-align: left">호텔 객실 + 올데이 F&B + 올데이 Activity [공홈 특전] 오대산 국립공원 월정사 입장권</p>
             </div>
           </div>
@@ -103,8 +104,8 @@
           <div class="card" style="border: none">
             <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2210/image_p" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title" style="text-align: left"><b>[평창] 반려동물 동반 여행 휘닉스 펫캉스 펫키지</b></h5>
-              <p class="card-text" style="text-align: left">펫캉스 추천 1박 2일 여행코스와 객실 / F&B / Activity 까지!</p>
+              <h5 class="card-title" style="text-align: left"><b>[평창] 반려동물 동반 여행<br>휘닉스 펫캉스 펫키지</b></h5>
+              <p class="card-text" style="text-align: left">펫캉스 추천 1박 2일 여행코스와<br>객실 / F&B / Activity 까지!</p>
             </div>
           </div>
         </div>
@@ -118,10 +119,18 @@
           </div>
         </div>
     </div>
-    
 
 
-    {% for place in places %}
+  <!-- 2022 SNOW PARK -->
+  <div class="video">
+  <br><br><br><h1 style="text-align: center"><b>2022 SNOW PARK</b></h1><br>
+  <video width="100%" height="100%" src="/static/css/ski.mp4" controls autoplay muted loop playsinline></video>
+  </div>
+
+
+
+
+      {% for p>lace in places %}
       <div class="col-4 my-3">
         <div class="card">
           {% if place.image %}

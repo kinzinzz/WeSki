@@ -6,6 +6,8 @@ from django.contrib.auth import (
     logout as user_logout,
     get_user_model,
 )
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def signup(request):
@@ -14,7 +16,7 @@ def signup(request):
         if forms.is_valid():
             user = forms.save()
             user_login(request, user)
-            return redirect("reviews:index")
+            return redirect("places:index")
     else:
         forms = SignupForm()
     context = {
@@ -29,7 +31,7 @@ def login(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             user_login(request, form.get_user())
-            return redirect(request.GET.get("next") or "reviews:index")
+            return redirect(request.GET.get("next") or "places:index")
     else:
         form = AuthenticationForm()
     context = {"forms": form}
@@ -38,9 +40,9 @@ def login(request):
 
 def logout(request):
     user_logout(request)
-    return redirect("reviews:index")
+    return redirect("places:index")
 
-
+@login_required
 def detail(request, user_pk):
     customer = get_user_model().objects.get(pk=user_pk)
     context = {
@@ -49,6 +51,7 @@ def detail(request, user_pk):
     return render(request, "accounts/detail.html", context)
 
 
+@login_required
 def update(request, user_pk):
     infos = get_user_model().objects.get(pk=user_pk)
     customer = infos
@@ -64,3 +67,11 @@ def update(request, user_pk):
         "customer": customer,
     }
     return render(request, "accounts/update.html", context)
+
+
+@login_required
+def delete(request, user_pk):
+    customer = get_user_model().objects.get(pk=user_pk)
+    if customer.pk == request.user.pk:
+        customer.delete()
+    return redirect("places:index")
