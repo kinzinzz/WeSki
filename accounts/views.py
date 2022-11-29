@@ -64,3 +64,10 @@ def update(request, user_pk):
         "customer": customer,
     }
     return render(request, "accounts/update.html", context)
+
+
+def delete(request, user_pk):
+    customer = get_user_model().objects.get(pk=user_pk)
+    if customer.pk == request.user.pk:
+        customer.delete()
+    return redirect("places:index")
