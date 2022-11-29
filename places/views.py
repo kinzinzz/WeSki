@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PlaceForm
 from .models import Place
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
 
 
 def index(request):
@@ -12,6 +14,7 @@ def index(request):
     return render(request, "places/index.html", context)
 
 
+@login_required
 def create(request):
     if request.method == "POST":
         places_form = PlaceForm(request.POST, request.FILES)
@@ -36,6 +39,7 @@ def detail(request, pk):
     return render(request, "places/detail.html", context)
 
 
+@login_required
 def update(request, pk):
     place = get_object_or_404(Place, pk=pk)
     # if request.user == place.user:
@@ -53,7 +57,29 @@ def update(request, pk):
     return render(request, "places/update.html", context)
 
 
+@login_required
 def delete(request, pk):
     place = Place.objects.get(pk=pk)
     place.delete()
     return redirect("places:index")
+
+
+@login_required
+def like(request, pk):
+    print(request.POST)
+    if request.user.is_authenticated:
+        place = Place.objects.get(pk=pk)
+        if place.like_users.filter(pk=request.user.pk).exists():
+            place.like_users.remove(request.user)
+            is_liked = False
+        else:
+            place.like_users.add(request.user)
+            is_liked = True
+    else:
+        return redirect("places:detail", pk)
+    return JsonResponse(
+        {
+            "is_liked": is_liked,
+            "like_count": place.like_users.count(),
+        }
+    )

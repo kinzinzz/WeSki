@@ -59,6 +59,22 @@
  box-shadow: 3px 3px 3px rgb(121, 121, 121);
 }
 
+
+.head-img{
+ align-items: center;
+ height:200px;
+ width:800px;
+ background-image: url("https://cdn.pixabay.com/photo/2017/03/31/21/18/panorama-2192454__480.jpg");
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+
+:root {
+	/* Color */
+	--yellow-color: #ffdf29;
+	--gray-color: #adb5bd;
+  }
+
 .section.hero {
 	position:relative;
 
@@ -81,3 +97,4 @@ section.hero img{
 	height: 300px;
 	object-fit:cover;
 }
+
