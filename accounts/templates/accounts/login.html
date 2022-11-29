@@ -1,20 +1,32 @@
+{% extends 'base.html' %}
 {% load django_bootstrap5 %}
 {% bootstrap_css %}
+{% load static %}
 {% bootstrap_javascript %}
 
 {% block content %}
+<!--배경이미지삽입-->
+<section class="hero">
+  <img src="https://www.shutterstock.com/image-photo/snowy-greater-caucasus-ridge-mt-260nw-1159178995.jpg" alt="ski login img">
+  <div class="hero-content">
+      <h2 class="text-center" style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">로그인<h2>
+  </div>
+</section>
+
   <div class="container">
-    <div class="row d-flex align-items-center" style="height: 600px;">
+    
+    <div class="row d-flex align-items-center" style="height:400px; margin-bottom:100px;">
+      <h4 style="margin-left:400px; margin-top:100px;">WE-SKI 방문을 환영합니다<br></h4>
+      <h5 style="margin-left:400px;">스키 정보를 한 눈에 비교하고 최적의 스키장을 찾아보세요<br><h5><br>
       <div class="col-4 mx-auto">
-        <h1 class="fw-bold">로그인</h1>
-        <hr>
         <form action="" method="POST" class="d-flex align-items-center">
           {% csrf_token %}
           <div>
+            
             {% bootstrap_form forms %}
           </div>
           <div>
-            <input type="submit" value="로그인">
+            <input type="submit" class="account_bt btn-outline-dark d-grid btn" style="margin-left:50px;" value="로그인">
           </div>
         </form>
       </div>
