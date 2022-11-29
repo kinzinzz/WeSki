@@ -32,7 +32,17 @@
  color:white;
  outline: none;
 }
-
+.login_btn {
+ font-weight:bold;
+ background-color: #232323;
+ color: white;
+ outline:#232323;
+ border: 1px solid #232323;
+ display: inline-block;
+ height: 60px;
+ line-height: 58px;
+ border-radius:0px;
+}
 .account_btn:focus {
  background-color: #D9F1F1;
  outline: none;
