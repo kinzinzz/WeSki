@@ -5,15 +5,13 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 def create(request):
     if request.method=="POST":
-        print(3)
         createreq=Review_form(request.POST)
-        photo_list=request.FILES.getlist("image")
-        print(request.FILES)
-        print(photo_list)
+        photo_list=request.FILES.getlist("image[]")
         if createreq.is_valid():
             newreview=createreq.save(commit=False)
+            newreview.save()
             for photo in photo_list:
-                nreviewimage=ReviewImage.objects.create(image=photo,review=newreview)
+                nreviewimage=ReviewImage.objects.create(review=newreview,image=photo)
                 nreviewimage.save()
         return redirect("reviews:index")
     else:

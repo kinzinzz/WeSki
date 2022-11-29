@@ -3,7 +3,7 @@
   <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.as_p}}
-    <input type="file" accept="image/*" name="image[]" multiple="multiple">
+    <input type="file" name="image[]" multiple="multiple">
     <input type="submit">
   </form>
 {% endblock %}
