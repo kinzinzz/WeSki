@@ -72,3 +72,9 @@
  background-repeat: no-repeat;
  background-size: cover;
 }
+
+:root {
+	/* Color */
+	--yellow-color: #ffdf29;
+	--gray-color: #adb5bd;
+  }

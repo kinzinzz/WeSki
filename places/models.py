@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class Place(models.Model):
@@ -12,5 +13,8 @@ class Place(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     hits = models.IntegerField(default=0)
     price = models.PositiveIntegerField(default=0, null=True)
-    # latitude = models.FloatField()
-    # longtitude = models.FloatField()
+
+    
+    like_users = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, related_name="like_places"
+    )
