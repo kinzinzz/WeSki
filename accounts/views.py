@@ -31,7 +31,7 @@ def login(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             user_login(request, form.get_user())
-            return redirect(request.GET.get("next") or "reviews:index")
+            return redirect(request.GET.get("next") or "places:index")
     else:
         form = AuthenticationForm()
     context = {"forms": form}
@@ -40,7 +40,7 @@ def login(request):
 
 def logout(request):
     user_logout(request)
-    return redirect("reviews:index")
+    return redirect("places:index")
 
 @login_required
 def detail(request, user_pk):
