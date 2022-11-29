@@ -32,7 +32,17 @@
  color:white;
  outline: none;
 }
-
+.login_btn {
+ font-weight:bold;
+ background-color: #232323;
+ color: white;
+ outline:#232323;
+ border: 1px solid #232323;
+ display: inline-block;
+ height: 60px;
+ line-height: 58px;
+ border-radius:0px;
+}
 .account_btn:focus {
  background-color: #D9F1F1;
  outline: none;
@@ -59,6 +69,22 @@
  box-shadow: 3px 3px 3px rgb(121, 121, 121);
 }
 
+
+.head-img{
+ align-items: center;
+ height:200px;
+ width:800px;
+ background-image: url("https://cdn.pixabay.com/photo/2017/03/31/21/18/panorama-2192454__480.jpg");
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+
+:root {
+	/* Color */
+	--yellow-color: #ffdf29;
+	--gray-color: #adb5bd;
+  }
+
 .section.hero {
 	position:relative;
 
@@ -81,3 +107,4 @@ section.hero img{
 	height: 300px;
 	object-fit:cover;
 }
+
