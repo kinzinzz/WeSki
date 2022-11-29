@@ -14,7 +14,7 @@ def signup(request):
         if forms.is_valid():
             user = forms.save()
             user_login(request, user)
-            return redirect("reviews:index")
+            return redirect("places:index")
     else:
         forms = SignupForm()
     context = {
