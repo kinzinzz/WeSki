@@ -4,12 +4,10 @@
     {{review}}
     {% if request.user.id == review.user.id %}
       <form action="{% url "reviews:update" review.pk %}" method="GET">
-        {% csrf_token %}
         <input type="submit" value="수정">
       </form>
     {% endif %}
     <form action="{% url "reviews:detail" review.pk %}" method="GET">
-      {% csrf_token %}
       <input type="submit" value="자세히보기">
     </form>
   {% endfor %}

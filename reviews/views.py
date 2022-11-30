@@ -42,7 +42,7 @@ def update(request,review_pk):
             return redirect("reviews:index")
         else:
             form=Review_form(instance=old_review)
-            photo=ReviewImage.objects.filter(review=old_review)
+            photo=ReviewImage.objects.filter(review=old_review.pk)
             context={"form":form,"photos":photo}
             return render(request,"reviews/update.html",context)
     else:
@@ -52,6 +52,9 @@ def delete(request,review_pk):
     old_review=Review.objects.get(pk=review_pk)
     if(request.user.pk==old_review.user.pk):
         if(request.method=="POST"):
+            old_review_image=ReviewImage.objects.filter(review=old_review.pk)
+            for image in old_review_image:
+                image.delete()
             old_review.delete()
     return redirect("reviews:index")
 def index(request):
@@ -75,8 +78,8 @@ def likes(request,review_pk):
     
 def detail(request,review_pk):
     reviewobject=Review.objects.get(pk=review_pk)
-    Writer=reviewobject.user
-    reviewimage=ReviewImage.objects.filter(review=Writer.pk)
+    Writer=get_user_model().objects.get(pk=request.user.pk)
+    reviewimage=ReviewImage.objects.filter(review=reviewobject.pk)
     context={"Review":reviewobject,"Review_Writer":Writer,"Review_Image":reviewimage
     }
     return render(request,"reviews/detail.html",context)
