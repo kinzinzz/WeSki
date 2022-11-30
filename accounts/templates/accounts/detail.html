@@ -3,7 +3,7 @@
 {% bootstrap_css %}
 {% load static %}
 {% bootstrap_javascript %}
-
+<script src="https://kit.fontawesome.com/a43f3ad032.js" crossorigin="anonymous"></script>
 <!--상단이미지-->
 {% block content %}
 <section class="hero">
@@ -18,10 +18,11 @@
 <div class="row d-flex">
 
   <!-- 프로필 전체 영역 -->
-  <div class="d-flex flex-column justify-content-center align-items-center" style="background-color: #f5f5f5; padding-top:50px;">
+  <div class="d-flex flex-column justify-content-center align-items-center" style="background-color: #f5f5f5; padding-top:50px; padding-bottom:50px;">
 
     <!-- 프로필 상단 영역 -->
     <div class="d-flex flex-row">
+
       <!-- 프로필 이미지 영역 -->
       <div class="me-5">
         {% if customer.image %}
@@ -35,36 +36,62 @@
         </div>-->
         <!-- {% endif %} -->
         
-      <!-- 프로필 상단/이미지 영역 제외 나머지 -->
+      <!-- 프로필 상단/프로필 영역 제외 나머지 -->
         <div class="d-flex flex-column">
+          <div>
+             <br><br>          
+             <p class="detail_name_id">ID :
+               {{customer.username}}</p>
+             <p>email :
+               {{customer.email}}</p>
+          </div>
+
+        </div>
+        
+        <!--프로필 수정/삭제 요청과 사용자가 일치하는 경우-->
+            <!-- class="d-flex align-items-center ms-3">-->
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              {% if request.user.pk == customer.pk %}
+                <a href="{% url 'accounts:update' customer.pk %}" style="display:inline-block;height:20px;">
+                  <i class="fa-solid fa-gear fix-account"></i> 
+                </a>
+                <a href="{% url 'accounts:delete' customer.pk %}">
+                  <i class="fa-solid fa-trash del-account"></i>
+                </a>
+              {% endif %}
+            </div>
+      </div>
+  </div>
+
+
+{% endblock content %}
+
+        <!--프로필 상단/이미지 영역 제외 나머지-->
+
+        <!--<div class="d-flex flex-column">
           <div>
             <br><br>
             <p class="detail_name_id">ID :
               {{customer.username}}</p>
             <p>email :
               {{customer.email}}</p>
-
           </div>
+          <p>회원가입일:{{customer.date_joined}}</p>
         </div>
-        {% if request.user.pk == customer.pk %}
-          <div class="d-flex flex-column">
-            <div>
-              <a class="text-white " style="text-decoration: none;" href="{% url 'accounts:update' customer.pk %}">
-                <div class="accounts_detail_update text-center d-flex justify-content-center">
-                  <!-- <img class=" maple_icon " src="" alt=""> -->
-                  <p class="m-0">회원정보수정</p>
-                </div>
-              </a>
-              <a class="text-white" style="text-decoration: none;" href="{% url 'accounts:delete' customer.pk %}">
-                <div class="accounts_detail_delete text-center">
-                  <p class="m-0">회원탈퇴</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        {% endif %}
       </div>
-    </div>
-  </div>
+      {% if request.user.pk == customer.pk %}
+        <div class="d-flex flex-column">
+          <div>
+            <a class="text-white " style="text-decoration: none;" href="{% url 'accounts:update' customer.pk %}">
+              <div class="accounts_detail_update text-center d-flex justify-content-center">-->
 
-{% endblock content %}
+                <!-- <img class=" maple_icon " src="" alt=""> -->
+                <!--<p class="m-0">회원정보수정</p>
+              </div>
+            </a>-->
+            <!-- <a class="text-white" style="text-decoration: none;" href="{% url 'accounts:delete' customer.pk %}"> <div class="accounts_detail_delete text-center"> <p class="m-0">회원탈퇴</p> </div> -->
+          <!--</a>
+        </div>
+      </div>
+    {% endif %}
+  </div>-->
