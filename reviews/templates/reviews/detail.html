@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+  {{Review.title}}
+  {{Review_Writer.username}}
+  {% if request.user.pk == Review_Writer.pk %}
+    <form action="{% url "reviews:update" Review.pk %}" method="GET">
+      {% csrf_token %}
+      <input type="submit" value="수정">
+    </form>
+  {% endif %}
+  {% for photo in Review_Image %}
+    <img src="{{photo.image.url}}">
+    {% if request.user.pk == Review_Writer.pk %}
+      <form action="{% url "reviews:image_delete" Review.pk photo.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="삭제">
+      </form>
+    {% endif %}
+  {% endfor %}
+  {% if request.user.pk == Review_Writer.pk %}
+    <form action="{% url "reviews:image_add" Review.pk %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="image[]" multiple="multiple" accept="image/*">
+      <input type="submit">
+    </form>
+  {% endif %}
+  {% if request.user.is_authenticated %}
+    <form action="{% url "reviews:likes" Review.pk %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="좋아요">
+    </form>
+  {% endif %}
+  {{Review.likes_num}}
+  {% if request.user.pk == Review_Writer.pk %}
+    <form action="{% url "reviews:delete" Review.pk %}" method="POST">
+      {% csrf_token %}
+      글 삭제
+      <input type="submit">
+    </form>
+  {% endif %}
+{% endblock %}
