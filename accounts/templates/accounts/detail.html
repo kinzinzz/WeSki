@@ -3,67 +3,66 @@
 {% bootstrap_css %}
 {% load static %}
 {% bootstrap_javascript %}
-
+<script src="https://kit.fontawesome.com/a43f3ad032.js" crossorigin="anonymous"></script>
 <!--상단이미지-->
 {% block content %}
-  <section class="hero">
-    <img src="https://i.esdrop.com/d/f/bvRLlOwptP/Ujal148nkZ.png" alt="ski login img">
-    <div class="hero-content">
-      <h2 class="text-center" style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">마이페이지<h2></div>
-      </section>
 
-      <!--마이페이지-->
-      <div class="container-fluid">
-        <div class="row d-flex">
+<section class="hero">
+  <img src="https://i.esdrop.com/d/f/bvRLlOwptP/Ujal148nkZ.png" alt="ski login img">
+  <div class="hero-content">
+      <h2 class="text-center" style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">마이페이지<h2>
+  </div>
+</section>
 
-          <!-- 프로필 전체 영역 -->
-          <div class="d-flex flex-column justify-content-center align-items-center" style="background-color: #f5f5f5; padding-top:50px;">
+<!--마이페이지-->
+<div class="container-fluid">
+<div class="row d-flex">
 
-            <!-- 프로필 상단 영역 -->
-            <div class="d-flex flex-row">
-              <!-- 프로필 이미지 영역 -->
-              <div class="me-5">
-                {% if customer.image %}
-                  <img src="{{ customer.image.url }}" class="rounded-circle" alt="profile_image">
-                {% else %}
-                  <img src="https://i.esdrop.com/d/f/bvRLlOwptP/D1wDSBrqJO.jpg" style="width: 200px; border-radius:50%" alt="default_profile_image">
-                {% endif %}
-              </div>
-              <!-- {% if customer.image %} <img class="accoutns-detail-img-div" src="{{customer.image.url}}" alt="customer.image.url"> {% else %} -->
-              <!-- <div> <img class="accounts-detail-img-div" src="" alt="customer.image.url" height="100" width="100"> </div>-->
-              <!-- {% endif %} -->
+  <!-- 프로필 전체 영역 -->
+  <div class="d-flex flex-column justify-content-center align-items-center" style="background-color: #f5f5f5; padding-top:50px; padding-bottom:50px;">
 
-              <!-- 프로필 상단/이미지 영역 제외 나머지 -->
-              <div class="d-flex flex-column">
-                <div>
-                  <br><br>
-                  <p class="detail_name_id">ID :
-                    {{customer.username}}</p>
-                  <p>email :
-                    {{customer.email}}</p>
+    <!-- 프로필 상단 영역 -->
+    <div class="d-flex flex-row">
 
-                </div>
-              </div>
+      <!-- 프로필 이미지 영역 -->
+      <div class="me-5">
+        {% if customer.image %}
+          <img src="{{ customer.image.url }}" class="rounded-circle" alt="profile_image">
+        {% else %}
+          <img src="https://i.esdrop.com/d/f/bvRLlOwptP/D1wDSBrqJO.jpg" style="width: 200px; border-radius:50%" alt="default_profile_image">
+        {% endif %}
+      </div>
+          <!-- {% if customer.image %} <img class="accoutns-detail-img-div" src="{{customer.image.url}}" alt="customer.image.url"> {% else %} -->
+          <!-- <div> <img class="accounts-detail-img-div" src="" alt="customer.image.url" height="100" width="100"> 
+        </div>-->
+        <!-- {% endif %} -->
+        
+      <!-- 프로필 상단/프로필 영역 제외 나머지 -->
+        <div class="d-flex flex-column">
+          <div>
+             <br><br>          
+             <p class="detail_name_id">ID :
+               {{customer.username}}</p>
+             <p>email :
+               {{customer.email}}</p>
+          </div>
+
+        </div>
+        
+        <!--프로필 수정/삭제 요청과 사용자가 일치하는 경우-->
+            <!-- class="d-flex align-items-center ms-3">-->
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
               {% if request.user.pk == customer.pk %}
-                <div class="d-flex flex-column">
-                  <div>
-                    <a class="text-white " style="text-decoration: none;" href="{% url 'accounts:update' customer.pk %}">
-                      <div class="accounts_detail_update text-center d-flex justify-content-center">
-                        <!-- <img class=" maple_icon " src="" alt=""> -->
-                        <p class="m-0">회원정보수정</p>
-                      </div>
-                    </a>
-                    <a class="text-white" style="text-decoration: none;" href="{% url 'accounts:delete' customer.pk %}">
-                      <div class="accounts_detail_delete text-center">
-                        <p class="m-0">회원탈퇴</p>
-                      </div>
-                    </a>
-                  </div>
-                </div>
+                <a href="{% url 'accounts:update' customer.pk %}" style="display:inline-block;height:20px;">
+                  <i class="fa-solid fa-gear fix-account"></i> 
+                </a>
+                <a href="{% url 'accounts:delete' customer.pk %}">
+                  <i class="fa-solid fa-trash del-account"></i>
+                </a>
               {% endif %}
             </div>
-          </div>
-        </div>
+      </div>
+  </div>
 
         <!-- 유저 게시물 정보 -->
         <div class="tabmenu-div">
@@ -187,3 +186,4 @@
           </style>
 
         {% endblock content %}
+

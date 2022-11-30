@@ -41,6 +41,8 @@
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
   <script defer="defer" src="https://kit.fontawesome.com/3ef4088aa9.js" crossorigin="anonymous"></script>
+  <!--icon사용-->
+  <script src="https://kit.fontawesome.com/a43f3ad032.js" crossorigin="anonymous"></script>
   {% block script %}{% endblock script %}
 </head>
 
@@ -72,11 +74,11 @@
             <a class="nav-link" href="{% url 'accounts:signup' %}">회원가입</a>
           </li>
           {% endif %}
-
         </ul>
       </div>
     </div>
   </nav>
+
 
   <!-- 임시 네브바(나중에 삭제하고 적용해주세요) -->
   {% block content %}{% endblock %}

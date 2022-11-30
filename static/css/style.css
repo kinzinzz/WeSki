@@ -100,6 +100,7 @@
 	color:#ffff;
 	margin-top: 190px;
 	font-size: 60px;
+	text-align: center;
 }
 
 section.hero img{
@@ -108,3 +109,25 @@ section.hero img{
 	object-fit:cover;
 }
 
+/* 반응형을 위한 hr스타일통일 */
+hr{
+	width:50%;
+}
+
+/* 아이콘 설정 */
+i{
+	 font-size:25px;
+	 margin:5px;
+		color:black;
+}
+i:hover{
+	color:#5b5050;
+}
+.fix-account{
+	color:#036635;
+}
+.del-account{
+	color:rgb(166, 0, 0)
+} 
+a{display: inline-block;}
+a { display: block}
