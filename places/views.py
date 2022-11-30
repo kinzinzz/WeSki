@@ -3,6 +3,7 @@ from .models import Place
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from datetime import datetime, timedelta
 
 
 def index(request):
@@ -36,7 +37,26 @@ def detail(request, pk):
     context = {
         "place": place,
     }
-    return render(request, "places/detail.html", context)
+
+    response = render(request, "places/detail.html", context)
+
+    expire_date, now = datetime.now(), datetime.now()
+    expire_date += timedelta(days=1)
+    expire_date = expire_date.replace(hour=0, minute=0, second=0, microsecond=0)
+    expire_date -= now
+    max_age = expire_date.total_seconds()
+
+    cookie_value = request.COOKIES.get("hitboard", "_")
+
+    if f"_{pk}_" not in cookie_value:
+        cookie_value += f"_{pk}_"
+        response.set_cookie(
+            "hitboard", value=cookie_value, max_age=max_age, httponly=True
+        )
+        place.hits += 1
+        place.save()
+
+    return response
 
 
 @login_required
