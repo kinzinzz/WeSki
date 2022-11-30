@@ -3,6 +3,7 @@
 {% bootstrap_css %}
 {% load static %}
 {% bootstrap_javascript %}
+
 <!--상단이미지-->
 {% block content %}
 <section class="hero">
@@ -42,26 +43,28 @@
               {{customer.username}}</p>
             <p>email :
               {{customer.email}}</p>
+
           </div>
-          <p>회원가입일:{{customer.date_joined}}</p>
         </div>
+        {% if request.user.pk == customer.pk %}
+          <div class="d-flex flex-column">
+            <div>
+              <a class="text-white " style="text-decoration: none;" href="{% url 'accounts:update' customer.pk %}">
+                <div class="accounts_detail_update text-center d-flex justify-content-center">
+                  <!-- <img class=" maple_icon " src="" alt=""> -->
+                  <p class="m-0">회원정보수정</p>
+                </div>
+              </a>
+              <a class="text-white" style="text-decoration: none;" href="{% url 'accounts:delete' customer.pk %}">
+                <div class="accounts_detail_delete text-center">
+                  <p class="m-0">회원탈퇴</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        {% endif %}
       </div>
-      {% if request.user.pk == customer.pk %}
-        <div class="d-flex flex-column">
-          <div>
-            <a class="text-white " style="text-decoration: none;" href="{% url 'accounts:update' customer.pk %}">
-              <div class="accounts_detail_update text-center d-flex justify-content-center">
-                <!-- <img class=" maple_icon " src="" alt=""> -->
-                <p class="m-0">회원정보수정</p>
-              </div>
-            </a>
-            <!-- <a class="text-white" style="text-decoration: none;" href="{% url 'accounts:delete' customer.pk %}"> <div class="accounts_detail_delete text-center"> <p class="m-0">회원탈퇴</p> </div> -->
-          </a>
-        </div>
-      </div>
-    {% endif %}
+    </div>
   </div>
-</div>
-</div>
 
 {% endblock content %}
