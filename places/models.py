@@ -13,8 +13,9 @@ class Place(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     hits = models.IntegerField(default=0)
     price = models.PositiveIntegerField(default=0, null=True)
-
     
     like_users = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name="like_places"
     )
+    def __str__(self):
+        return self.name
