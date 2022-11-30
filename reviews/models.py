@@ -14,6 +14,7 @@ class Review(models.Model):
     user=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     place=models.ForeignKey(Place, on_delete=models.CASCADE)
     likes=models.ManyToManyField(settings.AUTH_USER_MODEL,related_name="likes_user")
+    likes_num=models.PositiveIntegerField(default=0)
     def __str__(self):
         return self.title
 class ReviewImage(models.Model):

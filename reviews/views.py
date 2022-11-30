@@ -58,12 +58,41 @@ def index(request):
     reviewobject=Review.objects.order_by("-pk")
     context={"Reviews":reviewobject}
     return render(request,"reviews/index.html",context)
+@login_required(login_url="accounts/login")
 def likes(request,review_pk):
-    pass
+    if request.method=="POST":
+        user=request.user
+        review=Review.objects.get(pk=review_pk)
+        if review.likes.filter(pk=user.pk).exists():
+            review.likes.remove(user)
+            review.likes_num=review.likes_num-1
+            review.save()
+        else:
+            review.likes.add(user)
+            review.likes_num=review.likes_num+1
+            review.save()
+    return redirect("reviews:detail",review_pk)
+    
 def detail(request,review_pk):
     reviewobject=Review.objects.get(pk=review_pk)
     Writer=reviewobject.user
-    print(Writer.username)
-    context={"Review":reviewobject,"Review_Writer":Writer
+    reviewimage=ReviewImage.objects.filter(review=Writer.pk)
+    context={"Review":reviewobject,"Review_Writer":Writer,"Review_Image":reviewimage
     }
     return render(request,"reviews/detail.html",context)
+@login_required(login_url="accounts/login")
+def image_add(request,review_pk):
+    reviewobj=Review.objects.get(pk=review_pk)
+    if request.method=="POST" and request.user==reviewobj.user:
+        photo_list=request.FILES.getlist("image[]")
+        for photo in photo_list:
+            nreviewimage=ReviewImage.objects.create(review=reviewobj,image=photo)
+            nreviewimage.save()
+    return redirect("reviews:detail",review_pk)
+@login_required(login_url="accounts/login")
+def image_delete(request,review_pk,reviewimage_pk):
+    reviewobj=Review.objects.get(pk=review_pk)
+    if request.method=="POST" and request.user==reviewobj.user:
+        delobj=ReviewImage.objects.get(pk=reviewimage_pk)
+        delobj.delete()
+    return redirect("reviews:detail",review_pk)

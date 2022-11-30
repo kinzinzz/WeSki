@@ -9,5 +9,6 @@ urlpatterns = [
     path("<int:review_pk>/likes",views.likes,name="likes"),
     path("<int:review_pk>/update",views.update,name="update"),
     path("",views.index,name="index"),
-    
+    path("<int:review_pk>/<int:reviewimage_pk>/image_delete/",views.image_delete,name="image_delete"),
+    path("<int:review_pk>/image_add/",views.image_add,name="image_add"),
     ]
