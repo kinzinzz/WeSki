@@ -4,7 +4,8 @@
   <!-- map -->
   <div id="map" style="width:100%;height:350px;"></div>
   <h1 id="place_name">{{ place.name }}</h1>
-  <i class="fa-regular fa-pen-to-square fa-2x"></i>
+  <!-- 리뷰작성 아이콘 -->
+  {% comment %} <i class="fa-regular fa-pen-to-square fa-2x"></i> {% endcomment %}
   <!-- 즐겨찾기 -->
   {% if request.user.is_authenticated %}
     <form class="like-forms" data-place-id="{{ place.pk }}">
