@@ -49,14 +49,20 @@ def detail(request, user_pk):
     review_pg = request.GET.get("reviewpage")
     
     customer_rv = customer.review_set.all()
+    # Paginator(분할될 객체, 페이지마다 넣을 객체수)
     review_data = Paginator(customer_rv, 5)
-
     review_page = review_data.get_page(review_pg)
 
+
+    #reviews = customer.review_set.order_by('-pk')
+    #review_page = request.GET.get('review_page', '1')
+    #review_paginator = Paginator(reviews, 5)
+    #review_page_obj = review_paginator.get_page(review_page)
 
     context = {
         "customer": customer,
         "review_page": review_page,
+        # "reviews": review_page_obj,
 
     }
     return render(request, "accounts/detail.html", context)
