@@ -9,6 +9,7 @@ from django.contrib.auth import (
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from places.models import Place
+from .models import OrderTransaction
 
 
 # Create your views here.
@@ -47,8 +48,13 @@ def logout(request):
 @login_required
 def detail(request, user_pk):
     places = Place.objects.order_by('-pk')
+    order_place_ids = OrderTransaction.objects.filter(user=customer).values_list('place', flat=True).distinct()
+    order_transactions = []
+    for id in order_place_ids:
+        order_transactions.append(Place.objects.get(pk=id))
     # customer = get_user_model().objects.get(pk=user_pk)
     # review_pg = request.GET.get("reviewpage")
+
     
     # customer_rv = customer.review_set.all()
     # Paginator(분할될 객체, 페이지마다 넣을 객체수)
@@ -63,6 +69,7 @@ def detail(request, user_pk):
 
     context = {
         "places": places,
+        "order_transactions": order_transactions,
         "customer": customer,
         # "review_page": review_page,
         "reviews": review_page_obj,
