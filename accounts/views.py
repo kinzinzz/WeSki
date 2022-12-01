@@ -8,6 +8,7 @@ from django.contrib.auth import (
 )
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from places.models import Place
 
 
 # Create your views here.
@@ -45,6 +46,7 @@ def logout(request):
 
 @login_required
 def detail(request, user_pk):
+    places = Place.objects.order_by('-pk')
     # customer = get_user_model().objects.get(pk=user_pk)
     # review_pg = request.GET.get("reviewpage")
     
@@ -60,6 +62,7 @@ def detail(request, user_pk):
     review_page_obj = review_paginator.get_page(review_page)
 
     context = {
+        "places": places,
         "customer": customer,
         # "review_page": review_page,
         "reviews": review_page_obj,
