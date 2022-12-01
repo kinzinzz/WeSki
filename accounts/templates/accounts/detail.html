@@ -7,183 +7,193 @@
 <!--상단이미지-->
 {% block content %}
 
-<section class="hero">
-  <img src="https://i.esdrop.com/d/f/bvRLlOwptP/Ujal148nkZ.png" alt="ski login img">
-  <div class="hero-content">
-      <h2 class="text-center" style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">마이페이지<h2>
-  </div>
-</section>
+  <section class="hero">
+    <img src="https://i.esdrop.com/d/f/bvRLlOwptP/Ujal148nkZ.png" alt="ski login img">
+    <div class="hero-content">
+      <h2 class="text-center" style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">마이페이지<h2></div>
+      </section>
 
-<!--마이페이지-->
-<div class="container-fluid">
-<div class="row d-flex">
+      <!--마이페이지-->
+      <div class="container-fluid">
+        <div class="row d-flex">
 
-  <!-- 프로필 전체 영역 -->
-  <div class="d-flex flex-column justify-content-center align-items-center" style="background-color: #f5f5f5; padding-top:50px; padding-bottom:50px;">
+          <!-- 프로필 전체 영역 -->
+          <div class="d-flex flex-column justify-content-center align-items-center" style="background-color: #f5f5f5; padding-top:50px; padding-bottom:50px;">
 
-    <!-- 프로필 상단 영역 -->
-    <div class="d-flex flex-row">
+            <!-- 프로필 상단 영역 -->
+            <div class="d-flex flex-row">
 
-      <!-- 프로필 이미지 영역 -->
-      <div class="me-5">
-        {% if customer.image %}
-          <img src="{{ customer.image.url }}" class="rounded-circle" alt="profile_image">
-        {% else %}
-          <img src="https://i.esdrop.com/d/f/bvRLlOwptP/D1wDSBrqJO.jpg" style="width: 200px; border-radius:50%" alt="default_profile_image">
-        {% endif %}
-      </div>
-          <!-- {% if customer.image %} <img class="accoutns-detail-img-div" src="{{customer.image.url}}" alt="customer.image.url"> {% else %} -->
-          <!-- <div> <img class="accounts-detail-img-div" src="" alt="customer.image.url" height="100" width="100"> 
-        </div>-->
-        <!-- {% endif %} -->
-        
-      <!-- 프로필 상단/프로필 영역 제외 나머지 -->
-        <div class="d-flex flex-column">
-          <div>
-             <br><br>          
-             <p class="detail_name_id">ID :
-               {{customer.username}}</p>
-             <p>email :
-               {{customer.email}}</p>
+              <!-- 프로필 이미지 영역 -->
+              <div class="me-5">
+                {% if customer.image %}
+                  <img src="{{ customer.image.url }}" class="rounded-circle" alt="profile_image">
+                {% else %}
+                  <img src="https://i.esdrop.com/d/f/bvRLlOwptP/D1wDSBrqJO.jpg" style="width: 200px; border-radius:50%" alt="default_profile_image">
+                {% endif %}
+              </div>
+              <!-- {% if customer.image %} <img class="accoutns-detail-img-div" src="{{customer.image.url}}" alt="customer.image.url"> {% else %} -->
+              <!-- <div> <img class="accounts-detail-img-div" src="" alt="customer.image.url" height="100" width="100"> </div>-->
+              <!-- {% endif %} -->
+
+              <!-- 프로필 상단/프로필 영역 제외 나머지 -->
+              <div class="d-flex flex-column">
+                <div>
+                  <br><br>
+                  <p class="detail_name_id">ID :
+                    {{customer.username}}</p>
+                  <p>email :
+                    {{customer.email}}</p>
+                </div>
+
+              </div>
+
+              <!--프로필 수정/삭제 요청과 사용자가 일치하는 경우-->
+              <!-- class="d-flex align-items-center ms-3">-->
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                {% if request.user.pk == customer.pk %}
+                  <a href="{% url 'accounts:update' customer.pk %}" style="display:inline-block;height:20px;">
+                    <i class="fa-solid fa-gear fix-account"></i>
+                  </a>
+                  <a href="{% url 'accounts:delete' customer.pk %}">
+                    <i class="fa-solid fa-trash del-account"></i>
+                  </a>
+                {% endif %}
+              </div>
+            </div>
           </div>
 
-        </div>
-        
-        <!--프로필 수정/삭제 요청과 사용자가 일치하는 경우-->
-            <!-- class="d-flex align-items-center ms-3">-->
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              {% if request.user.pk == customer.pk %}
-                <a href="{% url 'accounts:update' customer.pk %}" style="display:inline-block;height:20px;">
-                  <i class="fa-solid fa-gear fix-account"></i> 
-                </a>
-                <a href="{% url 'accounts:delete' customer.pk %}">
-                  <i class="fa-solid fa-trash del-account"></i>
-                </a>
-              {% endif %}
-            </div>
-      </div>
-  </div>
+          <!-- 후기 내역 -->
+          <div class='container' style="max-width: 1070px; padding: 60px 0;">
+            <div style="padding: 0 40px;">
+              <p class="text-center" style="font-weight: 700; font-size: 28px; color: rgb(51, 51, 51); margin-bottom: 27px;">후기 내역</p>
+              {% if not inquiries %}
+                <div class="d-flex justify-content-center">
+                  <p style="font-size: 24px; color: rgb(204, 204, 204);">아직 후기내역이 없습니다 📝</p>
+                </div>
+              {% else %}
+                <!-- 후기 등록 버튼 & 모달 -->
+                <div class="row">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <p class="fw-bold m-0" style='font-size: 18px; font-weight: 700;'>후기 내역</p>
 
-        <!-- 유저 게시물 정보 -->
-        <div class="tabmenu-div">
-          <div class="tabmenu">
-            <ul class="d-flex justify-content-between p-0">
-              <li id="tab1" class="" style="width: 450px;">
-
-                <label for="tabmenu1">작성 게시물 ({{customer.review_set.all|length}})</label>
-                <div class="tabCon">
-                  <h4>{{customer.username}}님의 작성글</h4>
-                  {% for post in review_page %}
-                    <a href="{% url 'reviews:detail' review.pk %}">
-                      <p>{{ review.title }}</p>
-                    </a>
-                  {% endfor %}
-                  <!--유저 게시물 정보 페이지네이션 -->
-                  <div id="paging">
-                    <ul class="pagination justify-content-center" style="margin-top: 2rem;">
-                      <!-- 이전페이지 -->
-                      {% if review_page.has_previous %}
-                        <li class="page-item">
-                          <a class="page-link" href="?&reviewpage={{ review_page.previous_page_number }}">이전</a>
-                          <!-- href로 뎁스 설정 -->
-
-                        {% else %}
-                          <li class="page-item disabled">
-                            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
-                          </li>
-                        {% endif %}
-                        <!-- 페이지리스트 -->
-                        {% for page_number in review_page.paginator.page_range %}
-                          {% if page_number == review_page.number %}
-                            <li class="page-item active" aria-current="page">
-                              <a class="page-link" href="?&reviewpage={{ page_number }}">{{ page_number }}</a>
-                            </li>
-                          {% else %}
-                            <li class="page-item">
-                              <a class="page-link" href="?&reviewpage={{ page_number }}">{{ page_number }}</a>
-                            </li>
-                          {% endif %}
-                        {% endfor %}
-                        <!-- 다음페이지 -->
-                        {% if review_page.has_next %}
-                          <li class="page-item">
-                            <a class="page-link" href="?&reviewpage={{ review_page.next_page_number }}">다음</a>
-                          </li>
-                        {% else %}
-                          <li class="page-item disabled">
-                            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
-                          </li>
-                        {% endif %}
-                      </ul>
-                    </div>
-                    <!-- 페이징끝 -->
                   </div>
-                </li>
+                </div>
+
+                <!-- 후기 목록 -->
+                <div class="row px-3 mb-5" style="border-top:1px solid black;">
+                  <table class="table">
+                    <thead class="text-center">
+                      <tr>
+                        <th scope="col" style="width: 710px;">제목</th>
+                        <th scope="col" style="width: 100px;">작성자</th>
+                        <th scope="col" style="width: 100px;">작성일</th>
+                        <th scope="col" style="width: 100px;">답변상태</th>
+                      </tr>
+                    </thead>
+
+                    <tbody id="reviewTableBody">
+                      {% for review in reviews %}
+                        <tr class="review-{{ review.pk }}" data-bs-toggle="collapse" data-bs-target="#collapse-review-{{ review.pk }}" aria-expanded="false" style="vertical-align: middle;">
+                          <td id="review-title-{{ review.pk }}" class="px-3" scope="row" style="width: 710px;">{{ review.title }}</td>
+                          <td style="width: 100px;" class="text-center">{{ review.user }}</td>
+                          <td style="width: 100px;" class="text-center">{{ review.created_at|date:'Y.m.d' }}</td>
+                          {% if inquiry.reply %}
+                            <td style="width: 100px;" class="text-center">
+                              <span style="color:#5e0080">답변완료</span></td>
+                          {% else %}
+                            <td id="reply-status-{{ review.pk }}" style="width: 100px;" class="text-center">-</td>
+                          {% endif %}
+                        </tr>
+
+                        <!-- 후기 내용 및 답변 Collapse -->
+                        <tr class="collapse review-{{ review.pk }}" id="collapse-review-{{ review.pk }}">
+                          <td colspan="4" class="text-bg-light px-3">
+                            <div>
+                              <div class="d-flex">
+                                <div class="me-3">Q.</div>
+                                <div id="review-content-{{ review.pk }}">{{ review.content }}</div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- 후기 페이지네이션 -->
+              <ul class="pagination justify-content-center">
+                <!-- 이전 페이지 -->
+                {% if reviews.has_previous %}
+                  <li class="page-item">
+                    <a class="page-link" href="?review_page={{ reviews.previous_page_number }}" aria-label="Previous">
+                      <i class="bi bi-chevron-double-left"></i>
+                    </a>
+                  </li>
+                {% else %}
+                  <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">
+                      <i class="bi bi-chevron-double-left"></i>
+                    </a>
+                  </li>
+                {% endif %}
+
+                <!-- 페이지 리스트 -->
+                {% for page_number in reviews.paginator.page_range %}
+                  {% if page_number == reviews.number %}
+                    <li class="page-item active" aria-current="page">
+                      <a class="page-link" style='background-color:#5e0080; border-color:#dee2e6;' href="?review_page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                  {% else %}
+                    <li class="page-item">
+                      <a class="page-link" style='background-color:#5e0080; border-color:#dee2e6;' href="?review_page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+
+                <!-- 다음페이지 -->
+                {% if inquiries.has_next %}
+                  <li class="page-item">
+                    <a class="page-link" href="?review_page={{ reviews.next_page_number }}">
+                      <i class="bi bi-chevron-double-right"></i>
+                    </a>
+                  </li>
+                {% else %}
+                  <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">
+                      <i class="bi bi-chevron-double-right"></i>
+                    </a>
+                  </li>
+                {% endif %}
               </ul>
-            </div>
+            {% endif %}
           </div>
+        </div>
 
-          <style>
-            * {
-              margin: 0;
-              padding: 0;
-              font-size: 15px;
-              line-height: 1.3;
+        <script>
+          const swiper = new Swiper('#test-slide', {
+            // Optional parameters
+            direction: 'horizontal',
+            slidesPerView: 4,
+            spaceBetween: 15,
+            loop: false,
+
+            pagination: {
+              el: '.swiper-pagination'
+            },
+
+            // Navigation arrows
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev'
             }
+          });
+        </script>
 
-            ul {
-              list-style: none;
-            }
-
-            .tabmenu-div {
-              margin-top: 45px;
-              width: 100%;
-              height: 30rem;
-            }
-
-            .tabmenu {
-              padding: 0 200px;
-              width: 100%;
-              margin: 0 auto;
-              position: relative;
-            }
-
-            .tabmenu ul {
-              position: relative;
-            }
-
-            .tabmenu ul li {
-              display: inline-block;
-              width: 33.33%;
-              float: left;
-              text-align: center;
-              background: #f9f9f9;
-              line-height: 40px;
-            }
-
-            .tabmenu label {
-              display: block;
-              width: 100%;
-              height: 40px;
-              line-height: 40px;
-            }
-
-            .tabmenu input {
-              display: none;
-            }
-
-            .tabCon {
-              display: none;
-              width: 100%;
-              text-align: left;
-              padding: 20px;
-              position: absolute;
-              left: 0;
-              top: 40px;
-              box-sizing: border-box;
-              border: 5px solid #f9f9f9;
-            }
-          </style>
-
-        {% endblock content %}
-
+      {% endblock content %}
+      {% block script %}
+        <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+        <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+      {% endblock script %}
