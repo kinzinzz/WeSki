@@ -48,6 +48,7 @@ def logout(request):
 @login_required
 def detail(request, user_pk):
     places = Place.objects.order_by('-pk')
+    customer = get_object_or_404(get_user_model(), pk=user_pk)
     order_place_ids = OrderTransaction.objects.filter(user=customer).values_list('place', flat=True).distinct()
     order_transactions = []
     for id in order_place_ids:
@@ -61,7 +62,7 @@ def detail(request, user_pk):
     # review_data = Paginator(customer_rv, 5)
     # review_page = review_data.get_page(review_pg)
 
-    customer = get_object_or_404(get_user_model(), pk=user_pk)
+    
     reviews = customer.review_set.order_by('-pk')
     review_page = request.GET.get('review_page', '1')
     review_paginator = Paginator(reviews, 5)

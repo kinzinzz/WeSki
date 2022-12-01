@@ -94,14 +94,14 @@ style="max-width:1070px; font-weight: 600; padding: 60px 0 0;">
         </button>
         <div style="padding: 12px 10px 0 0">
           <div class="d-flex justify-content-between">
-            <span class="m-0" style="color:#B5B5B5; font-weight: 400;">{{ place.brand }}</span><span class="m-0"
+            <span class="m-0" style="color:#B5B5B5; font-weight: 400;">{{ place.name }}</span><span class="m-0"
               style="padding: 0px 10px; border-radius: 22px; background-color: rgba(274, 243, 248, 1); color:#5e0080; font-weight: 500;">
-              {{ place.category }}</span>
+              {{ place.address }}</span>
           </div>
           <p class='product-name' style="font-weight: 400; font-size: 14px; margin-bottom: 8px;">
-            {{ place.product_name }}
+            {{ place.subtext }}
           </p>
-          <p class="m-0" style="font-weight: 800; font-size: 16px;">{{ place.price|intcomma }} 원</p>
+          <p class="m-0" style="font-weight: 800; font-size: 16px;">{{ place.price }} 원</p>
         </div>
       </div>
       <!-- 모달 -->
@@ -116,7 +116,7 @@ style="max-width:1070px; font-weight: 600; padding: 60px 0 0;">
             <div class="modal-body item-cart-modals" data-item-id="{{ place.pk }}" style="padding: 30px 30px;">
               {% comment %} modal 하나하나에 해당하는 item의 id를 가져와서 defaultItemPrice에 접근 {% endcomment %}
               <div class='text-center mb-3'>
-                {{ place.product_name }}
+                {{ place.name }}
               </div>
               <div class="row">
                 <!-- 수량 입력 -->
