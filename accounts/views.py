@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import SignupForm, ChangeUserForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import (
@@ -45,24 +45,24 @@ def logout(request):
 
 @login_required
 def detail(request, user_pk):
-    customer = get_user_model().objects.get(pk=user_pk)
-    review_pg = request.GET.get("reviewpage")
+    # customer = get_user_model().objects.get(pk=user_pk)
+    # review_pg = request.GET.get("reviewpage")
     
-    customer_rv = customer.review_set.all()
+    # customer_rv = customer.review_set.all()
     # Paginator(분할될 객체, 페이지마다 넣을 객체수)
-    review_data = Paginator(customer_rv, 5)
-    review_page = review_data.get_page(review_pg)
+    # review_data = Paginator(customer_rv, 5)
+    # review_page = review_data.get_page(review_pg)
 
-
-    #reviews = customer.review_set.order_by('-pk')
-    #review_page = request.GET.get('review_page', '1')
-    #review_paginator = Paginator(reviews, 5)
-    #review_page_obj = review_paginator.get_page(review_page)
+    customer = get_object_or_404(get_user_model(), pk=user_pk)
+    reviews = customer.review_set.order_by('-pk')
+    review_page = request.GET.get('review_page', '1')
+    review_paginator = Paginator(reviews, 5)
+    review_page_obj = review_paginator.get_page(review_page)
 
     context = {
         "customer": customer,
-        "review_page": review_page,
-        # "reviews": review_page_obj,
+        # "review_page": review_page,
+        "reviews": review_page_obj,
 
     }
     return render(request, "accounts/detail.html", context)
