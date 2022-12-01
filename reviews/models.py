@@ -20,7 +20,7 @@ class Review(models.Model):
     def __str__(self):
         return self.title
 class ReviewImage(models.Model):
-    review=models.ForeignKey(Review,on_delete=models.CASCADE)
+    review=models.ForeignKey(Review,on_delete=models.CASCADE, related_name='review_images')
     image = ProcessedImageField(
         processors=[Thumbnail(300, 300)],
         format="JPEG",
