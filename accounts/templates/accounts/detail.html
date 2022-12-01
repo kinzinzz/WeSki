@@ -62,6 +62,100 @@
             </div>
           </div>
 
+          <!-- 구매목록 -->
+<div class="container d-flex flex-column justify-content-center align-items-center"
+style="max-width:1070px; font-weight: 600; padding: 60px 0 0;">
+<p style="font-weight: 700; font-size: 28px; color: rgb(51, 51, 51); margin-bottom: 27px;">구매 목록</p>
+<div class="d-flex align-items-center justify-content-center" style="width: 1070px; margin: 0 auto;">
+  {% if not order_transactions %}
+  <div class="d-flex justify-content-center">
+    <p style="font-size: 24px; color: rgb(204, 204, 204);">아직 구매목록이 없습니다. 💸</p>
+  </div>
+  {% else %}
+  <div class='d-flex row'
+    style="margin: 0 auto; width: 1070px; overflow-x: scroll; overflow: hidden; gap: 5px; padding: 0px;">
+    <div class="scrolling-wrapper d-flex" style="width: 1070px; gap:10px">
+      {% for place in order_transactions %}
+      <div class="productcard swiper-slide"
+        style="border: 0px solid black; color: rgb(51, 51, 51); width: 256px; height: 435px;"
+        data-value="{{ place.category }}">
+        <a href="{% url 'products:detail' place.pk %}" style="color:rgb(51, 51, 51)">
+          <div class="product-img" style="">
+            <img src="{{ place.image_set.all.0.image.url }}" alt="" width="100%" height="329px"
+              style="object-fit: cover">
+          </div>
+        </a>
+        <!-- 모달버튼 -->
+        <button type='button' style='border:none; background-color:transparent;' class='ddib-to-cart d-flex'
+          data-bs-toggle="modal" data-bs-target='#ddibtocartModal-{{ product.pk }}'>
+          <img style='top: 278px' class='cart-img position-absolute end-0 mx-2'
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMkEwMDM4IiBvcGFjaXR5PSIuNSIgY3g9IjIyLjUiIGN5PSIyMi41IiByPSIyMi41Ii8+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuMDMgMTQuMzgpIiBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0ibTIwLjQ2IDIuOTEtMi4xNyA5LjIzSDUuODdMMy43MSAyLjkxeiIvPgogICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iMTYuMzUiIGN5PSIxNi44NiIgcj0iMS43Ii8+CiAgICAgICAgICAgIDxjaXJjbGUgc3Ryb2tlLXdpZHRoPSIxLjIiIGN4PSI3LjgyIiBjeT0iMTYuODYiIHI9IjEuNyIvPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0iTTAgMGgzLjAybDEuNDEgNS45OCIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
+            alt="">
+        </button>
+        <div style="padding: 12px 10px 0 0">
+          <div class="d-flex justify-content-between">
+            <span class="m-0" style="color:#B5B5B5; font-weight: 400;">{{ place.brand }}</span><span class="m-0"
+              style="padding: 0px 10px; border-radius: 22px; background-color: rgba(274, 243, 248, 1); color:#5e0080; font-weight: 500;">
+              {{ place.category }}</span>
+          </div>
+          <p class='product-name' style="font-weight: 400; font-size: 14px; margin-bottom: 8px;">
+            {{ place.product_name }}
+          </p>
+          <p class="m-0" style="font-weight: 800; font-size: 16px;">{{ place.price|intcomma }} 원</p>
+        </div>
+      </div>
+      <!-- 모달 -->
+      <div class="modal fade" id="ddibtocartModal-{{place.pk }}" tabindex="-1"
+        aria-labelledby="ddibtocartModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="margin: 200px auto">
+          <div class="modal-content">
+            {% comment %} <div class="modal-header">
+              <h1 class="modal-title fs-5" id="ddibtocartModal">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div> {% endcomment %}
+            <div class="modal-body item-cart-modals" data-item-id="{{ place.pk }}" style="padding: 30px 30px;">
+              {% comment %} modal 하나하나에 해당하는 item의 id를 가져와서 defaultItemPrice에 접근 {% endcomment %}
+              <div class='text-center mb-3'>
+                {{ place.product_name }}
+              </div>
+              <div class="row">
+                <!-- 수량 입력 -->
+                <!-- <div class="">
+                  <form action="{% url 'accounts:tocart' product.pk %}" method="POST">
+                    {% csrf_token %}
+                    <div class='d-flex justify-content-center mb-3'>
+                      <input data-item-id="{{ place.pk }}" id="quantity-{{ place.pk }}"
+                        style='width:80px; height:30px' class="form-control quantity-input me-2 text-center"
+                        type="number" name="checkquantity" min="1" value="1">
+                      <div class="d-none" id="price-{{ place.pk }}">{{ place.price }}</div>
+                      <div class="fw-bold mt-1 mb-2 text-center" style=''><span class="price-fields"
+                          id="price-{{ place.pk }}-field">{{ place.price }}</span>원</div>
+                    </div>
+                    <div class='d-flex justify-content-center'>
+                      <button type="button" class="btn me-2" data-bs-dismiss="modal"
+                        style="border:solid 1px #d3d3d3; border-radius:3px; height:50px; width:120px; background-color: white;">취소</button>
+                      <button type="submit" class="cart" data-bs-dismiss="modal"
+                        data-bs-target='#cartModal-{{ product.product.pk }}'
+                        style="border-radius:3px; border:0px; height:50px; width:120px; background-color: #5e0080; color: white">장바구니
+                        담기</button>
+                    </div>
+                  </form> 
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+</div>
+
+
+
+
           <!-- 후기 내역 -->
           <div class='container' style="max-width: 1070px; padding: 60px 0;">
             <div style="padding: 0 40px;">
