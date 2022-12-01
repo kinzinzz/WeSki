@@ -4,6 +4,7 @@ from imagekit.processors import Thumbnail
 from places.models import Place
 from django.conf import settings
 from urllib.parse import unquote
+from django.core.validators import MinValueValidator, MaxValueValidator
 import os
 # Create your models here.
 class Review(models.Model):
@@ -11,7 +12,7 @@ class Review(models.Model):
     content=models.TextField(null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
-    rating=models.PositiveIntegerField(null=True,)
+    rating=models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], null=True)
     user=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     place=models.ForeignKey(Place, on_delete=models.CASCADE)
     likes=models.ManyToManyField(settings.AUTH_USER_MODEL,related_name="like_Review")
