@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from datetime import datetime, timedelta
+from reviews.models import Review
 
 
 def index(request):
@@ -103,3 +104,12 @@ def like(request, pk):
             "like_count": place.like_users.count(),
         }
     )
+
+# 스키장별 리뷰보기
+def place_reviews(request, pk):
+    # 해당 스키장
+    place = Place.objects.get(pk=pk)
+    # place의 리뷰들 
+    reviews = Review.objects.filter(place=place)
+    
+    return render(request, 'places/place_reviews.html', {'reviews':reviews, 'place':place})
