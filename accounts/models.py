@@ -2,6 +2,8 @@ from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.conf import settings
+from places.models import Place
 
 # Create your models here.
 class User(AbstractUser):
@@ -12,3 +14,16 @@ class User(AbstractUser):
         format="JPEG",
         options={"quality": 90},
     )
+
+
+# 결제 정보
+class OrderTransaction(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    place = models.ForeignKey(Place, on_delete=models.PROTECT, related_name='order_places')
+    price = models.IntegerField()
+    order_date = models.DateTimeField(auto_now_add=True)
+    imp_uid = models.CharField(max_length=50)
+    merchant_uid = models.CharField(max_length=50)
+
+    def __str__(self):
+        return '{}'.format(self.id)
