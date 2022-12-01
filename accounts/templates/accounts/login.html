@@ -8,31 +8,41 @@
 <!--배경이미지삽입-->
 <section class="hero">
   <img src="https://www.shutterstock.com/image-photo/snowy-greater-caucasus-ridge-mt-260nw-1159178995.jpg" alt="ski login img">
-  <div class="hero-content">
-      <h2 class="text-center" style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">로그인<h2>
+  <div class="row-2">
+  </div>
+       <div class="col-md-1">
+     <div class="carousel-caption" style="top:150px;">
+       <h1 style="font-size:55px;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">로그인</h1>
+     </div>
   </div>
 </section>
+
 
   <div class="container col-8">
     
     <div class="row d-flex align-items-center" style="height:400px; margin-bottom:100px;">
-      <h3 style="margin-left:350px; margin-top:100px;">WE-SKI 방문을 환영합니다<br></h3>
-      <h5 style="margin-left:300px; margin-bottom:40px;">스키 정보를 한 눈에 비교하고 최적의 스키장을 찾아보세요<br></h5><br><br>
-       <div style="height:230px;background-color:#f5f5f5;">
-        <div class="col-4 mx-auto">
+      <h3 style="text-align:center; margin-top:100px;">WE-SKI 방문을 환영합니다<br></h3>
+      <h5 style="text-align:center; margin-bottom:40px;">스키 정보를 한 눈에 비교하고 최적의 스키장을 찾아보세요<br></h5><br><br>
+       <div style="height:300px;background-color:#f5f5f5; min-width:300px; margin-bottom:40px;">
+        <div class="col-4 mx-auto align-items-center" style="min-width:300px;">
          <div class="my-4">
+          <br>
+          <!--로그인폼-->
           <form action="" method="POST" class="d-flex align-items-center">
            {% csrf_token %}
             <div>
              {% bootstrap_form forms %}
             </div>
+            <!--여백-->
+            <div class="col-1"></div>
             <div>
-             <input type="submit" class="login_btn btn-dark d-grid btn" style="margin-left:50px;" value="로그인">
+             <input type="submit" class="login_btn btn-dark d-grid btn" style="" value="로그인">
             </div>
           </form>
         </div>
       </div>
     </div>
+    <h1>&nbsp;</h1>
   </div>
 
 {% endblock %}
