@@ -7,18 +7,23 @@
 <!--상단이미지-->
 {% block content %}
 
-  <section class="hero">
-    <img src="https://i.esdrop.com/d/f/bvRLlOwptP/Ujal148nkZ.png" alt="ski login img">
-    <div class="hero-content">
-      <h2 class="text-center" style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">마이페이지<h2></div>
-      </section>
+<section class="hero">
+  <img src="https://i.esdrop.com/d/f/bvRLlOwptP/Vqr3z7jiaw.png" alt="ski login img">
+  <div class="row-2">
+  </div>
+       <div class="col-md-1">
+     <div class="carousel-caption" style="top:150px;">
+       <h1 style="font-size:55px;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">마이페이지</h1>
+     </div>
+  </div>
+</section>
 
       <!--마이페이지-->
       <div class="container-fluid">
         <div class="row d-flex">
 
           <!-- 프로필 전체 영역 -->
-          <div class="d-flex flex-column justify-content-center align-items-center" style="background-color: #f5f5f5; padding-top:50px; padding-bottom:50px;">
+          <div class="d-flex flex-column justify-content-center align-items-center" style="background-color: #f5f5f5; padding-top:6rem; padding-bottom:6rem;">
 
             <!-- 프로필 상단 영역 -->
             <div class="d-flex flex-row">
@@ -48,8 +53,8 @@
               </div>
 
               <!--프로필 수정/삭제 요청과 사용자가 일치하는 경우-->
-              <!-- class="d-flex align-items-center ms-3">-->
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <div class="d-flex align-items-center ms-3"style="position:relative">
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end"style="position:absolute; bottom:12rem;  ">
                 {% if request.user.pk == customer.pk %}
                   <a href="{% url 'accounts:update' customer.pk %}" style="display:inline-block;height:20px;">
                     <i class="fa-solid fa-gear fix-account"></i>
@@ -61,6 +66,35 @@
               </div>
             </div>
           </div>
+
+
+<!-- 프로필 하단 영역 -->
+<div class="container d-flex flex-column bg-white rounded-5 mt-5">
+  <div class="menu navbar-nav d-flex flex-row justify-content-center py-4">
+    <li>
+      <a type="button" id="myReview" class="pe-2 text-black"style="text-decoration:none;">
+        <h5>
+          <i class="fa-regular fa-star"></i>
+          리뷰</h5>
+      </a>
+    </li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a type="button" id="myReservation" class="pe-2 text-black" style="text-decoration:none;">
+        <h5>
+          <i class="fa-regular fa-bookmark"></i>
+          예약</h5>
+      </a>
+    </li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a type="button" id="myPay" class="text-black"style="text-decoration:none;">
+        <h5>
+          <i class="fa-regular fa-credit-card"></i>
+          결제</h5>
+      </a>
+    </li>
+  </div>
+
+
 
           <!-- 구매목록 -->
 <div class="container d-flex flex-column justify-content-center align-items-center"
@@ -290,4 +324,75 @@ style="max-width:1070px; font-weight: 600; padding: 60px 0 0;">
       {% block script %}
         <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
         <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+
+
+<!--이모티콘 누르면 작동-->
+        <script>
+          $('#myReview').click(function () {
+            if (($('#myReviewResult').css("display") === "none") && ($('#myReservationResult').css("display") === "none") && ($('#myPayResult').css("display") === "none")) {
+              $('#myReservationResult').hide();
+              $('#myPayResult').hide();
+              $('#myReviewResult').show();
+            } else if (($('#myReviewResult').css("display") === "none") && ($('#myReservationResult').css("display") !== "none") && ($('#myPayResult').css("display") === "none")) {
+              $('#myReservationResult').hide();
+              $('#myPayResult').hide();
+              $('#myReviewResult').show();
+            } else if (($('#myReviewResult').css("display") === "none") && ($('#myReservationResult').css("display") === "none") && ($('#myPayResult').css("display") !== "none")) {
+              $('#myReservationResult').hide();
+              $('#myPayResult').hide();
+              $('#myReviewResult').show();
+            } else {
+              if ($('#myReviewResult').css("display") !== "none") {
+                $('#myReviewResult').hide();
+              } else {
+                $('#myReviewResult').show();
+              }
+            }
+          });
+      
+          $('#myReservation').click(function () {
+            if (($('#myReservationResult').css("display") === "none") && ($('#myReviewResult').css("display") === "none") && ($('#myPayResult').css("display") === "none")) {
+              $('#myReviewResult').hide();
+              $('#myPayResult').hide();
+              $('#myReservationResult').show();
+            } else if (($('#myReservationResult').css("display") === "none") && ($('#myReviewResult').css("display") !== "none") && ($('#myPayResult').css("display") === "none")) {
+              $('#myReviewResult').hide();
+              $('#myPayResult').hide();
+              $('#myReservationResult').show();
+            } else if (($('#myReservationResult').css("display") === "none") && ($('#myReviewResult').css("display") === "none") && ($('#myPayResult').css("display") !== "none")) {
+              $('#myReviewResult').hide();
+              $('#myPayResult').hide();
+              $('#myReservationResult').show();
+            } else {
+              if ($('#myReservationResult').css("display") !== "none") {
+                $('#myReservationResult').hide();
+              } else {
+                $('#myReservationResult').show();
+              }
+            }
+          });
+      
+          $('#myPay').click(function () {
+            if (($('#myPayResult').css("display") === "none") && ($('#myReviewResult').css("display") === "none") && ($('#myReservationResult').css("display") === "none")) {
+              $('#myReviewResult').hide();
+              $('#myReservationResult').hide();
+              $('#myPayResult').show();
+            } else if (($('#myPayResult').css("display") === "none") && ($('#myReviewResult').css("display") !== "none") && ($('#myReservationResult').css("display") === "none")) {
+              $('#myReviewResult').hide();
+              $('#myReservationResult').hide();
+              $('#myPayResult').show();
+            } else if (($('#myPayResult').css("display") === "none") && ($('#myReviewResult').css("display") === "none") && ($('#myReservationResult').css("display") !== "none")) {
+              $('#myReviewResult').hide();
+              $('#myReservationResult').hide();
+              $('#myPayResult').show();
+            } else {
+              if ($('#myPayResult').css("display") !== "none") {
+                $('#myPayResult').hide();
+              } else {
+                $('#myPayResult').show();
+              }
+            }
+          });
+        </script>
       {% endblock script %}
