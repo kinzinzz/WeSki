@@ -3,8 +3,9 @@ from .models import Review,ReviewImage
 from .form import Review_form
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
+from places.models import Place
 # Create your views here.
-@login_required(login_url="accounts/login")
+@login_required
 def create(request):
     if request.method=="POST":
         createreq=Review_form(request.POST)
@@ -21,7 +22,7 @@ def create(request):
         form=Review_form()
         context={"Review_form":form}
         return render(request,"reviews/create.html",context)
-@login_required(login_url="accounts/login")
+@login_required
 def update(request,review_pk):
     old_review=Review.objects.get(pk=review_pk)
     if request.user.pk==old_review.user.pk:
@@ -47,7 +48,7 @@ def update(request,review_pk):
             return render(request,"reviews/update.html",context)
     else:
         return redirect("reviews:index")
-@login_required(login_url="accounts/login")
+@login_required
 def delete(request,review_pk):
     old_review=Review.objects.get(pk=review_pk)
     if(request.user.pk==old_review.user.pk):
@@ -58,12 +59,11 @@ def index(request):
     reviewobjects=Review.objects.order_by("-pk")
     contextlist=[]
     for reviewobject in reviewobjects:
-        userobject=get_user_model().objects.get(pk=reviewobject.user.id)
+        userobject=get_user_model().objects.get(pk=reviewobject.user.pk)
         contextlist.append({"review":reviewobject,"Writer":userobject})
     context={"Reviews":contextlist}
-    print(context['Reviews'][0]['review'].title)
     return render(request,"reviews/index.html",context)
-@login_required(login_url="accounts/login")
+@login_required
 def likes(request,review_pk):
     if request.method=="POST":
         user=request.user
@@ -80,9 +80,11 @@ def likes(request,review_pk):
     
 def detail(request,review_pk):
     reviewobject=Review.objects.get(pk=review_pk)
-    context={"Review":reviewobject,}
+    Writerobject=get_user_model().objects.get(pk=reviewobject.user.pk)
+    reviewplaceobject=Place.objects.get(pk=reviewobject.place.pk)
+    context={"Review":reviewobject,"Place":reviewplaceobject,"User":Writerobject}
     return render(request,"reviews/detail.html",context)
-@login_required(login_url="accounts/login")
+@login_required
 def image_add(request,review_pk):
     reviewobj=Review.objects.get(pk=review_pk)
     if request.method=="POST" and request.user==reviewobj.user:
@@ -91,7 +93,7 @@ def image_add(request,review_pk):
             nreviewimage=ReviewImage.objects.create(review=reviewobj,image=photo)
             nreviewimage.save()
     return redirect("reviews:detail",review_pk)
-@login_required(login_url="accounts/login")
+@login_required
 def image_delete(request,review_pk,reviewimage_pk):
     reviewobj=Review.objects.get(pk=review_pk)
     if request.method=="POST" and request.user==reviewobj.user:
