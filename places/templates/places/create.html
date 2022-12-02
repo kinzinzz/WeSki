@@ -1,12 +1,36 @@
 {% extends 'base.html' %}
+
+{% load static %}
 {% load django_bootstrap5 %}
 
 {% block content %}
-  <h2>스키장 등록하기</h2>
+<!--상단이미지-->
+<section class="hero">
+  <img src="https://i.esdrop.com/d/f/bvRLlOwptP/TSS7t27ehi.png" alt="place create img">
+  <div class="row-2">
+  </div>
+       <div class="col-md-1">
+     <div class="carousel-caption" style="top:150px; max-height:100px;">
+       <h3 style="font-size:55px;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">스키장 등록</h3>
+     </div>
+    </div>
+  </div>
+</section>
+
+<div class="row d-flex justify-content-center align-items-center">
+  <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top:60px;">
+    <div class="my-4">
+
+
   <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {% bootstrap_form place_form %}
-    <input type="submit" class="btn btn-primary" value="확인">
+    <!--<input type="submit" class="btn btn-primary" value="확인">-->
+    <div style="margin-top:10px; text-align:center;"><br>
+    <button type="button submit" class="btn btn-dark" style="text-align:center;">작성완료</button>
+    </div>
   </form>
-
+</div>
+</div>
+</div>
 {% endblock %}
