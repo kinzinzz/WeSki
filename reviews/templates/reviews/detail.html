@@ -1,9 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+
 {% block content %}
+
+<!--해당 페이지는 사용하지 않음-->
+  <h3 style="text-align:center;">{{Review.title}} 리뷰 보기<h3>
+  {{Review_Writer.username}}
+  {% if request.user.pk == Review_Writer.pk %}
+
   {{Review.title}}
   {{Review.user}}
   {{Review.content}}
   {% if request.user.pk == Review.user.pk %}
+
     <form action="{% url "reviews:update" Review.pk %}" method="GET">
       <input type="submit" value="수정">
     </form>
