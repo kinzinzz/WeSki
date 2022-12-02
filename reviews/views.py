@@ -3,6 +3,7 @@ from .models import Review,ReviewImage
 from .form import Review_form
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
+from places.models import Place
 # Create your views here.
 @login_required(login_url="accounts/login")
 def create(request):
@@ -58,10 +59,9 @@ def index(request):
     reviewobjects=Review.objects.order_by("-pk")
     contextlist=[]
     for reviewobject in reviewobjects:
-        userobject=get_user_model().objects.get(pk=reviewobject.user.id)
+        userobject=get_user_model().objects.get(pk=reviewobject.user.pk)
         contextlist.append({"review":reviewobject,"Writer":userobject})
     context={"Reviews":contextlist}
-    print(context['Reviews'][0]['review'].title)
     return render(request,"reviews/index.html",context)
 @login_required(login_url="accounts/login")
 def likes(request,review_pk):
@@ -80,7 +80,9 @@ def likes(request,review_pk):
     
 def detail(request,review_pk):
     reviewobject=Review.objects.get(pk=review_pk)
-    context={"Review":reviewobject,}
+    Writerobject=get_user_model().objects.get(pk=reviewobject.user.pk)
+    reviewplaceobject=Place.objects.get(pk=reviewobject.place.pk)
+    context={"Review":reviewobject,"Place":reviewplaceobject,"User":Writerobject}
     return render(request,"reviews/detail.html",context)
 @login_required(login_url="accounts/login")
 def image_add(request,review_pk):

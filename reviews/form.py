@@ -11,6 +11,8 @@ class Review_form(forms.ModelForm):
         exclude=("likes","user","likes_num")
         
         labels = {
+            "title":"리뷰제목",
+            "content":"리뷰본문",
             "rating": "별점을 남겨주세요",
         }
         widgets = {

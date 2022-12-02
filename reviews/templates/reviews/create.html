@@ -19,11 +19,11 @@
 <div class="row d-flex justify-content-center align-items-center">
   <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top:60px;">
     <div class="my-4">
-      <form action="{% url "reviews:create" %}" method="POST" enctype="multipart/form-data">
+      <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <!-- {{form.as_p}}-->
         {% bootstrap_form Review_form %}
-        <input type="file" name="image[]" multiple="multiple">
+        <input type="file" name="image[]" multiple="multiple" accept="image/*">
         <br>
         <div style="margin-top:10px; text-align:center;">
           <!--<button class="login_btn btn" type="submit">작성완료</button>-->

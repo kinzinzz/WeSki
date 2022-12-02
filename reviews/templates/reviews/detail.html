@@ -2,6 +2,7 @@
 {% block content %}
   {{Review.title}}
   {{Review.user}}
+  {{Review.content}}
   {% if request.user.pk == Review.user.pk %}
     <form action="{% url "reviews:update" Review.pk %}" method="GET">
       <input type="submit" value="수정">
