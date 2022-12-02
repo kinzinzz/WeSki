@@ -1,22 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
   {{Review.title}}
-  {{Review_Writer.username}}
-  {% if request.user.pk == Review_Writer.pk %}
+  {{Review.user}}
+  {% if request.user.pk == Review.user.pk %}
     <form action="{% url "reviews:update" Review.pk %}" method="GET">
       <input type="submit" value="수정">
     </form>
   {% endif %}
-  {% for photo in Review_Image %}
+  {% for photo in Review.review_images.all %}
     <img src="{{photo.image.url}}">
-    {% if request.user.pk == Review_Writer.pk %}
+    {% if request.user.pk == Review.user.pk %}
       <form action="{% url "reviews:image_delete" Review.pk photo.pk %}" method="POST">
         {% csrf_token %}
         <input type="submit" value="삭제">
       </form>
     {% endif %}
   {% endfor %}
-  {% if request.user.pk == Review_Writer.pk %}
+  {% if request.user.pk == Review.user.pk %}
     <form action="{% url "reviews:image_add" Review.pk %}" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <input type="file" name="image[]" multiple="multiple" accept="image/*">
@@ -30,7 +30,7 @@
     </form>
   {% endif %}
   {{Review.likes_num}}
-  {% if request.user.pk == Review_Writer.pk %}
+  {% if request.user.pk == Review.user.pk %}
     <form action="{% url "reviews:delete" Review.pk %}" method="POST">
       {% csrf_token %}
       글 삭제

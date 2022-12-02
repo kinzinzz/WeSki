@@ -19,7 +19,7 @@ def create(request):
         return redirect("reviews:index")
     else:
         form=Review_form()
-        context={"form":form}
+        context={"Review_form":form}
         return render(request,"reviews/create.html",context)
 @login_required(login_url="accounts/login")
 def update(request,review_pk):
@@ -52,14 +52,16 @@ def delete(request,review_pk):
     old_review=Review.objects.get(pk=review_pk)
     if(request.user.pk==old_review.user.pk):
         if(request.method=="POST"):
-            old_review_image=ReviewImage.objects.filter(review=old_review.pk)
-            for image in old_review_image:
-                image.delete()
             old_review.delete()
     return redirect("reviews:index")
 def index(request):
-    reviewobject=Review.objects.order_by("-pk")
-    context={"Reviews":reviewobject}
+    reviewobjects=Review.objects.order_by("-pk")
+    contextlist=[]
+    for reviewobject in reviewobjects:
+        userobject=get_user_model().objects.get(pk=reviewobject.user.id)
+        contextlist.append({"review":reviewobject,"Writer":userobject})
+    context={"Reviews":contextlist}
+    print(context['Reviews'][0]['review'].title)
     return render(request,"reviews/index.html",context)
 @login_required(login_url="accounts/login")
 def likes(request,review_pk):
@@ -78,10 +80,7 @@ def likes(request,review_pk):
     
 def detail(request,review_pk):
     reviewobject=Review.objects.get(pk=review_pk)
-    Writer=get_user_model().objects.get(pk=request.user.pk)
-    reviewimage=ReviewImage.objects.filter(review=reviewobject.pk)
-    context={"Review":reviewobject,"Review_Writer":Writer,"Review_Image":reviewimage
-    }
+    context={"Review":reviewobject,}
     return render(request,"reviews/detail.html",context)
 @login_required(login_url="accounts/login")
 def image_add(request,review_pk):

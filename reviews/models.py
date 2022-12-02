@@ -19,6 +19,12 @@ class Review(models.Model):
     likes_num=models.PositiveIntegerField(default=0)
     def __str__(self):
         return self.title
+    def delete(self,*args,**kargs):
+        imageobjects=self.review_images.all()
+        if imageobjects.exists():
+            for imageobject in imageobjects:
+                imageobject.delete()
+        super(Review, self).delete(*args, **kargs)
 class ReviewImage(models.Model):
     review=models.ForeignKey(Review,on_delete=models.CASCADE, related_name='review_images')
     image = ProcessedImageField(
@@ -33,4 +39,4 @@ class ReviewImage(models.Model):
             temp0=os.path.join(str(settings.MEDIA_ROOT),temp)
             if os.path.isfile(temp0):
                 os.remove(temp0)
-            super(ReviewImage, self).delete(*args, **kargs)
+        super(ReviewImage, self).delete(*args, **kargs)
