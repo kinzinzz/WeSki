@@ -1,9 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <!-- map -->
-  <div id="map" style="width:100%;height:350px;"></div>
-  <h1 id="place_name">{{ place.name }}</h1>
+  <div class="container row row-cols-1 row-cols-md-2 g-2 d-flex flex-nowrap">
+    <!-- main img -->
+    {% if place.photo_main %}
+      <div class="col" style="width: 700px; height:350px;">
+        <img src="{{ place.photo_main.url }}" class="card-img-top img-fluid" alt="" style="width: 100%; height: 100%;">
+      </div>
+    {% else %}
+      <div class="col" style="width: 700px; height:350px;">
+        <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top img-fluid" alt="" style="width: 100%; height: 100%;">
+      </div>
+    {% endif %}
+    <!-- map -->
+    <div class="col card-img-top img-fluid" id="map" style="width: 700px; height:350px;"></div>
+  </div>
+  <div class="mt-5">
+    <h1 id="place_name">{{ place.name }}</h1>
+  </div>
   <!-- 리뷰작성 아이콘 -->
   {% comment %} <i class="fa-regular fa-pen-to-square fa-2x"></i> {% endcomment %}
   <!-- 즐겨찾기 -->
