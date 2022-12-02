@@ -147,8 +147,8 @@
       {% for place in places %}
         <div class="col-4 my-3">
           <div class="card">
-            {% if place.image %}
-              <img src="{{ place.imgae.url }}" class="card-img-top" alt="">
+            {% if place.photo_main %}
+              <img src="{{ place.photo_main.url }}" class="card-img-top" alt="">
             {% else %}
               <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top" alt="">
             {% endif %}
