@@ -2,42 +2,94 @@
 {% load django_bootstrap5 %}
 
 {% block content %}
-<h2>{{ place.name }}</h2>
-<div class="container">
+<!--상단이미지-->
+<section class="hero">
+    <div style="position:relative;">
+    <img src="https://i.esdrop.com/d/f/bvRLlOwptP/MX8DwNh7gT.png" alt="place review detail img">
+    </div>
+    <div class="row-2>
+    </div>
+         <div class="col-md-1"style="position:relative;">
+       <div class="carousel-caption" style="top:11rem; max-height:100px; position:absolute;transform: translate( -50%, -50%, -50%, -50% );">
+         <h3 style=" font-size:3rem;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">{{ place.name }}리뷰</h3>
+       </div>
+      </div>
+    </div>
+  </section>
+
+
+<div class="container ml-5">
+<!--리뷰 작성 버튼-->
+  <div class="d-flex justify-content-center" style="position:absolute;right:2rem; bottom:10rem;">
+    <a class="nav-link" href="{% url 'reviews:create' %}">
+        <button type="button" class="btn btn-outline-dark">리뷰작성</button>
+    </a>
+  </div>
+
+<!-- 리뷰 내용 -->  
     {% for review in reviews %}
-    <div class="card mb-2" style="width: 50rem; height:20rem">
-        <div class="card-body">
-            <p class="card-text">
-            <h5>{{ review.title }}
-                {% if review.rating == 5 %}
-                <span>⭐⭐⭐⭐⭐</span>
-                {% elif review.rating == 4 %}
-                <span>⭐⭐⭐⭐</span>
-                {% elif review.rating == 3 %}
-                <span>⭐⭐⭐</span>
-                {% elif review.rating == 2 %}
-                <span>⭐⭐</span>
-                {% elif review.rating == 1 %}
-                <span>⭐</span>
-                {% endif %}
-            </h5>
-            <p>{{ review.content }}</p>
-        </div>
-        <div class="row">
-            {% for image in review.review_images.all %}
-            <div class="col" style="width:20rem; height:20rem;">
-                <img src="{{ image.image.url }}" class="card-img-top" alt="..." style="width: 50%; height:50%;">
-            </div>
-            {% empty %}
-            <h5>리뷰 사진이 없습니다.</h5>
-            {% endfor %}
-        </div>
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top:60px;">
+          <div class="my-4">
+    {% comment %} <div class="card mb-2" style="width: 50rem; height:20rem">
+    <div class="card-body">
+        <p class="card-text"> {% endcomment %}
+        
+
+<!--누르면 리뷰디테일(별로의미없어서 고민중) 이미지만 띄울까 생각중-->
+    
+    <a href="{% url 'reviews:detail' review.pk %}" class="row text-dark" style="text-decoration: none;"> 
+         
+                 
+    
+    <!-- 유저 프로필 -->
+    <div class="d-flex align-items-start">
+        {% if review.user.profile_image %}
+        <img src="{{ review.user.profile_image.url }}" alt="작성자 프로필 이미지">
+        {% else %}
+        <img src="https://i.esdrop.com/d/t/bvRLlOwptP/bTMDQr9Zl1.jpg" style="width: 40px; height: 40px; border-radius:50%" alt="default_profile_image">
+        {% endif %}
+        <h4 class="mx-3 d-flex align-items-center my-0">
+        {{ review.user.username }}</h4>
+    </div>
+    <h5>
+        {% if review.rating == 5 %}
+        <span>⭐⭐⭐⭐⭐</span>
+        {% elif review.rating == 4 %}
+        <span>⭐⭐⭐⭐</span>
+        {% elif review.rating == 3 %}
+        <span>⭐⭐⭐</span>
+        {% elif review.rating == 2 %}
+        <span>⭐⭐</span>
+        {% elif review.rating == 1 %}
+        <span>⭐</span>
+        {% endif %}
+        <br>
+        <div style="margin-top:1rem;">
+        {{ review.title }}
+        </div>    
+    </h5>
+
+<!--리뷰내용-->
+    <p>{{ review.content }}</p>
+    </div>
+
+        {% for image in review.review_images.all %}
+            <img src="{{ image.image.url }}" alt="review img" style="width: 100%; height:50%; margin-bottom:5rem;">
+        
+        <hr>
+        {% empty %}
+        <img src="https://i.esdrop.com/d/f/bvRLlOwptP/Tx9Me0oz1k.jpg" style="width: 50%; height: 50%%; alt="no img detault">
+        <hr>
+        {% endfor %}
+    </div>
 
     </div>
     {% empty %}
     <h5>아직 리뷰가 없습니다.</h5>
+    
     {% endfor %}
 
 </div>
-
+</div>
 {% endblock %}
