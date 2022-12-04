@@ -13,8 +13,8 @@
   </div>
 
        <div class="col-md-1">
-     <div class="carousel-caption" style="top:150px;">
-       <h1 style="font-size:55px;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">마이페이지</h1>
+        <div class="carousel-caption" style="top:150px; max-height:100px;">
+        <h1 style="font-size:55px;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">마이페이지</h1>
      </div>
   </div>
 </section>
@@ -55,7 +55,8 @@
 
               <!--프로필 수정/삭제 요청과 사용자가 일치하는 경우-->
               <!-- class="d-flex align-items-center ms-3">-->
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <div class="d-flex align-items-center ms-3"style="position:relative">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end"style="position:absolute; bottom:12rem;  ">
                 {% if request.user.pk == customer.pk %}
                   <a href="{% url 'accounts:update' customer.pk %}" style="display:inline-block;height:20px;">
                     <i class="fa-solid fa-gear fix-account"></i>
@@ -68,7 +69,40 @@
             </div>
           </div>
 
-          <!-- 구매목록 -->
+
+
+
+<!-- 프로필 하단 영역 -->
+<div class="container d-flex flex-column bg-white rounded-5 mt-5">
+  <div class="menu navbar-nav d-flex flex-row justify-content-center py-4">
+    <li>
+      <a type="button" id="myReview" class="pe-2 text-black"style="text-decoration:none;">
+        <h5>
+          <i class="fa-regular fa-star"></i>
+          리뷰</h5>
+      </a>
+    </li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a type="button" id="myReservation" class="pe-2 text-black" style="text-decoration:none;">
+        <h5>
+          <i class="fa-regular fa-bookmark"></i>
+          예약</h5>
+      </a>
+    </li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a type="button" id="myPay" class="text-black"style="text-decoration:none;">
+        <h5>
+          <i class="fa-regular fa-credit-card"></i>
+          결제</h5>
+      </a>
+    </li>
+  </div>
+
+
+
+          
+          <!-- 구매목록 myPay -->
+<div id="myPayResult" style="display: none;">
 <div class="container d-flex flex-column justify-content-center align-items-center"
 style="max-width:1070px; font-weight: 600; padding: 60px 0 0;">
 <p style="font-weight: 700; font-size: 28px; color: rgb(51, 51, 51); margin-bottom: 27px;">구매 목록</p>
@@ -158,28 +192,29 @@ style="max-width:1070px; font-weight: 600; padding: 60px 0 0;">
   {% endif %}
 </div>
 </div>
+</div>
 
 
 
-
-          <!-- 후기 내역 -->
+          <!-- 리뷰 내역 myReview-->
+          <div id="myReviewResult"style="display: none;">
           <div class='container' style="max-width: 1070px; padding: 60px 0;">
             <div style="padding: 0 40px;">
-              <p class="text-center" style="font-weight: 700; font-size: 28px; color: rgb(51, 51, 51); margin-bottom: 27px;">후기 내역</p>
+              <p class="text-center" style="font-weight: 700; font-size: 28px; color: rgb(51, 51, 51); margin-bottom: 27px;">리뷰 내역</p>
               {% if not reviews %}
                 <div class="d-flex justify-content-center">
-                  <p style="font-size: 24px; color: rgb(204, 204, 204);">아직 후기내역이 없습니다 📝</p>
+                  <p style="font-size: 24px; color: rgb(204, 204, 204);">아직 리뷰내역이 없습니다 📝</p>
                 </div>
               {% else %}
-                <!-- 후기 등록 버튼 & 모달 -->
+                <!-- 리뷰 등록 버튼 & 모달 -->
                 <div class="row">
                   <div class="d-flex justify-content-between align-items-center mb-3">
-                    <p class="fw-bold m-0" style='font-size: 18px; font-weight: 700;'>후기 내역</p>
+                    <p class="fw-bold m-0" style='font-size: 18px; font-weight: 700;'>리뷰 내역</p>
 
                   </div>
                 </div>
 
-                <!-- 후기 목록 -->
+                <!-- 리뷰 목록 -->
                 <div class="row px-3 mb-5" style="border-top:1px solid black;">
                   <table class="table">
                     <thead class="text-center">
@@ -205,7 +240,7 @@ style="max-width:1070px; font-weight: 600; padding: 60px 0 0;">
                           {% endif %}
                         </tr>
 
-                        <!-- 후기 내용 및 답변 Collapse -->
+                        <!-- 리뷰 내용 및 답변 Collapse -->
                         <tr class="collapse review-{{ review.pk }}" id="collapse-review-{{ review.pk }}">
                           <td colspan="4" class="text-bg-light px-3">
                             <div>
@@ -223,7 +258,7 @@ style="max-width:1070px; font-weight: 600; padding: 60px 0 0;">
                 </table>
               </div>
 
-              <!-- 후기 페이지네이션 -->
+              <!-- 리뷰 페이지네이션 -->
               <ul class="pagination justify-content-center">
                 <!-- 이전 페이지 -->
                 {% if reviews.has_previous %}
@@ -296,4 +331,101 @@ style="max-width:1070px; font-weight: 600; padding: 60px 0 0;">
       {% block script %}
         <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
         <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+<!--이모티콘 누르면 작동-->
+  <!-- 프로필 하단 영역 클릭할 때마다 jQuery 처리 -->
+  <script>
+    $('#myReview').click(function () {
+      if (($('#myReviewResult').css("display") === "none") && ($('#myReservationResult').css("display") 
+      === "none") && ($('#myPayResult').css("display") === "none")) {
+        $('#myReservationResult').hide();
+        $('#myPayResult').hide();
+        $('#myReviewResult').show();
+        console.log('myReview1')
+
+      } else if (($('#myReviewResult').css("display") === "none") && ($('#myReservationResult').css("display") 
+      !== "none") && ($('#myPayResult').css("display") === "none")) {
+        $('#myReservationResult').hide();
+        $('#myPayResult').hide();
+        $('#myReviewResult').show();
+        console.log('myReview2')
+      } else if (($('#myReviewResult').css("display") === "none") && ($('#myReservationResult').css("display") 
+      === "none") && ($('#myPayResult').css("display") !== "none")) {
+        $('#myReservationResult').hide();
+        $('#myPayResult').hide();
+        $('#myReviewResult').show();
+        console.log('myReview3')
+      } else {
+        if ($('#myReviewResult').css("display") !== "none") {
+          $('#myReviewResult').hide();
+          console.log('myReview4')
+        } else {
+          $('#myReviewResult').show();
+          $('#myPayResult').hide();
+          console.log('myReview5')
+        }
+      }
+    });
+
+    $('#myReservation').click(function () {
+      if (($('#myReservationResult').css("display") === "none") && ($('#myReviewResult').css("display") === "none") && ($('#myPayResult').css("display") === "none")) {
+        $('#myReviewResult').hide();
+        $('#myPayResult').hide();
+        $('#myReservationResult').show();
+        console.log('myReservation1')
+      } else if (($('#myReservationResult').css("display") === "none") && ($('#myReviewResult').css("display") !== "none") && ($('#myPayResult').css("display") === "none")) {
+        $('#myReviewResult').hide();
+        $('#myPayResult').hide();
+        $('#myReservationResult').show();
+        console.log('myReservation2')
+      } else if (($('#myReservationResult').css("display") === "none") && ($('#myReviewResult').css("display") === "none") && ($('#myPayResult').css("display") !== "none")) {
+        $('#myReviewResult').hide();
+        $('#myPayResult').hide();
+        $('#myReservationResult').show();
+        console.log('myReservation3')
+      } else {
+        if ($('#myReservationResult').css("display") !== "none") {
+          $('#myReservationResult').hide();
+          console.log('myReservation4')
+        } else {
+          $('#myReservationResult').show();
+          console.log('myReservation5')
+        }
+      }
+    });
+
+    $('#myPay').click(function () {
+      if (($('#myPayResult').css("display") === "none") && ($('#myReviewResult').css("display") === "none") && ($('#myReservationResult').css("display") === "none")) {
+        $('#myReviewResult').hide();
+        $('#myReservationResult').hide();
+        $('#myPayResult').show();
+        $('#myReviewResult').hide();
+        console.log('myPay1')
+      } else if (($('#myPayResult').css("display") === "none") && ($('#myReviewResult').css("display") !== "none") && ($('#myReservationResult').css("display") === "none")) {
+        $('#myReviewResult').hide();
+        $('#myReservationResult').hide();
+        $('#myPayResult').show();
+        console.log('myPay2')
+      } else if (($('#myPayResult').css("display") === "none") && ($('#myReviewResult').css("display") === "none") && ($('#myReservationResult').css("display") !== "none")) {
+        $('#myReviewResult').hide();
+        $('#myReservationResult').hide();
+        $('#myPayResult').show();
+        console.log('myPay3')
+      } else if (($('#myPayResult').css("display") === "none") && ($('#myReviewResult').css("display") === "none") && ($('#myReservationResult').css("display") !== "none")) {
+        $('#myReviewResult').hide();
+        $('#myReservationResult').hide();
+        $('#myPayResult').show();
+        console.log('myPay4')
+      } else {
+        if ($('#myPayResult').css("display") !== "none") {
+          $('#myPayResult').hide();
+          console.log('myPay5')
+        } else {
+          $('#myPayResult').show();
+          $('#myReviewResult').hide();
+          console.log('myPay6')
+        }
+      }
+    });
+</script>
       {% endblock script %}

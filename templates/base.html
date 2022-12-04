@@ -37,7 +37,7 @@
       <script defer="defer" src="https://kit.fontawesome.com/3ef4088aa9.js" crossorigin="anonymous"></script>
       <!--icon사용-->
       <script src="https://kit.fontawesome.com/a43f3ad032.js" crossorigin="anonymous"></script>
-      {% block script %}{% endblock script %}
+      
     </head>
 
     <body>
@@ -54,9 +54,10 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'accounts:logout' %}">로그아웃</a>
                 </li>
-                <li class="nav-item">
+                <!--네브바에서는 리뷰작성 못함
+                  <li class="nav-item">
                   <a class="nav-link" href="{% url 'reviews:create' %}">리뷰작성</a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'places:create' %}">스키장 등록</a>
                 </li>
@@ -74,6 +75,10 @@
 
     <!-- 임시 네브바(나중에 삭제하고 적용해주세요) -->
     {% block content %}{% endblock %}
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="index.js" charset="utf-8"></script>
+    {% block script %}{% endblock script %}
   </body>
   {% bootstrap_javascript %}
 
