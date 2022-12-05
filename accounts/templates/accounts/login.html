@@ -28,8 +28,9 @@
     <div class="signin__card">
       <h2>
         <strong>Welcome!</strong>
-        WE-SKI 방문을 환영합니다.</h2>
-      <h5>스키 정보를 한 눈에 비교하고 최적의 스키장을 찾아보세요</h5>
+        WE-SKI 방문을 환영합니다.
+      </h2>
+      <h5 class="info" style="text-align-center">스키 정보를 한 눈에 비교하고 최적의 스키장을 찾아보세요</h5>
 
       <form action="{% url 'accounts:login' %}" method="POST">
         {% csrf_token %}
