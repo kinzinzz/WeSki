@@ -76,8 +76,14 @@
       </tr>
     </tbody>
   </table>
-  <a href="{% url 'places:delete' place.pk %}">삭제하기</a>
-  <a href="{% url 'places:update' place.pk %}">수정하기</a>
+  <!-- 삭제, 수정 -->
+  {% if request.user.is_authenticated %}
+    {% if request.user == place.user %}
+      <a href="{% url 'places:delete' place.pk %}">삭제하기</a>
+      <a href="{% url 'places:update' place.pk %}">수정하기</a>
+    {% endif %}
+  {% endif %}
+      
   <a href="{% url 'places:place_reviews' place.pk %}">리뷰보기</a>
   <!-- Detail 이미지 -->
   <div class="container">
