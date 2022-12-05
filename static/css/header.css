@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+/***********공통*****************/
+body,
+div,
+ul,
+li,
+dl,
+dt,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+fieldset,
+legend,
+p,
+select,
+table,
+th,
+td,
+tr,
+textarea,
+button,
+form {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 12px "맑은 고딕", 돋움, 굴림;
+}
+ul,
+ol {
+  list-style-type: none;
+}
+a:link {
+  text-decoration: none;
+  color: #000000;
+}
+a:visited {
+  text-decoration: none;
+  color: #000000;
+}
+a:active {
+  text-decoration: none;
+  color: #000000;
+}
+a:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+/****************공통******************/
+
+#wrap {
+  max-width: 100%;
+  overflow: hidden;
+}
+#wrap #container {
+  width: 1050px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+
+/*마이페이지 사이드바*/
+.middle {
+  display: flex;
+  flex-direction: row;
+  margin-top: 80px;
+}
+.side_menu {
+  overflow: hidden;
+  width: 230px;
+  font-size: 14px;
+}
+.side_menu ul {
+  margin-bottom: 50px;
+}
+.side_menu #side_menu_booking li,
+.side_menu #side_menu_delivery li,
+.side_menu #side_menu_user li {
+  border-top: 1px solid #f2f2f2;
+  border-right: 1px solid #f2f2f2;
+  border-left: 1px solid #f2f2f2;
+  width: 180px;
+  height: 50px;
+  cursor: pointer;
+}
+.side_menu ul .side_menu_last {
+  border-bottom: 1px solid #f2f2f2;
+}
+.side_menu li span {
+  display: inline-block;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+#side_menu_mypage {
+  font-size: 25px;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+/*마이페이지 내용*/
