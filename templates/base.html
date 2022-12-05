@@ -37,7 +37,9 @@
       <script defer="defer" src="https://kit.fontawesome.com/3ef4088aa9.js" crossorigin="anonymous"></script>
       <!--icon사용-->
       <script src="https://kit.fontawesome.com/a43f3ad032.js" crossorigin="anonymous"></script>
-      
+      <!-- CSS -->
+      <link rel="stylesheet" href="{% static 'css/signin.css' %}?{% now 'U'%}">
+
     </head>
 
     <body>
@@ -54,10 +56,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'accounts:logout' %}">로그아웃</a>
                 </li>
-                <!--네브바에서는 리뷰작성 못함
-                  <li class="nav-item">
-                  <a class="nav-link" href="{% url 'reviews:create' %}">리뷰작성</a>
-                </li>-->
+                <!--네브바에서는 리뷰작성 못함 <li class="nav-item"> <a class="nav-link" href="{% url 'reviews:create' %}">리뷰작성</a> </li>-->
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'places:create' %}">스키장 등록</a>
                 </li>
