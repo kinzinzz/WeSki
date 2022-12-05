@@ -78,6 +78,41 @@
   </table>
   <a href="{% url 'places:update' place.pk %}">수정하기</a>
   <a href="{% url 'places:place_reviews' place.pk %}">리뷰보기</a>
+  <!-- Detail 이미지 -->
+  <div class="container">
+    <div class="row d-flex align-items-center">
+      <h2 class="text-center">음식</h2>
+      {% if place.photo_food %}
+      <div class="col" style="width: 70rem; height:30rem;">
+        <img src="{{ place.photo_food.url }}" class="card-img-top img-fluid p-3" alt="" style="width: 100%; height: 100%;">
+      </div>
+      {% else %}
+      <div class="col" style="width: 70rem; height:30rem;">
+        <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top img-fluid p-3" alt="" style="width: 100%; height: 100%;">
+      </div>
+      {% endif %}
+      <h2 class="text-center">부대시설</h2>
+      {% if place.photo_facilities %}
+      <div class="col" style="width: 70rem; height:30rem;">
+        <img src="{{ place.photo_facilities.url }}" class="card-img-top img-fluid p-3" alt="" style="width: 100%; height: 100%;">
+      </div>
+      {% else %}
+      <div class="col" style="width: 70rem; height:30rem;">
+        <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top img-fluid p-3" alt="" style="width: 100%; height: 100%;">
+      </div>
+      {% endif %}
+      <h2 class="text-center">숙박시설</h2>
+      {% if place.photo_accommodation %}
+      <div class="col" style="width: 70rem; height:30rem;">
+        <img src="{{ place.photo_accommodation.url }}" class="card-img-top img-fluid p-3" alt="" style="width: 100%; height: 100%;">
+      </div>
+      {% else %}
+      <div class="col" style="width: 70rem; height:30rem;">
+        <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top img-fluid p-3" alt="" style="width: 100%; height: 100%;">
+      </div>
+    </div>
+  </div>
+  {% endif %}
 
   <!-- Script -->
   <!-- map -->
