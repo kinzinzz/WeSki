@@ -30,23 +30,18 @@ def signup(request):
 
 
 def login(request):
+    
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
-        id = request.POST.get("id")
+        username = request.POST.get("username")
         password = request.POST.get("password")
-        
+        print(form.is_valid())
         if form.is_valid():
             user_login(request, form.get_user())
-        if id:
-            user=request.user
-            user.id = id
-            id.save()
-        if password:
-            user=request.user
-            password.save()
+        
             # id = request.POST.get("id")
             # password = request.POST.get("password")
-            # context = { "id": id, "password": password }
+            
             return redirect(request.GET.get("next") or "places:index")
     else:
         form = AuthenticationForm()
