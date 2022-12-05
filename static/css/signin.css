@@ -29,9 +29,14 @@
   text-align: center;
   border-bottom: 1px solid #ddd;
 }
+
+.signin .signin__card h5 {
+  text-align: center;
+}
+
 .signin .signin__card h2 strong {
   font-weight: 700;
-  color: #006633;
+  color: #00BFFF;
 }
 .signin__card form {
   padding: 30px 22px;
@@ -48,7 +53,7 @@
 }
 /* []속성 선택자 */
 .signin__card form [type="submit"] {
-  background-color: #006633;
+  background-color: #000000;
   border: none;
   color: #fff;
   font-size: 20px;
@@ -56,7 +61,7 @@
 }
 .signin__card form p {
   font-size: 12px;
-  color: #006633;
+  color: #000000;
   text-align: center;
 }
 .signin__card .actions {
