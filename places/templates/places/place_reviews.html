@@ -28,7 +28,7 @@
 
 <!-- 리뷰 내용 -->  
     {% for review in reviews %}
-    <div class="row d-flex justify-content-center align-items-center">
+    {% comment %} <div class="row d-flex justify-content-center align-items-center"> {% endcomment %}
         <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top:60px;">
           <div class="my-4">
     {% comment %} <div class="card mb-2" style="width: 50rem; height:20rem">
@@ -36,7 +36,7 @@
         <p class="card-text"> {% endcomment %}
         
 
-<!--누르면 리뷰디테일(별로의미없어서 고민중) 이미지만 띄울까 생각중-->
+<!--누르면 수정 삭제-->
     
     <a href="{% url 'reviews:detail' review.pk %}" class="row text-dark" style="text-decoration: none;"> 
          
@@ -71,15 +71,16 @@
     </h5>
 
 <!--리뷰내용-->
+    
     <p>{{ review.content }}</p>
     </div>
 
         {% for image in review.review_images.all %}
-            <img src="{{ image.image.url }}" alt="review img" style="width: 100%; height:50%; margin-bottom:5rem;">
+            <img src="{{ image.image.url }}" style="object-fit:cover; width: 100%; height:300px; margin-bottom:5rem;" alt="review img>
         
         <hr>
         {% empty %}
-        <img src="https://i.esdrop.com/d/f/bvRLlOwptP/Tx9Me0oz1k.jpg" style="width: 100%; height: 50%%; margin-bottom:5rem;" alt="no img detault">
+        <img src="https://i.esdrop.com/d/f/bvRLlOwptP/Tx9Me0oz1k.jpg" style=" object-fit:cover;width:100%; height:300px;" alt="no img detault">
         <hr>
         {% endfor %}
     </div>

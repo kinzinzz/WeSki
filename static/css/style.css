@@ -116,3 +116,7 @@ i:hover{
 .del-account{
 	color:rgb(166, 0, 0)
 } 
+a{
+	text-decoration: none;
+	color:rgb(3, 3, 3);
+}
