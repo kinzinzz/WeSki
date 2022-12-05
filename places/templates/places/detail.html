@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+  <!-- main img -->
   <div class="container row row-cols-1 row-cols-md-2 g-2 d-flex flex-nowrap">
-    <!-- main img -->
     {% if place.photo_main %}
       <div class="col" style="width: 700px; height:350px;">
         <img src="{{ place.photo_main.url }}" class="card-img-top img-fluid" alt="" style="width: 100%; height: 100%;">
