@@ -111,10 +111,4 @@ def place_reviews(request, pk):
     place = Place.objects.get(pk=pk)
     # place의 리뷰들 
     reviews = Review.objects.filter(place=place).order_by("-updated_at")
-    httpresponce=render(request, 'places/place_reviews.html', {'reviews':reviews, 'place':place})
-    cookie_value="places:place_reviews"
-    httpresponce.set_cookie(
-            "from", value=cookie_value, httponly=True
-        )
-    httpresponce.set_cookie("from_agrument",value=pk,httponly=True)
-    return httpresponce
+    return render(request, 'places/place_reviews.html', {'reviews':reviews, 'place':place})
