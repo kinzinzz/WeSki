@@ -3,7 +3,16 @@
 {% bootstrap_css %}
 {% load static %}
 {% bootstrap_javascript %}
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'css/header.css' %}" />
+<link rel="stylesheet" href="{% static 'css/mypage.css' %}" />
+<!-- <link rel="stylesheet" href="/static/header.css"> -->
+<!-- <link rel="stylesheet" href="/static/mypage.css"> -->
+<!-- <link rel="stylesheet" href=".././header.css"> -->
+<!-- <link rel="stylesheet" href=".././mypage.css"> -->
+
 <script src="https://kit.fontawesome.com/a43f3ad032.js" crossorigin="anonymous"></script>
+
 <!--상단이미지-->
 {% block content %}
 
@@ -11,6 +20,85 @@
   <img src="https://i.esdrop.com/d/f/bvRLlOwptP/Vqr3z7jiaw.png" alt="ski login img">
   <div class="row-2">
   </div>
+
+<!-- 회원정보관리-->
+<div id="wrap">
+  <div id="container">
+      
+      <div class="middle">
+          <div class="side_menu">
+              <ul id="side_menu_mypage">
+                  <li>마이페이지</li>
+              </ul>
+
+              <ul id="side_menu_delivery">
+                  <li><span>예약관리</span></li>
+                  <li><a href=""><span>상품관리&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp></span></a></li>
+                  <li><a href=""><span>예약관리&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp></span></a></li>
+                  <li class="side_menu_last"><a href=""><span>구매관리&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp></span></a></li>
+              </ul>
+      
+              <ul id="side_menu_user">
+                  <li><a href=""><span>알림&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp></span></a></li>
+                  <li><a href=""><span>장바구니&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp></span></a></li>
+                  <li><a href=""><span>구매내역&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp></span></a></li>
+                  <li><a href=""><span>회원정보관리&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp></span></a></li>
+                  
+                  <li class="side_menu_last"><a href=""><span>관리  
+                  </span></a></li>
+              </ul>
+          </div><!--//side_menu//-->
+          <div>
+              <div class="header_explain">
+                  <div id="explain_head">
+                      회원정보관리
+                  </div>
+                  <div id="explain_body">
+                      <p><strong>회원정보</strong> (예약일기준)<br>
+                      (출금계좌 정보는 마이페이지 >마이계정 페이지에서 확인 및 수정 가능)</p>
+                  </div>
+              </div>
+              <div class="profit">
+                  <div id="profit_main">
+                      <p>구매 예정액 <strong>000,000원</strong></p>
+                  </div>
+              </div>
+              <table id="profit_table">
+                  <tr>
+                      <td colspan="2">총 구매액</td>
+                      <td>000,000원</td>
+                  </tr>
+                  <tr>
+                      <td colspan="2">예약 완료 금액</td>
+                      <td>000,000원</td>
+                  </tr>
+                  <tr>
+                      <td rowspan="2">구매액</td>
+                      <td>구매액</td>
+                      <td>0원</td>
+                  </tr>
+                  <tr>
+                      <td>구매내역</td>
+                      <td>0원</td>
+                  </tr>
+              </table>
+          </div>
+      </div><!--//middle//-->
+  </div><!--//container//-->
+</div><!--//wrap//-->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
        <div class="col-md-1">
         <div class="carousel-caption" style="top:150px; max-height:100px;">
