@@ -34,7 +34,10 @@ def login(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             user_login(request, form.get_user())
-            return redirect(request.GET.get("next") or "places:index")
+            id = request.POST.get("id")
+            password = request.POST.get("password")
+            context = { "id": id, "password": password }
+            return redirect(request.GET.get("next") or "places:index", context)
     else:
         form = AuthenticationForm()
     context = {"forms": form}
