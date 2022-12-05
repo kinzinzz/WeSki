@@ -3,6 +3,7 @@
   {{Review.title}}
   {{Review.user}}
   {{Review.content}}
+  <a name="place_reivew" id="" class="btn btn-primary" href="{% url "places:place_reviews" Review.place.pk %}" role="button">place_reviews</a>
   {% if request.user.pk == Review.user.pk %}
     <form action="{% url "reviews:update" Review.pk %}" method="GET">
       <input type="submit" value="수정">
