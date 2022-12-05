@@ -17,7 +17,7 @@
     </div>
   </section>
 
-  <div class="container">
+  <div class>
     <div class="row d-flex align-items-center" style="height: 600px;">
       <div class="col-6 mx-auto">
 
@@ -27,7 +27,7 @@
           {% csrf_token %}
 
           <div>
-            <div>
+            <div><br>
               <label for="id_username" class="retro mb-3">이름을 입력하세요.</label>
               <input type="text" name="username" maxlength="150" autofocus="autofocus" class="form-control" placeholder="이름" required="required" id="id_username">
             </div>
@@ -61,5 +61,5 @@
       </img>
     </div>
   </div>
-
+<br><br>
 {% endblock %}

@@ -37,9 +37,7 @@
       <script defer="defer" src="https://kit.fontawesome.com/3ef4088aa9.js" crossorigin="anonymous"></script>
       <!--icon사용-->
       <script src="https://kit.fontawesome.com/a43f3ad032.js" crossorigin="anonymous"></script>
-      <!-- CSS -->
-      <link rel="stylesheet" href="{% static 'css/signin.css' %}?{% now 'U'%}">
-
+      
     </head>
 
     <body>
@@ -56,7 +54,10 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'accounts:logout' %}">로그아웃</a>
                 </li>
-                <!--네브바에서는 리뷰작성 못함 <li class="nav-item"> <a class="nav-link" href="{% url 'reviews:create' %}">리뷰작성</a> </li>-->
+                <!--네브바에서는 리뷰작성 못함
+                  <li class="nav-item">
+                  <a class="nav-link" href="{% url 'reviews:create' %}">리뷰작성</a>
+                </li>-->
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'places:create' %}">스키장 등록</a>
                 </li>
@@ -81,4 +82,56 @@
   </body>
   {% bootstrap_javascript %}
 
+
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>We-SKI</h6>
+            <p class="text-justify">Content-based community using the web framework Django and HTML/CSS/JavaScript A ski-based review sharing community based on the development of a web platform.</p>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Company</h6>
+            <ul class="footer-links">
+              <li><a>회사소개</a></li>
+              <li><a>고객의 소리</a></li>
+              <li><a>채용안내</a></li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Service</h6>
+            <ul class="footer-links">
+              <li><a>서비스 이용약관</a></li>
+              <li><a>개인정보처리방침</a></li>
+              <li><a>이메일추출방지정책</a></li>
+              <li><a>영상정보처리기기운영관리방침</a></li>
+              <li><a>윤리경영</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by 
+         <a href="#">We-SKI</a>
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+            </ul>
+          </div>
+        </div>
+      </div>
+</footer>
 </html>
