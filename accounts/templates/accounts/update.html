@@ -10,7 +10,7 @@
         <h1 class="text-center accounts-update-title">회원정보수정
         </h1>
       </div>
-      <!--<img class="accoutns-update-img-div " src="{% static 'images/.png' %}" alt=""> -->
+      {% comment %} <!--<img class="accoutns-update-img-div " src="{% static 'images/.png' %}" alt=""> --> {% endcomment %}
     </div>
     <hr>
 
@@ -20,7 +20,7 @@
           <div class="d-flex justify-contennt-center">
             <!-- {% if customer.image %} <img class="accoutns-detail-img-div" src="{{customer.image.url}}" alt="customer.image.url"> {% else %} -->
             <div>
-              <!-- <img class="accoutns-detail-img-div" src="{% static 'images/.png' %}" alt="customer.image.url" height="100" width="100"> -->
+              {% comment %} <!-- <img class="accoutns-detail-img-div" src="{% static 'images/.png' %}" alt="customer.image.url" height="100" width="100"> --> {% endcomment %}
             </div>
             <!-- {% endif %} -->
             <div>
@@ -38,7 +38,7 @@
     </div>
 
     <div class="d-flex justify-content-between">
-      <!-- <img src="{% static '/images/.png' %}" alt=""> -->
+      {% comment %} <!-- <img src="{% static '/images/.png' %}" alt=""> --> {% endcomment %}
     </div>
     <div>
       <form action="" method="POST" enctype="multipart/form-data">
