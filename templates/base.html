@@ -44,11 +44,107 @@
       <!-- mypage -->
       <link rel="stylesheet" href="{% static 'css/header.css' %}"/>
       <link rel="stylesheet" href="{% static 'css/mypage.css' %}"/>
+      <!-- nav -->
+      <link rel="stylesheet" href="{% static 'css/nav.css' %}"/>
 
     </head>
 
     <body>
-      <!-- 임시 네브바(나중에 삭제하고 적용해주세요) -->
+      <header class="p-3 border-bottom">
+        <div class="container md-4" style="margin-left : auto;">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start swiper-wrapper">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+              <h1>
+                Weski
+              </h1>
+              <img class="bi me-2" width="40" height="32" role="img" src="static/images/woman.png" alt="">
+            </a>
+    
+            <ul class="nav col-12 col-lg-auto m-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="#" class="nav-link px-2 link-dark">이벤트</a></li>
+              <li><a href="#" class="nav-link px-2 link-dark">스키장 목록</a></li>
+              <li><a href="#" class="nav-link px-2 link-dark">고객지원</a></li>
+            </ul>
+            {% if request.user.is_authenticated %}
+              <div class="dropdown text-end">
+                {% if request.user.profile_image %}
+                  <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ request.user.profile_image }}" class="rounded-circle" width="32" height="32" alt="profile_image">
+                  </a>
+                {% endif %}
+                <ul class="dropdown-menu text-small">
+                  <li>
+                    <a class="dropdown-item" href="{% url 'accounts:detail' request.user.pk %}">프로필</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">찜목록</a>
+                  </li>
+                  <li><hr class="dropdown-divider"></li>
+                  {% comment %} <li>
+                    <a class="dropdown-item" href="{% url 'accounts:delete' %}">회원탈퇴</a>
+                  </li> {% endcomment %}
+                  <li>
+                    <a class="dropdown-item" href="{% url 'accounts:logout' %}">로그아웃</a>
+                  </li>
+                </ul>
+              </div>
+            {% else %}
+              <div>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'accounts:login' %}">로그인</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'accounts:signup' %}">회원가입</a>
+                </li>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </header>
+      {% comment %} <header>
+        <div class="inner">
+          <a href="/">
+            <h1>Weski</h1>
+          </a>
+          <nav class="gnb">
+            <div class="swiper-container depth">
+              <ul class="swiper-wrapper">
+                <li class="swiper-slide">
+                  <a href="">이벤트</a>
+                </li>
+                <li class="swiper-slide">
+                  <a href="">스키장 목록</a>
+                </li>
+                <li class="swiper-slide">
+                  <a href="">고객지원</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div class="utill">
+            <div class="toggle-btn">
+              <i class="fa-solid fa-bars fa-2x" style="color: var(--gray-color);"></i>
+            </div>
+            <div class="nav__profile border-start px-3">
+              {% if request.user.is_authenticated %}
+                <!-- Profile -->
+                <div class="profile">
+                  <!-- Modal Btn -->
+                  {% if request.user.profile_image %}
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalId">
+                      <img src="{{ request.user.profile_image }}" alt="" class="w-100">
+                    </a>
+                  {% endif %}
+                </div>
+              {% else %}
+                <i class="fa-regular fa-user fa-lg" style="color: #adb5bd;" data-bs-toggle="modal" data-bs-target="#modalId"></i>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </header> {% endcomment %}
+
+      {% comment %} <!-- 임시 네브바(나중에 삭제하고 적용해주세요) -->
       <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">Weski</a>
@@ -77,8 +173,8 @@
       </div>
     </div>
   </nav>
+  <!-- 임시 네브바(나중에 삭제하고 적용해주세요) --> {% endcomment %}
 
-  <!-- 임시 네브바(나중에 삭제하고 적용해주세요) -->
   {% block content %}{% endblock %}
   <!--jquery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
