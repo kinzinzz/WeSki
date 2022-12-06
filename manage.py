@@ -20,3 +20,12 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+AWS_ACCESS_KEY_ID = "AKIAT43HVN7HWBV7FL6C"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_STORAGE_BUCKET_NAME = "weski-s3"
+DATABASE_NAME = "weski_rds"
+DATABASE_PASSWORD = "1QaZxSw#4L"
+DATABASE_HOST = "weski-rds.cwgh9r5qqdjc.ap-northeast-2.rds.amazonaws.com"
+DEBUG = False

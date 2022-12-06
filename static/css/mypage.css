@@ -80,7 +80,7 @@ a:hover {
 .profit #profit_main{
     margin-top: 30px;
     width: 800px;
-    height: 100px;
+    height: 392px;
     border: 5px #ebebeb solid;
     text-align: center;
     font-size: 18px;
@@ -94,22 +94,3 @@ margin-top: 40px;
     color: #00BFFF;
 }
 
-/*테이블*/
-
-#profit_table td{
-    border: 1px #ebebeb solid;
-    }
-
-#profit_table{
-    margin: 50px 0px 0px 7px;
-    width: 800px;
-    font-size: 14px;
-    border-top: 2px #dbdbdb solid;
-    border-bottom: 2px #dbdbdb solid;
-    border-collapse: collapse;
-    text-align: center;
-}
-
-#profit_table tr{
-height: 70px;
-}
