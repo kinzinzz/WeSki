@@ -2,30 +2,31 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-  {% load static %}
-  {% load django_bootstrap5 %}
-  <!DOCTYPE html>
-  <html lang="en">
+{% load static %}
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>We-SKI</title>
-      {% bootstrap_css %}
-      <link rel="stylesheet" href="{% static 'css/style.css' %}">
-      <!--폰트-->
-      <link rel="stylesheet" as="style" crossorigin="crossorigin" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css"/>
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>We-SKI</title>
+  {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!--폰트-->
+  <link rel="stylesheet" as="style" crossorigin="crossorigin"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+</head>
 
-    <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Weski</title>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-      <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weski</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  
       <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3827/3827118.png">
       {% bootstrap_css %}
       {% block css %}{% endblock css %}
@@ -47,7 +48,33 @@
       <!-- nav -->
       <link rel="stylesheet" href="{% static 'css/nav.css' %}"/>
 
-    </head>
+  <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3827/3827118.png">
+  {% bootstrap_css %}
+  {% block css %}{% endblock css %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+  <script defer="defer" src="https://kit.fontawesome.com/3ef4088aa9.js" crossorigin="anonymous"></script>
+  <!--icon사용-->
+  <script src="https://kit.fontawesome.com/a43f3ad032.js" crossorigin="anonymous"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/signin.css' %}?{% now 'U'%}">
+  <!-- 회원가입 -->
+  <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+  <!-- mypage -->
+  <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/mypage.css' %}" />
+
+</head>
+
+
 
     <body>
       <header class="p-3 border-bottom">
@@ -147,30 +174,35 @@
       {% comment %} <!-- 임시 네브바(나중에 삭제하고 적용해주세요) -->
       <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">Weski</a>
+          <a class="navbar-brand" href="/" style="color:white; font-size:25px;">We-Ski</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse" id="navbarNav" >
             <ul class="navbar-nav">
               {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'accounts:logout' %}">로그아웃</a>
+                  <a class="nav-link" href="{% url 'accounts:logout' %}" style="color:white; font-size:17px;">로그아웃</a>
                 </li>
                 <!--네브바에서는 리뷰작성 못함 <li class="nav-item"> <a class="nav-link" href="{% url 'reviews:create' %}">리뷰작성</a> </li>-->
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'places:create' %}">스키장 등록</a>
+                  <a class="nav-link" href="{% url 'places:create' %}"style="color:white;font-size:17px;">스키장 등록</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'accounts:detail' request.user.pk %}"style="color:white;font-size:17px;">마이페이지</a>
+                </li>
+
               {% else %}
-                <a class="nav-link" href="{% url 'accounts:login' %}">로그인</a>
+                <a class="nav-link" href="{% url 'accounts:login' %}"style="color:white;font-size:17px;">로그인</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'accounts:signup' %}">회원가입</a>
+                <a class="nav-link" href="{% url 'accounts:signup' %}"style="color:white;font-size:17px;">회원가입</a>
               </li>
             {% endif %}
           </ul>
         </div>
       </div>
+    </div>
     </div>
   </nav>
   <!-- 임시 네브바(나중에 삭제하고 적용해주세요) --> {% endcomment %}
@@ -184,12 +216,14 @@
 {% bootstrap_javascript %}
 
 <!-- Site footer -->
+
 <footer class="site-footer">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-6">
         <h6>We-SKI</h6>
-        <p class="text-justify">Content-based community using the web framework Django and HTML/CSS/JavaScript A ski-based review sharing community based on the development of a web platform.</p>
+        <p class="text-justify">Content-based community using the web framework Django and HTML/CSS/JavaScript A
+          ski-based review sharing community based on the development of a web platform.</p>
       </div>
 
       <div class="col-xs-6 col-md-3">
@@ -265,5 +299,6 @@
     </div>
   </div>
 </footer>
+
 
 </html>

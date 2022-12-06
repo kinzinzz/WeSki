@@ -20,7 +20,7 @@
 
 <div class="container ml-5">
 <!--리뷰 작성 버튼-->
-  <div class="d-flex justify-content-center" style="position:absolute;right:2rem; bottom:10rem;">
+  <div class="d-flex justify-content-center" style="margin-top:20px;">
     <a class="nav-link" href="{% url 'reviews:create' %}">
         <button type="button" class="btn btn-outline-dark">리뷰작성</button>
     </a>
@@ -29,7 +29,7 @@
 <!-- 리뷰 내용 -->  
     {% for review in reviews %}
     {% comment %} <div class="row d-flex justify-content-center align-items-center"> {% endcomment %}
-        <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top:60px;">
+        <div class="review-box d-flex flex-column justify-content-center align-items-center">
           <div class="my-4">
     {% comment %} <div class="card mb-2" style="width: 50rem; height:20rem">
     <div class="card-body">
@@ -37,7 +37,8 @@
         
 
 <!--누르면 수정 삭제-->
-    
+
+
     <a href="{% url 'reviews:detail' review.pk %}" class="row text-dark" style="text-decoration: none;"> 
          
                  
@@ -67,7 +68,8 @@
         <br>
         <div style="margin-top:1rem;">
         {{ review.title }}
-        </div>    
+        
+      </div>    
     </h5>
 
 <!--리뷰내용-->
@@ -90,7 +92,7 @@
     <h5>아직 리뷰가 없습니다.</h5>
     
     {% endfor %}
-
+  </div>
 </div>
-</div>
+</div></div></div>
 {% endblock %}
