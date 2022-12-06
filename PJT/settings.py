@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,9 +27,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-zj1!w1-bx3c+=jb&foqe#q*#zs&0g22$p0tfj_eu0@iu#jj!cf"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = [
+    # "Elastic Beanstalk URL",
+    "Weskibean-env.eba-8jwkbvdz.ap-northeast-2.elasticbeanstalk.com",
+    "127.0.0.1",
+    "localhost",
+]
 
 
 # Application definition
@@ -43,6 +51,7 @@ INSTALLED_APPS = [
     "accounts",
     "places",
     "reviews",
+    "storage",
 ]
 
 MIDDLEWARE = [
@@ -79,13 +88,28 @@ WSGI_APPLICATION = "PJT.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+DEBUG = os.getenv("DEBUG") == "True"
 
+if DEBUG == True: 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+	
+
+else: 
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.getenv("DATABASE_NAME"), 
+            "USER": "postgres",
+            "PASSWORD": os.getenv("DATABASE_PASSWORD"), 
+            "HOST": os.getenv("DATABASE_HOST"), 
+            "PORT": "5432",
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -125,6 +149,26 @@ STATIC_ROOT = "staticfiles"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+DEBUG = os.getenv("DEBUG") == "True"
+
+if DEBUG: 
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = BASE_DIR / "media"
+
+else:   
+    DEFAULT_FILE_STORAGE = "PJT.storages.MediaStorage"
+
+    AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
+
+    AWS_REGION = "ap-northeast-2"
+    AWS_S3_CUSTOM_DOMAIN = "%s.s3.%s.amazonaws.com" % (
+        AWS_STORAGE_BUCKET_NAME,
+        AWS_REGION,
+    )
+
 # STATICFILES_DIRS = [
 #     BASE_DIR / "static",
 # ]
