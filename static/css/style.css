@@ -284,11 +284,6 @@ a{
 	color:white;
 	/* transform: translate(-50%, -50%); */
 }
-.caro-size{
-	width:100%;
-	height:33rem;
-	position:relative;
-}
 .resort-arr{
 	flex-wrap: wrap;
 	min-width:350px;
@@ -311,6 +306,21 @@ a{
   left:0px;
   right:0px;
   top:40px;
+}
+.caro-size1{
+	width:100%;
+	height:33rem;
+	position:relative;
+}
+.caro-size2{
+	width:100%;
+	height:33rem;
+	position:relative;
+}
+.caro-size3{
+	width:100%;
+	height:33rem;
+	position:relative;
 }
 @media screen and (max-width:805px){
 	.img_text_1 {
@@ -355,7 +365,7 @@ min-width:500px;
 @media screen and (max-width:576px){
 	.img_text_1 {
   position: absolute;
-		font-size:7rem;
+	font-size:7rem;
   top: 10%;
   left: 30%;
 		color:white;
