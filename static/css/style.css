@@ -322,8 +322,18 @@ a{
 	height:33rem;
 	position:relative;
 }
+.review-box{
+  margin-right:250px;
+  margin-left:300px;
+  margin-top:60px;
+}
 @media screen and (max-width:805px){
-	.img_text_1 {
+	.review-box{
+    margin-right:50px;
+    margin-left:50px;
+    margin-top:60px;
+  }
+  .img_text_1 {
   position: absolute;
 		font-size:10rem;
   top: 20%;
