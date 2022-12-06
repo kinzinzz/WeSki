@@ -49,27 +49,31 @@
 
     <body>
       <!-- 임시 네브바(나중에 삭제하고 적용해주세요) -->
-      <nav class="navbar navbar-expand-lg bg-light">
+      <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">Weski</a>
+          <a class="navbar-brand" href="/" style="color:white; font-size:25px;">We-Ski</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse" id="navbarNav" >
             <ul class="navbar-nav">
               {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'accounts:logout' %}">로그아웃</a>
+                  <a class="nav-link" href="{% url 'accounts:logout' %}" style="color:white; font-size:17px;">로그아웃</a>
                 </li>
                 <!--네브바에서는 리뷰작성 못함 <li class="nav-item"> <a class="nav-link" href="{% url 'reviews:create' %}">리뷰작성</a> </li>-->
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'places:create' %}">스키장 등록</a>
+                  <a class="nav-link" href="{% url 'places:create' %}"style="color:white;font-size:17px;">스키장 등록</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'accounts:detail' request.user.pk %}"style="color:white;font-size:17px;">마이페이지</a>
+                </li>
+
               {% else %}
-                <a class="nav-link" href="{% url 'accounts:login' %}">로그인</a>
+                <a class="nav-link" href="{% url 'accounts:login' %}"style="color:white;font-size:17px;">로그인</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'accounts:signup' %}">회원가입</a>
+                <a class="nav-link" href="{% url 'accounts:signup' %}"style="color:white;font-size:17px;">회원가입</a>
               </li>
             {% endif %}
           </ul>
@@ -88,6 +92,7 @@
 {% bootstrap_javascript %}
 
 <!-- Site footer -->
+
 <footer class="site-footer">
   <div class="container">
     <div class="row">
@@ -169,5 +174,6 @@
     </div>
   </div>
 </footer>
+
 
 </html>
