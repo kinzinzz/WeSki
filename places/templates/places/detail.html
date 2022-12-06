@@ -4,20 +4,20 @@
 <!-- main img -->
 <div class="container row row-cols-1 row-cols-md-2 g-2 d-flex flex-nowrap">
   {% if place.photo_main %}
-  <div class="col" style="width: 700px; height:350px;">
+  <div class="col" style="width:750px; height:500px;">
     <img src="{{ place.photo_main.url }}" class="card-img-top img-fluid" alt="" style="width: 100%; height: 100%;">
   </div>
   {% else %}
-  <div class="col" style="width: 700px; height:350px;">
+  <div class="col" style="width: 750px; height:500px;">
     <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top img-fluid" alt=""
       style="width: 100%; height: 100%;">
   </div>
   {% endif %}
   <!-- map -->
-  <div class="col card-img-top img-fluid" id="map" style="width: 700px; height:350px;"></div>
+  <div class="col card-img-top img-fluid" id="map" style="width:750px; height:500px;"></div>
 </div>
 <div class="mt-5">
-  <h1 id="place_name">{{ place.name }}</h1>
+  <h2 id="place_name">&nbsp;&nbsp;{{ place.name }}</h2>
 </div>
 <!-- 리뷰작성 아이콘 -->
 {% comment %} <i class="fa-regular fa-pen-to-square fa-2x"></i> {% endcomment %}
@@ -49,31 +49,31 @@
   </div>
 </div>
 <!-- Detail 정보 -->
-<table>
+<br><table>
   <tbody>
     <tr>
-      <th>주소</th>
-      <td id="address">{{ place.address }}</td>
+      <th>&nbsp;&nbsp;· 주소</th>
+      <td id="address">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.address }}</td>
     </tr>
     <tr>
-      <th>전화번호</th>
-      <td>{{ place.contact_number }}</td>
+      <th>&nbsp;&nbsp;· 전화번호</th>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.contact_number }}</td>
     </tr>
     <tr>
-      <th>영업시간</th>
-      <td>{{ place.opening_time }}</td>
+      <th>&nbsp;&nbsp;· 영업시간</th>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.opening_time }}</td>
     </tr>
     <tr>
-      <th>휴무일</th>
-      <td>{{ place.break_day }}</td>
+      <th>&nbsp;&nbsp;· 휴무일</th>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.break_day }}</td>
     </tr>
     <tr>
-      <th>금액</th>
-      <td>{{ place.price }}</td>
+      <th>&nbsp;&nbsp;· 금액</th>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.price }}</td>
     </tr>
     <tr>
-      <th>소개글</th>
-      <td>{{ place.subtext }}</td>
+      <th>&nbsp;&nbsp;· 소개글</th>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.subtext }}</td>
     </tr>
   </tbody>
 </table>
@@ -84,42 +84,42 @@
 {% endif %}
 
 
-<a href="{% url 'places:place_reviews' place.pk %}">리뷰보기</a>
+&nbsp;&nbsp;<a href="{% url 'places:place_reviews' place.pk %}">리뷰보기</a>
 <!-- Detail 이미지 -->
 <div class="container">
-  <div class="row d-flex align-items-center">
+  <br><div class="row d-flex align-items-center">
     <h2 class="text-center">음식</h2>
     {% if place.photo_food %}
-    <div class="col" style="width: 70rem; height:30rem;">
+    <div class="col" style="width: 100%; height:100%;">
       <img src="{{ place.photo_food.url }}" class="card-img-top img-fluid p-3" alt=""
         style="width: 100%; height: 100%;">
     </div>
     {% else %}
-    <div class="col" style="width: 70rem; height:30rem;">
+    <div class="col" style="width: 100%; height:100%;">
       <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top img-fluid p-3" alt=""
         style="width: 100%; height: 100%;">
     </div>
     {% endif %}
     <h2 class="text-center">부대시설</h2>
     {% if place.photo_facilities %}
-    <div class="col" style="width: 70rem; height:30rem;">
+    <div class="col" style="width: 100%; height:100%;">
       <img src="{{ place.photo_facilities.url }}" class="card-img-top img-fluid p-3" alt=""
         style="width: 100%; height: 100%;">
     </div>
     {% else %}
-    <div class="col" style="width: 70rem; height:30rem;">
+    <div class="col" style="width: 100%; height:100%;">
       <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top img-fluid p-3" alt=""
         style="width: 100%; height: 100%;">
     </div>
     {% endif %}
     <h2 class="text-center">숙박시설</h2>
     {% if place.photo_accommodation %}
-    <div class="col" style="width: 70rem; height:30rem;">
+    <div class="col" style="width:100%; height:100%;">
       <img src="{{ place.photo_accommodation.url }}" class="card-img-top img-fluid p-3" alt=""
         style="width: 100%; height: 100%;">
     </div>
     {% else %}
-    <div class="col" style="width: 70rem; height:30rem;">
+    <div class="col" style="width:100%; height:100%;">
       <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top img-fluid p-3" alt=""
         style="width: 100%; height: 100%;">
     </div>
