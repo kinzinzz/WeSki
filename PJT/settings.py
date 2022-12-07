@@ -15,7 +15,14 @@ from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
 DEBUG = True
+<<<<<<< HEAD
 ALLOWED_HOSTS = []
+=======
+
+>>>>>>> 1950672982b31277d7f81490a41c2592048f57bf
+
+#추가
+DEBUG=True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +39,7 @@ SECRET_KEY = "django-insecure-zj1!w1-bx3c+=jb&foqe#q*#zs&0g22$p0tfj_eu0@iu#jj!cf
 
 ALLOWED_HOSTS = [
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
     # "Elastic Beanstalk URL",
@@ -39,6 +47,9 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
 >>>>>>> 819c7b8bd891276bb065378f0d1e7aa9efcb0ff6
+=======
+
+>>>>>>> 1950672982b31277d7f81490a41c2592048f57bf
 ]
 
 
@@ -56,7 +67,11 @@ INSTALLED_APPS = [
     "accounts",
     "places",
     "reviews",
+<<<<<<< HEAD
     # "storages",
+=======
+    #"storages",
+>>>>>>> 1950672982b31277d7f81490a41c2592048f57bf
 ]
 
 MIDDLEWARE = [
@@ -92,7 +107,13 @@ WSGI_APPLICATION = "PJT.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+<<<<<<< HEAD
 # DEBUG = os.getenv("DEBUG") == "True"
+=======
+
+#DEBUG = os.getenv("DEBUG") == "True"
+
+>>>>>>> 1950672982b31277d7f81490a41c2592048f57bf
 
 if DEBUG == True: 
     DATABASES = {
@@ -172,6 +193,7 @@ else:
         AWS_STORAGE_BUCKET_NAME,
         AWS_REGION,
     )
+
 
 
 # Default primary key field type
