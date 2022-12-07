@@ -2,7 +2,9 @@ name: EB_Deploy
 
 on:
   push:
-    branches: [팀 내 default 브랜치이름]
+    branches: [master]
+  pull_request:
+    branches: [master]
 		
 jobs: 
   deploy: 
