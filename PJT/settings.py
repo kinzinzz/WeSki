@@ -17,6 +17,8 @@ load_dotenv()
 DEBUG = True
 
 
+#추가
+DEBUG=True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,7 +34,7 @@ SECRET_KEY = "django-insecure-zj1!w1-bx3c+=jb&foqe#q*#zs&0g22$p0tfj_eu0@iu#jj!cf
 
 
 ALLOWED_HOSTS = [
-   
+
 ]
 
 
@@ -50,7 +52,7 @@ INSTALLED_APPS = [
     "accounts",
     "places",
     "reviews",
-    # "storages",
+    #"storages",
 ]
 
 MIDDLEWARE = [
@@ -83,11 +85,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "PJT.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DEBUG = os.getenv("DEBUG") == "True"
+
+#DEBUG = os.getenv("DEBUG") == "True"
+
 
 if DEBUG == True: 
     DATABASES = {
@@ -167,6 +170,7 @@ else:
         AWS_STORAGE_BUCKET_NAME,
         AWS_REGION,
     )
+
 
 
 # Default primary key field type
