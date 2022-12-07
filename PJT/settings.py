@@ -35,14 +35,6 @@ SECRET_KEY = "django-insecure-zj1!w1-bx3c+=jb&foqe#q*#zs&0g22$p0tfj_eu0@iu#jj!cf
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = [
-    # "Elastic Beanstalk URL",
-    # "Weski-env.eba-m4jxmwqk.ap-northeast-2.elasticbeanstalk.com",
-    # "127.0.0.1",
-    # "localhost",
-]
-
-
 # Application definition
 
 INSTALLED_APPS = [
