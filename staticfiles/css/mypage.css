@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+/***********공통*****************/
+body,
+div,
+ul,
+li,
+dl,
+dt,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+fieldset,
+legend,
+p,
+select,
+table,
+th,
+td,
+tr,
+textarea,
+button,
+form {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 12px "맑은 고딕", 돋움, 굴림;
+}
+ul,
+ol {
+  list-style-type: none;
+}
+a:link {
+  text-decoration: none;
+  color: #000000;
+}
+a:visited {
+  text-decoration: none;
+  color: #000000;
+}
+a:active {
+  text-decoration: none;
+  color: #000000;
+}
+a:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+/****************공통******************/
+
+/*수익관리 페이지*/
+/*설명*/
+.header_explain #explain_head{
+    font-size: 18px;
+    color: #00BFFF;
+    margin-bottom: 15px;
+}
+.header_explain #explain_body{
+    font-size: 14px;
+    line-height: 24px;
+}
+.header_explain #explain_body strong{
+    color: #00BFFF;
+}
+
+/*금액*/
+.profit{
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+.profit #profit_main{
+    margin-top: 30px;
+    width: 800px;
+    height: 392px;
+    border: 5px #ebebeb solid;
+    text-align: center;
+    font-size: 18px;
+}
+
+.profit #profit_main p{
+margin-top: 40px;
+}
+
+.profit #profit_main strong{
+    color: #00BFFF;
+}
+
