@@ -31,7 +31,14 @@ SECRET_KEY = "django-insecure-zj1!w1-bx3c+=jb&foqe#q*#zs&0g22$p0tfj_eu0@iu#jj!cf
 
 
 ALLOWED_HOSTS = [
+<<<<<<< HEAD
 
+=======
+    # "Elastic Beanstalk URL",
+    "Weski-env.eba-m4jxmwqk.ap-northeast-2.elasticbeanstalk.com",
+    "127.0.0.1",
+    "localhost",
+>>>>>>> 819c7b8bd891276bb065378f0d1e7aa9efcb0ff6
 ]
 
 
@@ -81,7 +88,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "PJT.wsgi.application"
-
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

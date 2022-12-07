@@ -28,4 +28,4 @@ AWS_STORAGE_BUCKET_NAME = "weski-s3"
 DATABASE_NAME = "weski_rds"
 DATABASE_PASSWORD = "1QaZxSw#4L"
 DATABASE_HOST = "weski-rds.cwgh9r5qqdjc.ap-northeast-2.rds.amazonaws.com"
-DEBUG = False
+DEBUG = True
