@@ -2,10 +2,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-{% load static %}
-{% load django_bootstrap5 %}
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -198,9 +194,10 @@
   <!-- 임시 네브바(나중에 삭제하고 적용해주세요) --> {% endcomment %}
 
   {% block content %}{% endblock %}
+  <!-- 임시로 주석 처리하겠습니다. -->
   <!--jquery-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="index.js" charset="utf-8"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="index.js" charset="utf-8"></script> -->
   {% block script %}{% endblock script %}
 </body>
 {% bootstrap_javascript %}
