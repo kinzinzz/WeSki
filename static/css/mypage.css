@@ -76,6 +76,7 @@ a:hover {
     display: flex;
     flex-direction: row;
     overflow: hidden;
+   
 }
 .profit #profit_main{
     margin-top: 30px;
@@ -84,6 +85,7 @@ a:hover {
     border: 5px #ebebeb solid;
     text-align: center;
     font-size: 18px;
+    
 }
 
 .profit #profit_main p{
