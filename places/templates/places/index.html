@@ -3,201 +3,208 @@
 {% load static %}
 {% block content %}
 
-  <!-- carousel -->
+<!-- carousel -->
 
-  <div id="carouselExampleCaptions" class="carousel slide" data-interval="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="active" aria-current="true" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" class="active" aria-current="true" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="100000">
-        <!--이미지크기조정-->
-        <div class="caro-size1" style="height:25rem;">
-          <img src="https://i.esdrop.com/d/f/bvRLlOwptP/HIDpjhuOZ5.png" class="d-block w-100"  alt="">
-          <div class="img_text_1" style="font-size:60px; color:beige; 
+<div id="carouselExampleCaptions" class="carousel slide" data-interval="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+      aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="active"
+      aria-current="true" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" class="active"
+      aria-current="true" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="100000">
+      <!--이미지크기조정-->
+      <div class="caro-size1" style="height:25rem;">
+        <img src="https://i.esdrop.com/d/f/bvRLlOwptP/HIDpjhuOZ5.png" class="d-block w-100" alt="">
+        <div class="img_text_1" style="font-size:60px; color:beige; 
             text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">
-              WE-SKI<br>
-              <h3>To Find Best One</h3>
-          </div>
+          WE-SKI<br>
+          <h3>To Find Best One</h3>
         </div>
-        <div class="carousel-caption d-none d-md-block"></div>
       </div>
-      <div class="carousel-item" data-bs-interval="100000">
-        <div class="caro-size2" style="height:25rem;">
-        <img src="https://i.esdrop.com/d/f/bvRLlOwptP/RYARVbG7S7.png" style="heigth:33px;"class="d-block w-100" alt="">
+      <div class="carousel-caption d-none d-md-block"></div>
+    </div>
+    <div class="carousel-item" data-bs-interval="100000">
+      <div class="caro-size2" style="height:25rem;">
+        <img src="https://i.esdrop.com/d/f/bvRLlOwptP/RYARVbG7S7.png" style="heigth:33px;" class="d-block w-100" alt="">
         <div class="img_text_2" style="font-size:60px; color:beige; 
             text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">
-              WE-SKI<br>
-              <h3 style="text-align:center;">Compare Them</h3>
-          </div>
+          WE-SKI<br>
+          <h3 style="text-align:center;">Compare Them</h3>
         </div>
-        <div class="carousel-caption d-none d-md-block"></div>
       </div>
-      <div class="carousel-item"data-bs-interval="100000">
-        <div class="caro-size3" style="height:25rem;">
+      <div class="carousel-caption d-none d-md-block"></div>
+    </div>
+    <div class="carousel-item" data-bs-interval="100000">
+      <div class="caro-size3" style="height:25rem;">
         <img src="https://phoenixhnr.co.kr/api/attach/view/package/14815/image_p/" class="d-block w-100" alt="">
         <div class="img_text_2" style="font-size:60px; color:beige; 
         text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">
           WE-SKI<br>
           <h3 style="text-align:center;">Best Choice</h3>
+        </div>
       </div>
+      <div class="carousel-caption d-none d-md-block"></div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- EVENT & PACKAGE -->
+
+<div class="container">
+  <br><br><br>
+  <div class="goods_list_tit">
+    <br>
+    <h1 style="text-align: center">
+      <b>EVENT & PACKAGE</b>
+    </h1><br>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <div class="card" style="border: none">
+          <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2178/image_p" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: left">
+              <b>22/23 스노우 파크<br>시즌 패스 2차 판매 오픈</b>
+            </h5>
+            <p class="card-text" style="text-align: left">프라임/프라임 플러스 시즌 패스로<br>누구보다 액티브한 겨울을 보내세요.</p>
+          </div>
+        </div>
       </div>
-        <div class="carousel-caption d-none d-md-block"></div>
+      <div class="col">
+        <div class="card" style="border: none">
+          <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2327/image_p" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: left">
+              <b>[휘닉스 X HYBE]<br>인더숲 스테이 : 휘닉스 평창</b>
+            </h5>
+            <p class="card-text" style="text-align: left">포근한 겨울, 인더숲 스테이에서<br>잠시 쉼표</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="border: none">
+          <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2310/image_p" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: left">
+              <b>스노우 파크에서<br>짜릿한 겨울 보내기</b>
+            </h5>
+            <p class="card-text" style="text-align: left">스키, 보드, 눈썰매는 물론 사계절<br>온수풀, 맛있는 뷔페까지 즐겨보세요.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="border: none">
+          <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2323/image_p" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: left">
+              <b>스키하우스 라운지<br>아프레스키 공연 라인업</b>
+            </h5>
+            <p class="card-text" style="text-align: left">22/23 WINTER AGAIN<br>- 다시 ON, 겨울을 듣다~</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="border: none">
+          <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2129/image_p" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: left">
+              <b>[평창] 추계 올인클루시브<br>프리미엄</b>
+            </h5>
+            <p class="card-text" style="text-align: left">호텔 객실 + 올데이 F&B + 올데이 Activity [공홈 특전] 오대산 국립공원 월정사 입장권</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="border: none">
+          <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2200/image_p" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: left">
+              <b>[평창] 스카이프라임<br>블루동 전 객실 리뉴얼</b>
+            </h5>
+            <p class="card-text" style="text-align: left">럭셔리 리조트의 특별한 경험, 블루동 리뉴얼 스카이프라임</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="border: none">
+          <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2210/image_p" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: left">
+              <b>[평창] 반려동물 동반 여행<br>휘닉스 펫캉스 펫키지</b>
+            </h5>
+            <p class="card-text" style="text-align: left">펫캉스 추천 1박 2일 여행코스와<br>객실 / F&B / Activity 까지!</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="border: none">
+          <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/1273/image_p" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: left">
+              <b>간편 모바일 이용권 서비스</b>
+            </h5>
+            <p class="card-text" style="text-align: left">불편한 종이 바코드는 bye~<br>패키지 이용을 더욱 편리하게!</p>
+          </div>
+        </div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
 
-  <!-- EVENT & PACKAGE -->
-
-  <div class="container">
-    <br><br><br>
-    <div class="goods_list_tit">
-      <br>
+    <!-- 2022 SNOW PARK -->
+    <div class="video">
+      <br><br><br><br>
       <h1 style="text-align: center">
-        <b>EVENT & PACKAGE</b>
+        <b>2022 SNOW PARK</b>
       </h1><br>
-      <div class="row row-cols-1 row-cols-md-4 g-4">
-        <div class="col">
-          <div class="card" style="border: none">
-            <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2178/image_p" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title" style="text-align: left">
-                <b>22/23 스노우 파크<br>시즌 패스 2차 판매 오픈</b>
-              </h5>
-              <p class="card-text" style="text-align: left">프라임/프라임 플러스 시즌 패스로<br>누구보다 액티브한 겨울을 보내세요.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card" style="border: none">
-            <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2327/image_p" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title" style="text-align: left">
-                <b>[휘닉스 X HYBE]<br>인더숲 스테이 : 휘닉스 평창</b>
-              </h5>
-              <p class="card-text" style="text-align: left">포근한 겨울, 인더숲 스테이에서<br>잠시 쉼표</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card" style="border: none">
-            <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2310/image_p" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title" style="text-align: left">
-                <b>스노우 파크에서<br>짜릿한 겨울 보내기</b>
-              </h5>
-              <p class="card-text" style="text-align: left">스키, 보드, 눈썰매는 물론 사계절<br>온수풀, 맛있는 뷔페까지 즐겨보세요.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card" style="border: none">
-            <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2323/image_p" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title" style="text-align: left">
-                <b>스키하우스 라운지<br>아프레스키 공연 라인업</b>
-              </h5>
-              <p class="card-text" style="text-align: left">22/23 WINTER AGAIN<br>- 다시 ON, 겨울을 듣다~</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card" style="border: none">
-            <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2129/image_p" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title" style="text-align: left">
-                <b>[평창] 추계 올인클루시브<br>프리미엄</b>
-              </h5>
-              <p class="card-text" style="text-align: left">호텔 객실 + 올데이 F&B + 올데이 Activity [공홈 특전] 오대산 국립공원 월정사 입장권</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card" style="border: none">
-            <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2200/image_p" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title" style="text-align: left">
-                <b>[평창] 스카이프라임<br>블루동 전 객실 리뉴얼</b>
-              </h5>
-              <p class="card-text" style="text-align: left">럭셔리 리조트의 특별한 경험, 블루동 리뉴얼 스카이프라임</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card" style="border: none">
-            <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/2210/image_p" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title" style="text-align: left">
-                <b>[평창] 반려동물 동반 여행<br>휘닉스 펫캉스 펫키지</b>
-              </h5>
-              <p class="card-text" style="text-align: left">펫캉스 추천 1박 2일 여행코스와<br>객실 / F&B / Activity 까지!</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card" style="border: none">
-            <img src="https://phoenixhnr.co.kr/api/attach/view/mainBanner/1273/image_p" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title" style="text-align: left">
-                <b>간편 모바일 이용권 서비스</b>
-              </h5>
-              <p class="card-text" style="text-align: left">불편한 종이 바코드는 bye~<br>패키지 이용을 더욱 편리하게!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2022 SNOW PARK -->
-      <div class="video">
-        <br><br><br><br>
-        <h1 style="text-align: center">
-          <b>2022 SNOW PARK</b>
-        </h1><br>
-        <video width="100%" height="100%" src="/static/css/ski.mp4" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline"></video>
-      </div>
+      <video width="100%" height="100%" src="/static/css/ski.mp4" autoplay="autoplay" muted="muted" loop="loop"
+        playsinline="playsinline"></video>
+    </div>
 
 
 
-      <!--스키장 배치-->
- 
+    <!--스키장 배치-->
+
     <div class="container mt-5">
       <br><br><br>
       <h1 style="text-align: center">
-      <b> SKI RESORT </b>
-    </h1>
+        <b> SKI RESORT </b>
+      </h1>
       <div class="row">
-      {% for place in places %}
-      <div class="col-4 p-5 d-flex resort-arr">
+        {% for place in places %}
+        <div class="col-4 p-5 d-flex resort-arr">
           <div style="max-width:550px;">
-          <!--카드 테두리 제거 <div class="card" style="max-width:500px"-->
+            <!--카드 테두리 제거 <div class="card" style="max-width:500px"-->
             <a style="text-decoration:none;" href="{% url 'places:detail' place.pk %}" style="text-decoration:none;">
-            {% if place.photo_main %}
-              <img src="{{ place.photo_main.url }}" class="card-img-top" 
-              style="bortder-radius:5%; object-fit:cover;width:100%; height:300px; alt="place img">
-            {% else %}
-              <img src="https://i.esdrop.com/d/t/bvRLlOwptP/Ffca37jpAC.jpg" 
-              class="card-img-top" style="border-radius:5%; object-fit:cover;width:100%; height:300px;" alt="place default img">
-            {% endif %}
-            <div class="card-body" >
-              <h3 class="card-title" style="position:static; text-align:center; margin:5px; text-decoration:none; color:black; margin-top: 12px;">
-                
-                  <div style="color:black;">{{ place.name }}</div></a>
-              </h3>
-              <h5 sytle= "margin-top:3rem;position:static;text-align:center;">
-                <div style=text-align:center;>{{ place.address }}</div></h5>
-            </div>
+              {% if place.photo_main %}
+              <img src="{{ place.photo_main.url }}" class="card-img-top"
+                style="border-radius:5%; object-fit:cover;width:100%; height:300px;" alt=" place img">
+              {% else %}
+              <img src="https://i.esdrop.com/d/t/bvRLlOwptP/Ffca37jpAC.jpg" class="card-img-top"
+                style="border-radius:5%; object-fit:cover;width:100%; height:300px;" alt="place default img">
+              {% endif %}
+              <div class="card-body">
+                <h3 class="card-title"
+                  style="position:static; text-align:center; margin:5px; text-decoration:none; color:black; margin-top: 12px;">
+
+                  <div style="color:black;">{{ place.name }}</div>
+            </a>
+            </h3>
+            <h5 sytle="margin-top:3rem;position:static;text-align:center;">
+              <div style=text-align:center;>{{ place.address }}</div>
+            </h5>
           </div>
         </div>
+      </div>
       {% endfor %}
     </div>
-  {% endblock %}
+    {% endblock %}
