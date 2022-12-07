@@ -151,7 +151,7 @@ DEBUG = os.getenv("DEBUG") == "True"
 
 if DEBUG: 
     MEDIA_URL = "/media/"
-    MEDIA_ROOT = BASE_DIR / "iamges"
+    MEDIA_ROOT = BASE_DIR / "images"
 
 else:   
     DEFAULT_FILE_STORAGE = "PJT.storages.MediaStorage"
