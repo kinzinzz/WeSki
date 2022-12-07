@@ -50,14 +50,14 @@
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start swiper-wrapper">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
           <h1>
-            eski
+            Weski
           </h1>
           <img class="bi me-2" width="40" height="32" role="img" src="{% static 'images/woman.png' %}" alt="">
         </a>
 
         <ul class="nav col-12 col-lg-auto m-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 link-dark">이벤트</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">스키장 목록</a></li>
+          <li><a href="{% url 'places:create' %}" class="nav-link px-2 link-dark">스키장 등록</a></li>
+          <li><a href="{% url 'reviews:create' %}" class="nav-link px-2 link-dark">리뷰 작성</a></li>
           <li><a href="#" class="nav-link px-2 link-dark">고객지원</a></li>
         </ul>
         {% if request.user.is_authenticated %}
@@ -88,102 +88,18 @@
           </ul>
         </div>
         {% else %}
-        <div>
+        <ul class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:login' %}">로그인</a>
+            <a class="nav-link px-5 link-dark" href="{% url 'accounts:login' %}">로그인</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:signup' %}">회원가입</a>
+            <a class="nav-link px-5 link-dark" href="{% url 'accounts:signup' %}">회원가입</a>
           </li>
-        </div>
+        </ul>
         {% endif %}
       </div>
     </div>
   </header>
-  {% comment %} <header>
-    <div class="inner">
-      <a href="/">
-        <h1>Weski</h1>
-      </a>
-      <nav class="gnb">
-        <div class="swiper-container depth">
-          <ul class="swiper-wrapper">
-            <li class="swiper-slide">
-              <a href="">이벤트</a>
-            </li>
-            <li class="swiper-slide">
-              <a href="">스키장 목록</a>
-            </li>
-            <li class="swiper-slide">
-              <a href="">고객지원</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <div class="utill">
-        <div class="toggle-btn">
-          <i class="fa-solid fa-bars fa-2x" style="color: var(--gray-color);"></i>
-        </div>
-        <div class="nav__profile border-start px-3">
-          {% if request.user.is_authenticated %}
-          <!-- Profile -->
-          <div class="profile">
-            <!-- Modal Btn -->
-            {% if request.user.profile_image %}
-            <a href="#" data-bs-toggle="modal" data-bs-target="#modalId">
-              <img src="{{ request.user.profile_image }}" alt="" class="w-100">
-            </a>
-            {% endif %}
-          </div>
-          {% else %}
-          <i class="fa-regular fa-user fa-lg" style="color: #adb5bd;" data-bs-toggle="modal"
-            data-bs-target="#modalId"></i>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-  </header> {% endcomment %}
-
-  {% comment %}
-  <!-- 임시 네브바(나중에 삭제하고 적용해주세요) -->
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/" style="color:white; font-size:25px;">We-Ski</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          {% if request.user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:logout' %}" style="color:white; font-size:17px;">로그아웃</a>
-          </li>
-          <!--네브바에서는 리뷰작성 못함 <li class="nav-item"> <a class="nav-link" href="{% url 'reviews:create' %}">리뷰작성</a> </li>-->
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'places:create' %}" style="color:white;font-size:17px;">스키장 등록</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:detail' request.user.pk %}"
-              style="color:white;font-size:17px;">마이 페이지</a>
-          </li>
-
-          {% else %}
-          <a class="nav-link" href="{% url 'accounts:login' %}" style="color:white;font-size:17px;">로그인</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:signup' %}" style="color:white;font-size:17px;">회원가입</a>
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-
-    </div>
-    </div>
-    </div>
-  </nav>
-
-  <!-- 임시 네브바(나중에 삭제하고 적용해주세요) --> {% endcomment %}
 
   {% block content %}{% endblock %}
   <!-- 임시로 주석 처리하겠습니다. -->
