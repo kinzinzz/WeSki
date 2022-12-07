@@ -14,13 +14,15 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
-DEBUG = True
-ALLOWED_HOSTS = []
 
+DEBUG = os.getenv("DEBUG") == "True"
 
-
-#추가
-DEBUG=True
+ALLOWED_HOSTS = [
+    # "Elastic Beanstalk URL",
+    "Weskibean-env.eba-fpfrpp3z.ap-northeast-2.elasticbeanstalk.com",
+    "127.0.0.1",
+    "localhost",
+]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,7 +51,7 @@ INSTALLED_APPS = [
     "accounts",
     "places",
     "reviews",
-    # "storages",
+    "storages",
 ]
 
 MIDDLEWARE = [
@@ -85,7 +87,8 @@ WSGI_APPLICATION = "PJT.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DEBUG = os.getenv("DEBUG") == "True"
+DEBUG = os.getenv("DEBUG") == "True"
+
 
 if DEBUG == True: 
     DATABASES = {
@@ -141,13 +144,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "/static/"
-STATIC_ROOT = "staticfiles"
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
 
-# DEBUG = os.getenv("DEBUG") == "True"
+DEBUG = os.getenv("DEBUG") == "True"
 
 if DEBUG: 
     MEDIA_URL = "/media/"
