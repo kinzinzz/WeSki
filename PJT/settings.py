@@ -15,6 +15,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
 
+#추가
+DEBUG=True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,9 +33,9 @@ SECRET_KEY = "django-insecure-zj1!w1-bx3c+=jb&foqe#q*#zs&0g22$p0tfj_eu0@iu#jj!cf
 
 ALLOWED_HOSTS = [
     # "Elastic Beanstalk URL",
-    "Weski-env.eba-m4jxmwqk.ap-northeast-2.elasticbeanstalk.com",
-    "127.0.0.1",
-    "localhost",
+    # "Weski-env.eba-m4jxmwqk.ap-northeast-2.elasticbeanstalk.com",
+    # "127.0.0.1",
+    # "localhost",
 ]
 
 
@@ -51,7 +53,7 @@ INSTALLED_APPS = [
     "accounts",
     "places",
     "reviews",
-    "storages",
+    #"storages",
 ]
 
 MIDDLEWARE = [
@@ -87,7 +89,7 @@ WSGI_APPLICATION = "PJT.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DEBUG = os.getenv("DEBUG") == "True"
+#DEBUG = os.getenv("DEBUG") == "True"
 
 if DEBUG == True: 
     DATABASES = {
@@ -149,7 +151,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-DEBUG = os.getenv("DEBUG") == "True"
+# DEBUG = os.getenv("DEBUG") == "True"
 
 if DEBUG: 
     MEDIA_URL = "/media/"
@@ -167,6 +169,7 @@ else:
         AWS_STORAGE_BUCKET_NAME,
         AWS_REGION,
     )
+
 
 
 # Default primary key field type
