@@ -1,67 +1,70 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 {% block content %}
-  <div class="container">
-    {% for Reviewobject in Reviews %}
-      <div class="card mb-2" style="width: 50rem; height:20rem">
-        <div class="card-body">
-          <p class="card-text">
-            <h5>
-              {{ Reviewobject.review.title }}
-              {% if Reviewobject.review.rating == 5 %}
-                <span>⭐⭐⭐⭐⭐</span>
-              {% elif Reviewobject.review.rating == 4 %}
-                <span>⭐⭐⭐⭐</span>
-              {% elif Reviewobject.review.rating == 3 %}
-                <span>⭐⭐⭐</span>
-              {% elif Reviewobject.review.rating == 2 %}
-                <span>⭐⭐</span>
-              {% elif Reviewobject.review.rating == 1 %}
-                <span>⭐</span>
-              {% endif %}
-              <div class="d-flex justify-content-end">
-                스키장:{{Reviewobject.review.place}}
-                작성자:{{Reviewobject.Writer.username}}
-              </div>
-            </h5>
-
-            {% if request.user.id == Reviewobject.review.user.id %}
-              <form action="{% url "reviews:update" Reviewobject.review.pk %}" method="GET">
-                <input type="submit" value="수정" name="update">
-              </form>
-            {% endif %}
-            <form action="{% url "reviews:detail" Reviewobject.review.pk %}" method="GET" target="_blank">
-              <input type="submit" value="자세히보기">
-            </form>
-            <p>{{ Reviewobject.review.content }}</p>
-          </div>
-          <div class="row">
-            {% if Reviewobject.review.review_images.count > 3 %}
-              <div class="col" style="width:20rem; height:20rem;">
-                <img src="{{Reviewobject.review.review_images.all.0.image.url }}" class="card-img-top" alt="..." style="width: 50%; height:50%;">
-              </div>
-              <div class="col" style="width:20rem; height:20rem;">
-                <img src="{{Reviewobject.review.review_images.all.1.image.url }}" class="card-img-top" alt="..." style="width: 50%; height:50%;">
-              </div>
-              <div class="col" style="width:20rem; height:20rem;">
-                <img src="{{Reviewobject.review.review_images.all.2.image.url }}" class="card-img-top" alt="..." style="width: 50%; height:50%;">
-              </div>
-            {% else %}
-              {% for image in Reviewobject.review.review_images.all %}
-                <div class="col" style="width:20rem; height:20rem;">
-                  <img src="{{ image.image.url }}" class="card-img-top" alt="..." style="width: 50%; height:50%;">
-                </div>
-                {% empty %}
-                <h5>리뷰 사진이 없습니다.</h5>
-              {% endfor %}
-            {% endif %}
-          </div>
-
+<div class="container">
+  {% for Reviewobject in Reviews %}
+  <div class="card mb-2" style="width: 50rem; height:20rem">
+    <div class="card-body">
+      <p class="card-text">
+      <h5>
+        {{ Reviewobject.review.title }}
+        {% if Reviewobject.review.rating == 5 %}
+        <span>⭐⭐⭐⭐⭐</span>
+        {% elif Reviewobject.review.rating == 4 %}
+        <span>⭐⭐⭐⭐</span>
+        {% elif Reviewobject.review.rating == 3 %}
+        <span>⭐⭐⭐</span>
+        {% elif Reviewobject.review.rating == 2 %}
+        <span>⭐⭐</span>
+        {% elif Reviewobject.review.rating == 1 %}
+        <span>⭐</span>
+        {% endif %}
+        <div class="d-flex justify-content-end">
+          스키장:{{Reviewobject.review.place}}
+          작성자:{{Reviewobject.Writer.username}}
         </div>
-        {% empty %}
-        <h5>아직 리뷰가 없습니다.</h5>
-      {% endfor %}
+      </h5>
 
+      {% if request.user.id == Reviewobject.review.user.id %}
+      <form action="{% url 'reviews:update' Reviewobject.review.pk %}" method="GET">
+        <input type="submit" value="수정" name="update">
+      </form>
+      {% endif %}
+      <form action="{% url 'reviews:detail' Reviewobject.review.pk %}" method="GET" target="_blank">
+        <input type="submit" value="자세히보기">
+      </form>
+      <p>{{ Reviewobject.review.content }}</p>
+    </div>
+    <div class="row">
+      {% if Reviewobject.review.review_images.count > 3 %}
+      <div class="col" style="width:20rem; height:20rem;">
+        <img src="{{Reviewobject.review.review_images.all.0.image.url }}" class="card-img-top" alt="..."
+          style="width: 50%; height:50%;">
+      </div>
+      <div class="col" style="width:20rem; height:20rem;">
+        <img src="{{Reviewobject.review.review_images.all.1.image.url }}" class="card-img-top" alt="..."
+          style="width: 50%; height:50%;">
+      </div>
+      <div class="col" style="width:20rem; height:20rem;">
+        <img src="{{Reviewobject.review.review_images.all.2.image.url }}" class="card-img-top" alt="..."
+          style="width: 50%; height:50%;">
+      </div>
+      {% else %}
+      {% for image in Reviewobject.review.review_images.all %}
+      <div class="col" style="width:20rem; height:20rem;">
+        <img src="{{ image.image.url }}" class="card-img-top" alt="..." style="width: 50%; height:50%;">
+      </div>
+      {% empty %}
+      <h5>리뷰 사진이 없습니다.</h5>
+      {% endfor %}
+      {% endif %}
     </div>
 
-  {% endblock %}
+  </div>
+  {% empty %}
+  <h5>아직 리뷰가 없습니다.</h5>
+  {% endfor %}
+
+</div>
+
+{% endblock %}
