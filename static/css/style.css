@@ -93,7 +93,7 @@
 
 section.hero img{
 	width:100%;
-	max-height: 300px;
+	max-height: 250px;
 	object-fit:cover;
 	justify-content: centers;
 	align-items: center;
@@ -374,7 +374,7 @@ min-width:500px;
   position:absolute;
   left:0px;
   right:0px;
-  top:40px;
+  top:50px;
 }
 .accounticon{
   position:absolute;
