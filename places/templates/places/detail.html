@@ -1,8 +1,42 @@
 {% extends 'base.html' %}
 
 {% block content %}
+      <div class="d-flex align-items-center ms-3"style="position:relative; margin-bottom:20px;margin-top:20px;">
+        <h3 id="place_name">{{ place.name }}</h3>
+        <!-- 리뷰작성 아이콘 -->
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% comment %} <i class="fa-regular fa-pen-to-square fa-2x"></i> {% endcomment %}
+        <!-- 즐겨찾기 -->
+        {% if request.user.is_authenticated %}
+        <form class="like-forms" data-place-id="{{ place.pk }}">
+          {% csrf_token %}
+          {% if user in place.like_users.all %}
+          <button id="like-{{ place.pk }}" type="submit" style="background: none; border: 0; color: var(--yellow-color);">
+            <i id="star-{{ place.pk }}" class="fa-solid fa-star fa-2x"></i>
+          </button>
+          {% else %}
+          <button id="like-{{ place.pk }}" type="submit" style="background: none; border: 0; color: var(--gray-color);">
+            <i id="star-{{ place.pk }}" class="fa-regular fa-star fa-2x"></i>
+          </button>
+          {% endif %}
+        </form>
+        {% endif %}
+        <!-- 조회수 -->
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-eye ms-3 me-1"></i>
+          <p class="m-0">{{ place.hits }}</p>
+        </div>
+        <!-- 즐겨찾기 수 -->
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-star ms-3 me-1"></i>
+          <div id="star-count">
+            <p class="m-0">{{ place.like_users.count }}</p>
+          </div>
+        </div>
+        </div>
+    </div>
+  
 <!-- main img -->
-<div class="container row row-cols-1 row-cols-md-2 g-2 d-flex flex-nowrap">
+<br><div class="container row row-cols-1 row-cols-md-2 g-2 d-flex flex-nowrap">
   {% if place.photo_main %}
   <div class="col" style="width:750px; height:500px;">
     <img src="{{ place.photo_main.url }}" class="card-img-top img-fluid" alt="" style="width: 100%; height: 100%;">
@@ -13,43 +47,49 @@
       style="width: 100%; height: 100%;">
   </div>
   {% endif %}
-  <!-- map -->
-  <div class="col card-img-top img-fluid" id="map" style="width:750px; height:500px;"></div>
-</div>
-<div class="mt-5">
-  <h2 id="place_name">&nbsp;&nbsp;{{ place.name }}</h2>
-</div>
-<!-- 리뷰작성 아이콘 -->
-{% comment %} <i class="fa-regular fa-pen-to-square fa-2x"></i> {% endcomment %}
-<!-- 즐겨찾기 -->
-{% if request.user.is_authenticated %}
-<form class="like-forms" data-place-id="{{ place.pk }}">
-  {% csrf_token %}
-  {% if user in place.like_users.all %}
-  <button id="like-{{ place.pk }}" type="submit" style="background: none; border: 0; color: var(--yellow-color);">
-    <i id="star-{{ place.pk }}" class="fa-solid fa-star fa-2x"></i>
-  </button>
-  {% else %}
-  <button id="like-{{ place.pk }}" type="submit" style="background: none; border: 0; color: var(--gray-color);">
-    <i id="star-{{ place.pk }}" class="fa-regular fa-star fa-2x"></i>
-  </button>
-  {% endif %}
-</form>
+  <div class="col card-img-top img-fluid">
+    <table>
+      <tbody>
+        <tr>
+          <th>&nbsp;&nbsp;· 주소</th>
+          <td id="address">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.address }}</td>
+        </tr>
+        <tr>
+          <th>&nbsp;&nbsp;· 전화번호</th>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.contact_number }}</td>
+        </tr>
+        <tr>
+          <th>&nbsp;&nbsp;· 영업시간</th>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.opening_time }}</td>
+        </tr>
+        <tr>
+          <th>&nbsp;&nbsp;· 휴무일</th>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.break_day }}</td>
+        </tr>
+        <tr>
+          <th>&nbsp;&nbsp;· 금액</th>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.price }}</td>
+        </tr>
+        <tr>
+          <th>&nbsp;&nbsp;· 소개글</th>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.subtext }}</td>
+        </tr>
+      </tbody>
+    </table>
+    {% if request.user.is_staff %}
+<a href="{% url 'places:delete' place.pk %}">삭제하기</a>
+<a href="{% url 'places:update' place.pk %}">수정하기</a>
 {% endif %}
-<!-- 조회수 -->
-<div class="d-flex align-items-center">
-  <i class="fa-solid fa-eye ms-3 me-1"></i>
-  <p class="m-0">{{ place.hits }}</p>
+
+
+&nbsp;&nbsp;<a href="{% url 'places:place_reviews' place.pk %}">리뷰보기</a>
+      <!-- map -->
+ <br><div class="col card-img-top img-fluid" id="map" style="width:750px; height:400px;"></div>
 </div>
-<!-- 즐겨찾기 수 -->
-<div class="d-flex align-items-center">
-  <i class="fa-solid fa-star ms-3 me-1"></i>
-  <div id="star-count">
-    <p class="m-0">{{ place.like_users.count }}</p>
   </div>
-</div>
+
 <!-- Detail 정보 -->
-<br><table>
+<!-- <br><table>
   <tbody>
     <tr>
       <th>&nbsp;&nbsp;· 주소</th>
@@ -76,17 +116,9 @@
       <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.subtext }}</td>
     </tr>
   </tbody>
-</table>
-<!-- 관리자만 삭제, 수정할 수 있음 -->
-{% if request.user.is_staff %}
-<a href="{% url 'places:delete' place.pk %}">삭제하기</a>
-<a href="{% url 'places:update' place.pk %}">수정하기</a>
-{% endif %}
-
-
-&nbsp;&nbsp;<a href="{% url 'places:place_reviews' place.pk %}">리뷰보기</a>
+</table> -->
 <!-- Detail 이미지 -->
-<div class="container">
+<br><div class="container">
   <br><div class="row d-flex align-items-center">
     <h2 class="text-center">음식</h2>
     {% if place.photo_food %}
