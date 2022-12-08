@@ -194,8 +194,8 @@
       </h1>
       <div class="row">
         {% for place in places %}
-        <div class="col-lg-3 col-md-4 col-sm-6" >
-          <div style="max-width:550px; height:"100px;">
+        <div class="col-lg-3 col-md-4 col-sm-6" style="padding:2% 1%" >
+          <div style="max-width:550px; height:"150px; -top:20rem;">
             <!--카드 테두리 제거 <div class="card" style="max-width:500px"-->
             <a style="text-decoration:none;" href="{% url 'places:detail' place.pk %}" style="text-decoration:none;">
               {% if place.photo_main %}
@@ -212,9 +212,9 @@
                   <div style="color:black;">{{ place.name }}</div>
             </a>
             </h3>
-            <h6 style="position:static;text-align:center;">
+            <h5 style="position:static;text-align:center;">
               <div style=text-align:center;>{{ place.address }}</div>
-            </h6>
+            </h5>
           </div>
         </div>
       </div>
