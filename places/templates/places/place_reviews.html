@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-{% load django_bootstrap5 %}
 
+{% load django_bootstrap5 %}
+{% load static %}
 {% block content %}
 <!--상단이미지-->
 <section class="hero">
@@ -21,7 +22,7 @@
   <!--리뷰 작성 버튼-->
   <div class="d-flex justify-content-center" style="margin-top:20px;">
     <a class="nav-link" href="{% url 'reviews:create' %}">
-      <button type="button" class="btn btn-outline-dark">리뷰작성</button>
+      <button type="button" class="btn btn-outline-dark">리뷰 작성</button>
     </a>
   </div>
 
