@@ -327,6 +327,10 @@ a{
   margin-left:300px;
   margin-top:60px;
 }
+.accounticon{
+  position:absolute;
+  left:300px;
+}
 @media screen and (max-width:805px){
 	.review-box{
     margin-right:50px;
@@ -370,6 +374,10 @@ min-width:500px;
   right:0px;
   top:40px;
 }
+.accounticon{
+  position:absolute;
+  left:200px;
+}
 }
 /* min */
 @media screen and (max-width:576px){
@@ -407,5 +415,9 @@ min-width:500px;
   left:0px;
   right:0px;
   top:20px;
+}
+.accounticon{
+  position:absolute;
+  left:100px;
 }
 }
