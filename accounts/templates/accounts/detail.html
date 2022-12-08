@@ -179,7 +179,7 @@
       <!--프로필 수정/삭제 요청과 사용자가 일치하는 경우-->
       <!-- class="d-flex align-items-center ms-3">-->
       <div class="d-flex align-items-center ms-3" style="position:relative">
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="position:absolute; bottom:12rem;  ">
+        <div class="accounticon d-grid gap-2 d-md-flex justify-content-md-end">
           {% if request.user.pk == customer.pk %}
           <a href="{% url 'accounts:update' customer.pk %}" style="display:inline-block;height:20px;">
             <i class="fa-solid fa-gear fix-account"></i>
