@@ -276,22 +276,17 @@ a{
   background-color:#ea4c89
 }
 
-.img_text_1 {
-  /* position: absolute; */
-  left: 787px;
-  bottom: 15rem;
-	/* transform: translate(-50%, -50%); */
-}
 .resort-arr{
 	flex-wrap: wrap;
 	min-width:350px;
 	}
 .img_text_2 {
   position: absolute;
-  font-size:7rem;
+  font-size:4rem;
   top: 40%;
   left: 40%;
   color:white;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 .hero-text{
   position:absolute;
@@ -329,22 +324,29 @@ a{
   position:absolute;
   left:300px;
 }
-@media screen and (max-width:1011px){
-	.review-box{
-    margin-right:50px;
-    margin-left:50px;
-    margin-top:60px;
-  }
-  .img_text_1 {
-    position: absolute;
-    font-size: 39px;
-    color: beige;
-    left: 590px;
-    bottom: 15rem;
-      color:white;
-
+.img_text_1 {
+  font-size: 39px;
+  position: absolute;
+  top: 6rem;
+  right: 20rem;
+  color:white;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
-.caro-size{
+@media screen and (max-width:1011px){
+.review-box{
+  margin-right:50px;
+  margin-left:50px;
+  margin-top:60px;
+}
+.img_text_1 {
+  position: absolute;
+  font-size: 39px;
+  right: 200px;
+  bottom: 15rem;
+  color:white;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+.caro-size1{
 	width:100%;
 	height:17rem;
 	position:relative;
@@ -355,10 +357,11 @@ min-width:500px;
 }
 .img_text_2 {
 	position: absolute;
-	font-size:7rem;
+	font-size:3rem;
 	top: 20%;
 	left: 35%;
 	color:white;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 
 .hero-text{
@@ -381,27 +384,30 @@ min-width:500px;
 @media screen and (max-width:815px){
 .img_text_1 {
   position: absolute;
-  left: 543px;
+  right: 8rem;
   bottom: 16rem;
   font-size: 39px;
   color:white;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 }
   /* min */
 @media screen and (max-width:576px){
 	.img_text_1 {
   position: absolute;
-  left: 364px;
-  bottom: 17rem;
+  right: 1rem;
+  top:2rem;
   font-size: 39px;
-		color:white;
+	color:white;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 .img_text_2 {
 	position: absolute;
-	font-size:7rem;
+	font-size:2rem;
 	top: 10%;
 	left: 30%;
 	color:white;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 .caro-size{
 	width:100%;
