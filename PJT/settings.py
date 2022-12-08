@@ -144,8 +144,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+# url이 static로 접근 
 STATIC_URL = '/static/'
+# base_dir static 폴더에서 찾으라는 명령
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+# url이 실제로 찾는 staticfiles
 STATIC_ROOT = 'staticfiles'
+
 
 DEBUG = os.getenv("DEBUG") == "True"
 

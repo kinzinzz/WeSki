@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
+{% load django_bootstrap5 %}
 {% block content %}
-  <form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    {% for photo in photos %}
-      <img src="{{photo.image.url}}">
-      <!--만약 위에것이 삭제대상이면-->
-      <input type="checkbox" name="dellist" value="{{photo.pk}}">
-    {% endfor %}
-    <input type="file" name="image[]" multiple="multiple">
-    <input type="submit">
-  </form>
+<form action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% for photo in photos %}
+  <img src="{{photo.image.url}}">
+  <!--만약 위에것이 삭제대상이면-->
+  <input type="checkbox" name="dellist" value="{{photo.pk}}">
+  {% endfor %}
+  <input type="file" name="image[]" multiple="multiple">
+  <input type="submit">
+</form>
 {% endblock %}

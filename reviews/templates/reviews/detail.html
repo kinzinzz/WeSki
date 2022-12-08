@@ -58,14 +58,14 @@
                       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <!--글삭제-->
                         {% if request.user.pk == Review.user.pk %}
-                        <form action="{% url " reviews:delete" Review.pk %}" method="POST">
+                        <form action="{% url 'reviews:delete' Review.pk %}" method="POST">
                           {% csrf_token %}
                           <button type="submit" class="btn btn-dark">삭제</button>
                         </form>
                         {% endif %}
                         <!--수정-->
                         {% if request.user.pk == Review.user.pk %}
-                        <form action="{% url " reviews:update" Review.pk %}" method="GET">
+                        <form action="{% url 'reviews:update' Review.pk %}" method="GET">
                           <button type="submit" class="btn btn-outline-dark">수정</button>
                         </form>
                       </div>
