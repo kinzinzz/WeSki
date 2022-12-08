@@ -15,6 +15,20 @@
 
 <!--상단이미지-->
 {% block content %}
+<!-- 프로필 style -->
+<style>
+  .profit #profit_main{
+    margin-top: 50px;
+    width: 500px;
+    height: 362px;
+    border: 5px #ebebeb solid;
+    text-align: center;
+    font-size: 18px;
+    
+}
+</style>
+
+
 <!-- 수정완료 -->
 <section class="hero">
   <img src="https://i.esdrop.com/d/f/bvRLlOwptP/Vqr3z7jiaw.png" alt="ski login img">
@@ -33,6 +47,7 @@
   <div id="container">
 
     <div class="middle">
+      <!-- sidemenu -->
       <div class="side_menu">
         <ul id="side_menu_mypage">
           <li>마이페이지</li>
@@ -68,7 +83,9 @@
         </ul>
       </div>
       <!--//side_menu//-->
+      <!-- 회원정보 0 -->
       <div>
+        <!-- 회원정보 관리 -->
         <div class="header_explain">
           <div id="explain_head">
             회원정보관리
@@ -78,64 +95,50 @@
               (출금계좌 정보는 마이페이지 >마이계정 페이지에서 확인 및 수정 가능)</p>
           </div>
         </div>
-        <div class="profit">
+        <!-- 프로필 -->
+        <div class="profit"> 
           <div id="profit_main">
-            <div class="test-section" style="background-color: rgb(247, 247, 247);">
-              <div class="container test-grid">
-                <div class="profile" style="max-width: 100%; background-color: white;">
-                  <div class="px-4 py-3" style="border-radius: 15px; ">
-                    <div class="d-flex justify-content-center pb-3">
-                      {% if customer.image %}
-                      <img src="{{ customer.image.url }}" style='width: 130px; height: 130px; object-fit: cover;'
+            <div class="px-4 py-3" style="border-radius: 15px; ">
+              <div class="d-flex justify-content-center pb-3">
+              <img src="https://dummyimage.com/130x130/00ffdd/00ffdd.jpg" style='width: 130px; height: 130px; object-fit: cover;'
                         class="rounded-circle" alt="">
-                      {% else %}
-                      <img src="https://dummyimage.com/130x130/00ffdd/00ffdd.jpg"
-                        style='width: 130px; height: 130px; object-fit: cover;' class="rounded-circle" alt="프사대체용">
-                      {% endif %}
-                    </div>
-                    <div>
-                      <div class="d-flex justify-content-between">
-                        <!-- 수정중 -->
-                        <p style="font-size: 24px;font-weight: 800; color: black; margin:0 30px 8px;">
-                          {{ customer.username }}</p>
-
-                      </div>
-                      <div class="row mb-2">
-                        <div class="col d-flex flex-column align-items-left" style="height: 50px;">
-
-                          <p class="text-black fw-bold" style="font-size: 16px;">{{ customer.email }}</p>
-
-                        </div>
-                        <div>
-                          <a href=""><input class="form-control btn text-white"
-                              style="background-color: #6495ED; font-weight: 500;" type="submit" value='프로필 편집'></a>
-
-                        </div>
-                        <div>
-                          <div class="px-4">
-                            <!-- {% if person == request.user %} -->
-                            <a href=""><input class="form-control btn text-white"
-                                style="background-color: #6495ED; font-weight: 500;" type="submit" value='프로필 편집'></a>
-                            <!--{% endif %}  나중에 수정 -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
-              <!-- <table id="profit_table"> -->
+            <div class="d-flex justify-content-between">
+              <p style="font-size: 24px;font-weight: 800; color: black; margin:0 30px 8px;">
+                {{ customer.username }}</p>
+            </div> 
+            <div class="d-flex justify-content-between">
+              <p class="text-black fw-bold" style="font-size: 16px; margin:0 30px 8px;">{{ customer.email }}</p>
             </div>
+            <!-- 가로로 정렬 -->
+            <div class="row mb-3">
+              <div class="col d-flex flex-column align-items-center" style="height: 7px;">
+              </div>
+              <div class="col d-flex flex-column align-items-center border-start" style="height: 7px;">
+              </div>
+              <div class="col d-flex flex-column align-items-center border-start" style="height: 7px;">
+              </div>
+            </div>
+            <!-- px-4 버튼 너비 조절 -->
+              <div class="px-3">
+                <a href="{% url 'accounts:update' customer.pk %}"><input class="form-control btn text-white"
+                  style="background-color: #6495ED; font-weight: 500;" type="submit" value='프로필 편집'></a>
+              </div>
+          </div>     
+          <!-- profit_main --> 
           </div>
-          <!--//middle//-->
+            <!-- profit --> 
         </div>
-        <!--//container//-->
+      <!-- container -->
       </div>
+    <!-- wrap -->
     </div>
-  </div>
-</div>
-<!--//wrap//-->
+  
+  
 
+        
+        
+        
 
 
 
