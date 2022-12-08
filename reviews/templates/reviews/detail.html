@@ -3,26 +3,20 @@
 
 <!--상단이미지-->
 <section class="hero">
-  <div style="position:relative;">
-    <img src="https://i.esdrop.com/d/f/bvRLlOwptP/bxa2e49Q31.png" alt="place review detail img">
-  </div>
-  <div class="row-2">
-  </div>
-  <div class="col-md-1" style="position:relative;">
-    <div class="carousel-caption hero-text" style=" max-height:100px;">
-      <div class="hero-text2"
-        style="font-size:55px;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">리뷰관리
-      </div>
+  <img src="https://i.esdrop.com/d/f/bvRLlOwptP/bxa2e49Q31.png" alt="place create img">
+  <div class="row-2"></div>
+  <div class="col-md-1">
+    <div class="carousel-caption hero-text" style=" max-height:200px;">
+      <div class="hero-text2" style="font-size:55px;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">리뷰관리</div>
     </div>
   </div>
-  </div>
+</div>
 </section>
-
 
 <div class="container">
   <!--목록으로
 <a name="place_reivew" id="" class="btn btn-primary" href="{% url "places:place_reviews" Review.place.pk %}" role="button">목록으로</a>-->
-  <div class="d-flex justify-content-center mt-3 px-5">
+  <div class="d-flex justify-content-center mt-4 px-4">
     <!-- 리뷰 내용 -->
     <div class="row">
       <br>
@@ -32,8 +26,8 @@
 
                 <h5 style="margin-top:10px; margin-bottom:20px;">내용:{{Review.content}}</h5>
 
-                <div class="col-5 text-center" style="display: table; width:400px; height: 350px;">
-                  <div style="display: table-cell; vertical-align:middle; margin-top:20px;">
+                <div class="col-5 text-center" style="display: table; width:100%; height: 500px;">
+                  <div style="display: table-cell; vertical-align:middle; margin-top:10px;width:100%; height: 500px;">
                     {% for photo in Review.review_images.all %}
                     <!--이미지-->
                     <img src="{{photo.image.url}}">
