@@ -99,18 +99,20 @@
                       <div class="d-flex justify-content-between">
                         <p style="font-size: 24px;font-weight: 800; color: black; margin:0 30px 8px;">
                         {{ customer.username }}</p>
-                       
+                   
                         <!-- button -->
                         <!-- <button class="mdl-button mdl-js-button mdl-button-primary" style="font-size: 13px; margin: 5px;">
                                     {{ user.rating }}
                                   </button> -->
-
+                                  <!-- col d-flex flex-column align-items-left -->
                       </div>
                       <div class="row mb-2">
-                        <div class="col d-flex flex-column align-items-center" style="height: 90px;">
-                          <p class=" mb-1" style="font-size: 13px; color: rgb(115, 115, 115)">{{ customer.email }}</p>
+                        <div class="col d-flex flex-column align-items-left" style="height: 50px;">
+                          <!--<p class=" mb-1" style="font-size: 13px; color: rgb(115, 115, 115)">{{ customer.email }}</p> -->
                           <p class="text-black fw-bold" style="font-size: 16px;">{{ customer.email }}</p>
+      
                         </div>
+                        <div>
                         <a href=""><input class="form-control btn text-white"
                           style="background-color: #6495ED; font-weight: 500;"
                           type="submit" value='프로필 편집'></a>
