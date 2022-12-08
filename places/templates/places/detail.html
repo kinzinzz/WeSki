@@ -4,7 +4,7 @@
       <div class="d-flex align-items-center ms-3"style="position:relative; margin-bottom:20px;margin-top:20px;">
         <h3 id="place_name">{{ place.name }}</h3>
         <!-- 리뷰작성 아이콘 -->
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% comment %} <i class="fa-regular fa-pen-to-square fa-2x"></i> {% endcomment %}
+        {% comment %} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% comment %} <i class="fa-regular fa-pen-to-square fa-2x"></i> {% endcomment %} {% endcomment %}
         <!-- 즐겨찾기 -->
         {% if request.user.is_authenticated %}
         <form class="like-forms" data-place-id="{{ place.pk }}">
@@ -77,15 +77,12 @@
       </tbody>
     </table>
     {% if request.user.is_staff %}
-<a href="{% url 'places:delete' place.pk %}">삭제하기</a>
-<a href="{% url 'places:update' place.pk %}">수정하기</a>
-{% endif %}
-
-
-&nbsp;&nbsp;<a href="{% url 'places:place_reviews' place.pk %}">리뷰보기</a>
+      <a href="{% url 'places:delete' place.pk %}">삭제하기</a>
+      <a href="{% url 'places:update' place.pk %}">수정하기</a>
+    {% endif %}
+    <a href="{% url 'places:place_reviews' place.pk %}">&nbsp;&nbsp;리뷰보기</a>
       <!-- map -->
- <br><div class="col card-img-top img-fluid" id="map" style="width:750px; height:400px;"></div>
-</div>
+    <br><div class="col card-img-top img-fluid" id="map" style="width:750px; height:400px;"></div>
   </div>
 
 <!-- Detail 정보 -->
