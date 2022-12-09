@@ -288,8 +288,7 @@
                         <tbody id="reviewTableBody">
                           {% for review in reviews %}
                             <tr class="review-{{ review.pk }}" data-bs-toggle="collapse" data-bs-target="#collapse-review-{{ review.pk }}" aria-expanded="false" style="vertical-align: middle;">
-                              <td id="review-title-{{ review.pk }}" class="px-3" scope="row" style="width: 710px;">{{
-                      review.title }}</td>
+                              <td id="review-title-{{ review.pk }}" class="px-3" scope="row" style="width: 710px;">{{ review.title }}</td>
                               <td style="width: 100px;" class="text-center">{{ review.user }}</td>
                               <td style="width: 100px;" class="text-center">{{ review.created_at|date:'Y.m.d' }}</td>
                               {% if inquiry.reply %}
