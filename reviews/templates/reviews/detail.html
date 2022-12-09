@@ -1,74 +1,105 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!--상단이미지-->
-<section class="hero">
-  <div style="position:relative;">
-    <img src="https://i.esdrop.com/d/f/bvRLlOwptP/bxa2e49Q31.png" alt="place review detail img">
-  </div>
-  <div class="row-2">
-  </div>
-  <div class="col-md-1" style="position:relative;">
-    <div class="carousel-caption hero-text" style=" max-height:100px;">
-      <div class="hero-text2"
-        style="font-size:55px;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">리뷰관리
+  <!--상단이미지-->
+  <section class="hero">
+    <div style="position:relative;">
+      <img src="https://i.esdrop.com/d/f/bvRLlOwptP/bxa2e49Q31.png" alt="place review detail img">
+    </div>
+    <div class="row-2"></div>
+    <div class="col-md-1" style="position:relative;">
+      <div class="carousel-caption hero-text" style=" max-height:100px;">
+        <div class="hero-text2" style="font-size:55px;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">리뷰관리
+        </div>
       </div>
     </div>
   </div>
-  </div>
 </section>
 
-
 <div class="container">
-  <!--목록으로
-<a name="place_reivew" id="" class="btn btn-primary" href="{% url "places:place_reviews" Review.place.pk %}" role="button">목록으로</a>-->
+  <!--목록으로 <a name="place_reivew" id="" class="btn btn-primary" href="{% url "places:place_reviews" Review.place.pk %}" role="button">목록으로</a>-->
   <div class="d-flex justify-content-center mt-3 px-5">
     <!-- 리뷰 내용 -->
     <div class="row">
       <br>
-      <h5>ID:{{Review.user}}<h5>
+      <h5>ID:{{Review.user}}
+        <h5>
           <br>
-          <h4><b>제목:{{Review.title}}<h4>
+          <h4>
+            <b>제목:{{Review.title}}
+              <h4>
 
                 <h5 style="margin-top:10px; margin-bottom:20px;">내용:{{Review.content}}</h5>
 
                 <div class="col-5 text-center" style="display: table; width:400px; height: 350px;">
                   <div style="display: table-cell; vertical-align:middle; margin-top:20px;">
                     {% for photo in Review.review_images.all %}
-                    <!--이미지-->
-                    <img src="{{photo.image.url}}">
-                    <!--
-    {% if request.user.pk == Review.user.pk %}
-      <form action="{% url "reviews:image_delete" Review.pk photo.pk %}" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="삭제">
-      </form>
-    {% endif %}
-  {% endfor %}
-  {% if request.user.pk == Review.user.pk %}
-    <form action="{% url "reviews:image_add" Review.pk %}" method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      <input type="file" name="image[]" multiple="multiple" accept="image/*">
-      <input type="submit">
-    </form>
-    {% endif %}
-    -->
-                    <div class="d-flex align-items-center ms-3"
-                      style="position:relative; margin-bottom:20px;margin-top:20px;">
-                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <!--글삭제-->
-                        {% if request.user.pk == Review.user.pk %}
-                        <form action="{% url 'reviews:delete' Review.pk %}" method="POST">
-                          {% csrf_token %}
-                          <button type="submit" class="btn btn-dark">삭제</button>
-                        </form>
-                        {% endif %}
-                        <!--수정-->
-                        {% if request.user.pk == Review.user.pk %}
-                        <form action="{% url 'reviews:update' Review.pk %}" method="GET">
-                          <button type="submit" class="btn btn-outline-dark">수정</button>
-                        </form>
-                      </div>
-                    </div>
-                    {% endif %}
+                      <!--이미지-->
+                      <img src="{{photo.image.url}}">
+                      <!-- {% if request.user.pk == Review.user.pk %} <form action="{% url "reviews:image_delete" Review.pk photo.pk %}" method="POST"> {% csrf_token %} <input type="submit" value="삭제"> </form> {% endif %} {% endfor %} {% if request.user.pk == Review.user.pk %} <form action="{% url "reviews:image_add" Review.pk %}" method="POST" enctype="multipart/form-data"> {% csrf_token %} <input type="file" name="image[]" multiple="multiple" accept="image/*"> <input type="submit"> </form> {% endif %} -->
+                      <div class="d-flex align-items-center ms-3" style="position:relative; margin-bottom:20px;margin-top:20px;">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                          {% if request.user.is_authenticated %}
+                            <form id="like-form" data-review-pk="{{ Review.pk }}">
+                              {% csrf_token %}
+                              {% if request.user in Review.likes.all %}
+                                <input type="submit" class="btn btn-dark" value="좋아요 취소">
+                              {% else %}
+                                <input type="submit" class="btn btn-dark" value="좋아요">
+                              {% endif %}
+                              <div>
+                                좋아요:<span id="likes-count">{{Review.likes_num}}</span></div>
+                            </form>
+                          {% endif %}
+                          <!--글삭제-->
+                          {% if request.user.pk == Review.user.pk %}
+                            <form action="{% url 'reviews:delete' Review.pk %}" method="POST">
+                              {% csrf_token %}
+                              <button type="submit" class="btn btn-dark">삭제</button>
+                            </form>
+                          {% endif %}
+                          <!--수정-->
+                          {% if request.user.pk == Review.user.pk %}
+                            <form action="{% url 'reviews:update' Review.pk %}" method="GET">
+                              <button type="submit" class="btn btn-outline-dark">수정</button>
+                            </form>
+                          </div>
+                        </div>
+                      {% endif %}
                     {% endblock %}
+                    {% block script %}
+                      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+                      <script>
+                        const form = document.querySelector("#like-form")
+                        const csrftoken = document
+                          .querySelector('[name=csrfmiddlewaretoken]')
+                          .value
+                          form
+                          .addEventListener('submit', function (event) {
+                            event.preventDefault()
+                            axios({
+                              method: `post`,
+                              url: `reviews/likes/${event.target.dataset.reviewPk}`,
+                              headers: {
+                                'X-CSRFToken': csrftoken
+                              }
+                            })
+                              .then((response) => {
+                                console.log(response)
+                                const isliked = response.data.is_liked
+                                const likebtn = document.querySelector("#like-form > input[type=submit]")
+                                if (isliked === true) {
+                                  likebtn.value = '좋아요취소'
+                                } else {
+                                  likebtn.value = '좋아요'
+                                }
+                                const likescounttag = document.querySelector('#likes-count')
+                                const likenum = response.data.likesnum
+                                likescounttag.innerText = likenum
+                              })
+                              .catch((error) => {
+                                console.log(error.response)
+                              })
+                            })
+                      </script>
+                    {% endblock script %}

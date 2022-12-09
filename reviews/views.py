@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from places.models import Place
 from datetime import timedelta,datetime
+from django.views.decorators.http import require_http_methods
+from django.http import JsonResponse
 # Create your views here.
 @login_required
 def create(request):
@@ -61,21 +63,24 @@ def delete(request,review_pk):
         if(request.method=="POST"):
             old_review.delete()
     return redirect("places:place_reviews",place_pk)
-@login_required
+@require_http_methods(["POST"])
 def likes(request,review_pk):
-    if request.method=="POST":
-        user=request.user
+    if request.user.is_authenticated:
+        print(review_pk)
+        user=request.user.pk
         review=Review.objects.get(pk=review_pk)
-        place_pk=review.place.pk
-        if review.likes.filter(pk=user.pk).exists():
+        if review.likes.filter(pk=user).exists():
             review.likes.remove(user)
             review.likes_num=review.likes_num-1
             review.save()
+            Is_liked=False
         else:
             review.likes.add(user)
             review.likes_num=review.likes_num+1
             review.save()
-    return redirect("places:place_reviews",place_pk)
+            Is_liked=True
+        context={'is_liked':Is_liked,'likesnum':review.likes_num}
+    return JsonResponse(context)
 @login_required
 def detail(request,review_pk):
     reviewobject=Review.objects.get(pk=review_pk)
