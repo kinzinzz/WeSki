@@ -339,11 +339,11 @@
                     {% for page_number in reviews.paginator.page_range %}
                       {% if page_number == reviews.number %}
                         <li class="page-item active" aria-current="page">
-                          <a class="page-link" style='background-color:#5e0080; border-color:#dee2e6;' href="?review_page={{ page_number }}">{{ page_number }}</a>
+                          <a class="page-link" style='background-color:#20b2aa; border-color:#dee2e6;' href="?review_page={{ page_number }}">{{ page_number }}</a>
                         </li>
                       {% else %}
                         <li class="page-item">
-                          <a class="page-link" style='background-color:#5e0080; border-color:#dee2e6;' href="?review_page={{ page_number }}">{{ page_number }}</a>
+                          <a class="page-link" style='background-color:#20b2aa; border-color:#dee2e6;' href="?review_page={{ page_number }}">{{ page_number }}</a>
                         </li>
                       {% endif %}
                     {% endfor %}
