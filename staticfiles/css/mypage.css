@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /***********공통*****************/
-/*body,
+body,
 div,
 ul,
 li,
@@ -25,7 +25,6 @@ td,
 tr,
 textarea,
 button,
-*/
 form {
   margin: 0;
   padding: 0;
@@ -79,8 +78,7 @@ a:hover {
     overflow: hidden;
 }
 .profit #profit_main{
-    margin-top: 30px;
-    width: 800px;
+    margin-top: 30px; 
     height: 392px;
     border: 5px #ebebeb solid;
     text-align: center;

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% load static %}
+{% bootstrap_javascript %}
+
+{% block content %}
+  <!--상단이미지-->
+  <section class="hero">
+    <img src="https://www.shutterstock.com/image-photo/snowy-greater-caucasus-ridge-mt-260nw-1159178995.jpg" style="max-height:250px;object-fit:cover;" alt="login img">
+    <div class="row-2"></div>
+    <div class="col-md-1">
+      <div class="carousel-caption hero-text" style=" max-height:100px;">
+        <div class="hero-text2" style="font-size:55px;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">회원탈퇴</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 회원탈퇴 -->
+<br>
+<section class="signin">
+  <h1>회원탈퇴</h1>
+  <div class="signin__card">
+    <h2>
+      <strong>탈퇴하시겠습니까?</strong>
+    </h2>
+    <div class="row mb-3">
+      <!-- 회원탈퇴-->
+      <div class="col d-flex flex-row justify-content-center" style="margin:30px 30px 20px;">
+        <a href="{% url 'accounts:delete' customer.pk %}" class="btn float-end" style='border: 1px solid #20b2aa; background-color: #20b2aa; color: #FFFAFA; font-weight: 500'>회원탈퇴</a>
+        <a href="" class="btn float-end" style='border: 1px solid #20b2aa; color: #20b2aa; font-weight: 500'>돌아가기</a>
+      </div>
+    </div>
+    <div class="actions">
+      <a href="{% url 'accounts:signup' %}">회원가입</a>
+      <a href="javascript:void(0)">아이디 찾기</a>
+      <a href="javascript:void(0)">비밀번호 찾기</a>
+    </div>
+  </div>
+</section>
+<br>
+
+<!-- <div class="h-100 d-flex flex-column justify-content-center align-items-center"> <img src="{% static 'images/.png' %}" class="delete-img"> <h1 class="fw-bold retro">탈퇴하시겠습니까?</h1> <div class="d-flex"> <a href="{% url 'accounts:detail' request.user.pk %}" class="text-decoration-none text-white"> <div class="detail-btn">취소</div> </a> <a href="{% url 'accounts:delete' request.user.pk %}" class="text-decoration-none text-white"> <div class="detail-btn" style="background-color: rgb(166, 166, 166)">탈퇴</div> </a> </div> </div> -->
+{% endblock %}

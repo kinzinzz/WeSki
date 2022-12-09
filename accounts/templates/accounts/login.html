@@ -5,25 +5,20 @@
 {% bootstrap_javascript %}
 
 {% block content %}
-<!--배경이미지삽입-->
-<section class="hero">
-  <img src="https://www.shutterstock.com/image-photo/snowy-greater-caucasus-ridge-mt-260nw-1159178995.jpg"
-    alt="ski login img">
-  <div class="row-2"></div>
-  <div class="col-md-1">
-    <div class="carousel-caption hero-text" style=" max-height:100px;">
-      <div class="hero-text2"
-        style="font-size:55px;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">로그인</div>
+
+  <!--상단이미지-->
+  <section class="hero">
+    <img src="https://www.shutterstock.com/image-photo/snowy-greater-caucasus-ridge-mt-260nw-1159178995.jpg" style="max-height:250px;object-fit:cover;" alt="login img">
+    <div class="row-2"></div>
+    <div class="col-md-1">
+      <div class="carousel-caption hero-text" style=" max-height:100px;">
+        <div class="hero-text2" style="font-size:55px;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">로그인</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!--<div class="container col-8"> <div class="row d-flex align-items-center" style="height:400px; margin-bottom:100px;"> <h3 style="text-align:center; margin-top:100px;">WE-SKI 방문을 환영합니다<br></h3> <h5 style="text-align:center; margin-bottom:40px;">스키 정보를 한 눈에 비교하고 최적의 스키장을 찾아보세요<br></h5><br><br> -->
-
-<!-- Before 수정 <div style="height:300px;background-color:#f5f5f5; min-width:300px; margin-bottom:40px;"> <div class="col-4 mx-auto align-items-center" style="min-width:300px;"> <div class="my-4"> <br> <!--로그인폼 <form action="" method="POST" class="d-flex align-items-center"> {% csrf_token %} <div> {% bootstrap_form forms %} </div> -->
-<!--여백 <div class="col-1"></div> <div> <input type="submit" class="login_btn btn-dark d-grid btn" style="" value="로그인"> </div> </form> </div> </div> </div> <h1>&nbsp;</h1> -->
-<!-- </div> -->
-<!-- Singin -->
+<!-- 로그인 -->
 <br>
 <section class="signin">
   <h1>로그인</h1>
@@ -33,24 +28,20 @@
       WE-SKI 방문을 환영합니다.
     </h2>
     <h5 class="info text-center">스키 정보를 한 눈에 비교하고 최적의 스키장을 찾아보세요</h5>
-
+    <!-- 로그인 폼 -->
     <form action="{% url 'accounts:login' %}" method="POST">
       {% csrf_token %}
       <!-- {% bootstrap_form forms %} -->
-      <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150"
-        class="form-control" placeholder="사용자 이름" required="" id="id_username">
-      <input type="password" name="password" autocomplete="current-password" class="form-control" placeholder="비밀번호"
-        required="" id="id_password">
-      <!-- <input name="username" type="text" placeholder="아이디를 입력하세요."/> -->
-      <!-- <input name="password" type="password" placeholder="비밀번호를 입력하세요."/> -->
-      <input type="submit" value="로그인" />
+      <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" class="form-control" placeholder="사용자 이름" required="" id="id_username">
+      <input type="password" name="password" autocomplete="current-password" class="form-control" placeholder="비밀번호" required="" id="id_password">
+      <input type="submit" value="로그인"/>
       <p>
-        * 비밀번호를 타 사이트와 같이 사용할 경우 도용 위험이 있으니,<br />
+        * 비밀번호를 타 사이트와 같이 사용할 경우 도용 위험이 있으니,<br/>
         정기적으로 비밀번호를 변경하세요!
       </p>
     </form>
     <div class="actions">
-      <a href="javascript:void(0)">회원가입</a>
+      <a href="{% url 'accounts:signup' %}">회원가입</a>
       <a href="javascript:void(0)">아이디 찾기</a>
       <a href="javascript:void(0)">비밀번호 찾기</a>
     </div>

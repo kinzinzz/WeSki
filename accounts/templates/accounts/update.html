@@ -1,52 +1,55 @@
 {% load django_bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
-
+<script src="https://kit.fontawesome.com/a43f3ad032.js" crossorigin="anonymous"></script>
 {% block content %}
-  <div style="padding: 0 180px;">
+<!-- 상단 이미지 -->
+<section class="hero">
+  <img src="https://www.shutterstock.com/image-photo/snowy-greater-caucasus-ridge-mt-260nw-1159178995.jpg" alt="ski login img">
+  <!--<div class="row-2"></div>
+  <div class="col-md-1">
+    <div class="carousel-caption hero-text" style=" max-height:100px;">
+      <div class="hero-text2" style="font-size:55px; padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">회원정보 수정</div>
+    </div>
+  </div> -->
+</section>
+<!--배경이미지삽입-->
 
-    <div class="d-flex justify-content-between">
+<!-- 회원정보 수정 -->
+<section class="container" style="width: 630px; height: 1315px; margin-top: 50px;">
+  <!-- <div style="padding: 0 180px;"> -->
+<div>
+    <div class="d-flex justify-content-center">
       <div class="align-items-center">
-        <h1 class="text-center accounts-update-title">회원정보수정
+        <h1 class="mb-5 text-center" style='color:#20b2aa;'>회원정보 수정
+        <!-- <h1 class="text-center accounts-update-title">회원정보수정 -->
         </h1>
       </div>
       {% comment %} <!--<img class="accoutns-update-img-div " src="{% static 'images/.png' %}" alt=""> --> {% endcomment %}
     </div>
     <hr>
 
-    <div>
-      <div class="container">
-        <div class="d-flex justify-content-between">
-          <div class="d-flex justify-contennt-center">
-            <!-- {% if customer.image %} <img class="accoutns-detail-img-div" src="{{customer.image.url}}" alt="customer.image.url"> {% else %} -->
-            <div>
-              {% comment %} <!-- <img class="accoutns-detail-img-div" src="{% static 'images/.png' %}" alt="customer.image.url" height="100" width="100"> --> {% endcomment %}
-            </div>
-            <!-- {% endif %} -->
-            <div>
-              <div>
-                <p class="detail_name_id">ID :
-                  {{customer.username}}</p>
-                <p>email :
-                  {{customer.email}}</p>
-              </div>
-              <p>회원가입일:{{customer.date_joined}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
     <div class="d-flex justify-content-between">
       {% comment %} <!-- <img src="{% static '/images/.png' %}" alt=""> --> {% endcomment %}
     </div>
     <div>
-      <form action="" method="POST" enctype="multipart/form-data">
+      <form action="" method="POST" enctype="multipart/form-data" style="border-top: 0px solid rgb(51, 51, 51); font-size:14px;">
         {% csrf_token %}
+        <h6>아이디</h6>
+        <p class="form-control" style="background-color: rgb(221, 225, 227); color:#212529">{{ customer.username }}</p>
+        <h6>이메일</h6>
+        <p class="form-control" style="background-color: rgb(221, 225, 227); color:#212529">{{ customer.email }}</p>
         {% bootstrap_form forms %}
-        <input type="submit" class="pt-y rounded d-flex justify-content-center">
+        <!-- <input type="submit" class="pt-y rounded d-flex justify-content-center"> -->
+        <input type="submit" class="btn" style='background-color: #20b2aa; border-color: #20b2aa; color:white' value="수정">
+        <a href="{% url 'accounts:detail' customer.pk %}" class="btn" style='border: 1px solid #20b2aa; color: #20b2aa; font-weight: 500'>돌아가기</a>
+        <a href="{% url 'accounts:deletemsg' customer.pk %}" class="btn float-end" style='border: 1px solid #20b2aa; color: #20b2aa; font-weight: 500'>회원탈퇴</a>
+        <!-- <a href="{% url 'accounts:delete' customer.pk %}" class="btn float-end" style='border: 1px solid #20b2aa; color: #20b2aa; font-weight: 500'>회원탈퇴</a> -->  
       </form>
     </div>
+  </section>
 
     <style>
       .accounts-update-title {
@@ -64,10 +67,7 @@
         margin-right: 30px;
       }
 
-      .detail_name_id {
-        font-weight: 700;
-        font-size: 30px;
-      }
+   
     </style>
 
   {% endblock %}

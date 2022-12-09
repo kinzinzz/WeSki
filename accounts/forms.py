@@ -14,4 +14,8 @@ class ChangeUserForm(UserChangeForm):
 
         class Meta:
             model = get_user_model()
-            fields = ("image", "email")
+            fields = (
+                "username", 
+                "image", 
+                "email",
+                )

@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
-{% load django_bootstrap5 %}
 
+{% load django_bootstrap5 %}
+{% load static %}
 {% block content %}
 <!--상단이미지-->
 <section class="hero">
   <div style="position:relative;">
-    <img src="https://i.esdrop.com/d/f/bvRLlOwptP/MX8DwNh7gT.png" alt="place review detail img">
+    <img src="https://i.esdrop.com/d/f/bvRLlOwptP/MX8DwNh7gT.png" style="max-height:300px;"alt="place review detail img">
   </div>
-  <div class="row-2">
-  </div>
-  <div class="col-md-1" style="position:relative;">
+  <div>
     <div class="carousel-caption hero-text" style=" max-height:100px;">
-      <div class="hero-text2" style="font-size:55px;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">{{ place.name }}리뷰</div>
+      <div class="hero-text2" 
+      style="position:absolute; bottom:500px; right:3rem;font-size:3rem;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">{{ place.name }}리뷰</div>
     </div>
   </div>
   </div>
@@ -22,7 +22,7 @@
   <!--리뷰 작성 버튼-->
   <div class="d-flex justify-content-center" style="margin-top:20px;">
     <a class="nav-link" href="{% url 'reviews:create' %}">
-      <button type="button" class="btn btn-outline-dark">리뷰작성</button>
+      <button type="button" class="btn btn-outline-dark">리뷰 작성</button>
     </a>
   </div>
 
