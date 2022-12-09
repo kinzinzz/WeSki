@@ -4,7 +4,7 @@
 <div class="d-flex align-items-center ms-3" style="position:relative; margin-bottom:20px;margin-top:20px;">
   <h3 id="place_name">{{ place.name }}</h3>
   <!-- 즐겨찾기 -->
-  {% if request.user.is_authenticated %}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% if request.user.is_authenticated %}
   <form class="like-forms" data-place-id="{{ place.pk }}">
     {% csrf_token %}
     {% if user in place.like_users.all %}
@@ -34,7 +34,6 @@
 </div>
 
 <!-- main img -->
-<br>
 <div class="container row row-cols-1 row-cols-md-2 g-2 d-flex flex-nowrap">
   {% if place.photo_main %}
   <div class="col" style="width:750px; height:500px;">
@@ -79,11 +78,13 @@
     <a href="{% url 'places:delete' place.pk %}">삭제하기</a>
     <a href="{% url 'places:update' place.pk %}">수정하기</a>
     {% endif %}
-    <a href="{% url 'places:place_reviews' place.pk %}">&nbsp;&nbsp;리뷰보기</a>
+    <a href="{% url 'places:place_reviews' place.pk %}"><br>&nbsp;&nbsp;&nbsp;리뷰보기</a>
     <!-- map -->
     <br>
-    <div class="col card-img-top img-fluid" id="map" style="width:750px; height:400px;"></div>
+    <div class="col card-img-top img-fluid" id="map" style="width:750px; height:385px;"></div>
   </div>
+</div>
+  
 
   <!-- Detail 이미지 -->
   <br>
