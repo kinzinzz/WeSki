@@ -300,6 +300,7 @@ a{
   left:0px;
   right:0px;
   top:4rem;
+  color:white;
 }
 .caro-size1{
 	width:100%;
@@ -440,7 +441,7 @@ min-width:500px;
   position:absolute;
   left:0px;
   right:0px;
-  top:13rem;
+  top:10rem;
 }
 .accounticon{
   position:absolute;
