@@ -46,6 +46,7 @@
         <input type="submit" class="btn" style='background-color: #20b2aa; border-color: #20b2aa; color:white' value="수정">
         <a href="{% url 'accounts:detail' customer.pk %}" class="btn" style='border: 1px solid #20b2aa; color: #20b2aa; font-weight: 500'>돌아가기</a>
         <a href="{% url 'accounts:delete' customer.pk %}" class="btn float-end" style='border: 1px solid #20b2aa; color: #20b2aa; font-weight: 500'>회원탈퇴</a>
+        <a href="{% url 'accounts:deletemsg' customer.pk %}" class="btn float-end" style='border: 1px solid #20b2aa; color: #20b2aa; font-weight: 500'>회원탈퇴msg</a>
       </form>
     </div>
   </section>
