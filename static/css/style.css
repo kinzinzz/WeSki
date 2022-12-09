@@ -294,11 +294,12 @@ a{
   top:120px;
   max-height:40px;
 }
+/* 웹 */
 .hero-text2{
   position:absolute;
   left:0px;
   right:0px;
-  top:40px;
+  top:4rem;
 }
 .caro-size1{
 	width:100%;
@@ -332,6 +333,7 @@ a{
   color:white;
   text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
+/* 큰 */
 @media screen and (max-width:1011px){
 .review-box{
   margin-right:50px;
@@ -370,17 +372,19 @@ min-width:500px;
   top:50px;
   max-height:40px;
 }
+/* 큰 */
 .hero-text2{
   position:absolute;
   left:0px;
   right:0px;
-  top:50px;
+  bottom:12rem;
 }
 .accounticon{
   position:absolute;
   left:200px;
 }
 }
+
 @media screen and (max-width:815px){
 .img_text_1 {
   position: absolute;
@@ -389,6 +393,13 @@ min-width:500px;
   font-size: 39px;
   color:white;
   text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+/* 중 */
+.hero-text2{
+  position:absolute;
+  left:0px;
+  right:0px;
+  top:12rem;
 }
 }
   /* min */
@@ -424,11 +435,12 @@ min-width:500px;
   top:50px;
   max-height:40px;
 }
+/* 작 */
 .hero-text2{
   position:absolute;
   left:0px;
   right:0px;
-  top:20px;
+  top:13rem;
 }
 .accounticon{
   position:absolute;
