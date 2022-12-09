@@ -41,7 +41,7 @@
           {% if review.user.profile_image %}
             <img src="{{ review.user.profile_image.url }}" alt="작성자 프로필 이미지">
           {% else %}
-            <img src="https://i.esdrop.com/d/t/bvRLlOwptP/bTMDQr9Zl1.jpg" style="width: 40px; height: 40px; border-radius:50%" alt="default_profile_image">
+            <img src="https://i.esdrop.com/d/t/bvRLlOwptP/bTMDQr9Zl1.jpg" style="width: 40px; height: 40px; border-radius:50%" alt="default_profile_image스키맨">
           {% endif %}
             <h4 class="mx-3 d-flex align-items-center my-0"> {{ review.user.username }}</h4>
         </div>
@@ -64,7 +64,7 @@
         <p>{{ review.content }}</p>
         <div>
         {% for image in review.review_images.all %}
-          <img src="{{ image.image.url }}" style="object-fit:cover; width: 100%; height:300px; margin-bottom:5rem;" alt="review img">
+          <img src="{{ image.image.url }}" style="object-fit:cover; width: 100%; height:400px; margin-bottom:5rem;" alt="review img">
           <hr>
         {% empty %}
         <img src="https://i.esdrop.com/d/f/bvRLlOwptP/Tx9Me0oz1k.jpg" style=" object-fit:cover;width:100%; height:300px;" alt="no img detault">
