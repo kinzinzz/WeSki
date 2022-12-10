@@ -10,6 +10,12 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from places.models import Place
 from .models import OrderTransaction
+# 카카오
+
+import os
+
+
+
 
 
 # Create your views here.
@@ -119,5 +125,4 @@ def delete(request, user_pk):
     if customer.pk == request.user.pk:
         customer.delete()
     return redirect("places:index")
-
 
