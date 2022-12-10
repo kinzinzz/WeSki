@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
-
+{% load django_bootstrap5 %}
+{% load static %}
 {% block content %}
+<div class="container my-5">
+  <div class="row">
+
+  </div>
+  <div class="row">
+    <div class="col-7">
 <div class="d-flex align-items-center ms-3" style="position:relative; margin-bottom:20px;margin-top:20px;">
   <h3 id="place_name">{{ place.name }}</h3>
   <!-- 즐겨찾기 -->
@@ -30,58 +37,67 @@
       <p class="m-0">{{ place.like_users.count }}</p>
     </div>
   </div>
+  <div class="justify-content-end">
+    <div>
+    <a href="{% url 'places:place_reviews' place.pk %}"><br>&nbsp;&nbsp;&nbsp;리뷰보기</a>
+    </div>
+  </div>
 </div>
 </div>
 
-<!-- main img -->
-<div class="container row row-cols-1 row-cols-md-2 g-2 d-flex flex-nowrap">
+<!-- main img g-2 d-flex flex-nowrap-->
+<div class="container row row-cols-3 row-cols-md-2 d-flex flex-wrap">
   {% if place.photo_main %}
-  <div class="col" style="width:750px; height:500px;">
-    <img src="{{ place.photo_main.url }}" class="card-img-top img-fluid" alt="" style="width: 100%; height: 100%;">
+  <div class="col-3" >
+    <br><br>
+    <img src="{{ place.photo_main.url }}" class="card-img-top " alt="" style="border-radius:3%;width:%100; height:400px;">
   </div>
   {% else %}
+  <br><br>
   <div class="col" style="width: 750px; height:500px;">
-    <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top img-fluid" alt=""
+    <img src="https://i.esdrop.com/d/f/bvRLlOwptP/bNItCX0Ubw.jpg" class="card-img-top img-fluid" alt="스키맨"
       style="width: 100%; height: 100%;">
   </div>
   {% endif %}
-  <div class="col card-img-top img-fluid">
+  <div class="col-5" style="font-size:16px;">
     <table>
       <tbody>
         <tr>
-          <th>&nbsp;&nbsp;· 주소</th>
-          <td id="address">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.address }}</td>
+          <th style="padding-bottom:5px;" >&nbsp;&nbsp;주소</th>
+          <td id="address" style="padding-bottom:5px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.address }}</td>
         </tr>
         <tr>
-          <th>&nbsp;&nbsp;· 전화번호</th>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.contact_number }}</td>
+          <th style="padding-bottom:5px;"> &nbsp;&nbsp;전화번호</th>
+          <td style="padding-bottom:5px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.contact_number }}</td>
         </tr>
         <tr>
-          <th>&nbsp;&nbsp;· 영업시간</th>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.opening_time }}</td>
+          <th style="padding-bottom:5px;">&nbsp;&nbsp;영업시간</th>
+          <td style="padding-bottom:5px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.opening_time }}</td>
         </tr>
         <tr>
-          <th>&nbsp;&nbsp;· 휴무일</th>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.break_day }}</td>
+          <th style="padding-bottom:5px;">&nbsp;&nbsp;휴무일</th>
+          <td style="padding-bottom:5px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.break_day }}</td>
         </tr>
         <tr>
-          <th>&nbsp;&nbsp;· 금액</th>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.price }}</td>
+          <th style="padding-bottom:5px;">&nbsp;&nbsp;금액</th>
+          <td style="padding-bottom:5px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.price }}</td>
         </tr>
         <tr>
-          <th>&nbsp;&nbsp;· 소개글</th>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ place.subtext }}</td>
+          <th style="padding-bottom:8px;">&nbsp;&nbsp;소개글</th>
+          <td style="padding-bottom:8px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.subtext }}</td>
         </tr>
       </tbody>
     </table>
     {% if request.user.is_staff %}
+    <!--작성자가 아닌경우 안보여야함<a href="{% url 'places:delete' place.pk %}">삭제하기</a>
+    <a href="{% url 'places:update' place.pk %}">수정하기</a>-->
+    {% endif %}
     <a href="{% url 'places:delete' place.pk %}">삭제하기</a>
     <a href="{% url 'places:update' place.pk %}">수정하기</a>
-    {% endif %}
-    <a href="{% url 'places:place_reviews' place.pk %}"><br>&nbsp;&nbsp;&nbsp;리뷰보기</a>
+    
     <!-- map -->
     <br>
-    <div class="col card-img-top img-fluid" id="map" style="width:750px; height:385px;"></div>
+    <div class="col card-img-top img-fluid" id="map" style="border-radius:3%;width:450px; height:250px;"></div>
   </div>
 </div>
   
@@ -132,6 +148,7 @@
 
   <!-- Script -->
   <!-- map -->
+  <div class="col-5">
   <script type="text/javascript"
     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7e339ba845705af99133e0be07936453&libraries=services"></script>
   <script>
