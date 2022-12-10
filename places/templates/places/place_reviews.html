@@ -65,10 +65,18 @@
         {% if request.user.is_authenticated %}
         <form class="like-form" data-review-pk="{{ review.pk }}">
           {% csrf_token %}
+          <h4 class="mx-2" style="color: #FDAFAB;">
           {% if request.user in review.likes.all %}
             <input type="submit" class="btn btn-dark" value="좋아요 취소" id="like-{{review.pk}}">
-          {% else %}
+            
+            <i class="fa-regular fa-heart-fill" id="likeBtn" data-place-id="{{ review.pk }}"></i>
+            <i class="fa-solid fa-heart"></i>
+            {% else %}
             <input type="submit" class="btn btn-dark" value="좋아요" id="like-{{review.pk}}">
+
+            <i class="fa-regular fa-heart" id="likeBtn" data-place-id="{{ review.pk }}"></i>
+            
+            <i class="fa-regular fa-heart"></i>
           {% endif %}
          
         </form>
