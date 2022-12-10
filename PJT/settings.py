@@ -36,10 +36,20 @@ SECRET_KEY = "django-insecure-zj1!w1-bx3c+=jb&foqe#q*#zs&0g22$p0tfj_eu0@iu#jj!cf
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-
+# 카카오 로그인 오류 줄임
+SITE_ID=1
 # Application definition
 
 INSTALLED_APPS = [
+    # allauth
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.auth0",
+    # provider
+    "allauth.socialaccount.providers.kakao",
+    # 카카오
+    "django.contrib.sites",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -52,6 +62,8 @@ INSTALLED_APPS = [
     "places",
     "reviews",
     "storages",
+
+
 ]
 
 MIDDLEWARE = [
@@ -77,10 +89,19 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+               
             ],
         },
     },
 ]
+
+# 카카오
+AUTHENTICATION_BACKENDS = (
+   
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+   
+)
 
 WSGI_APPLICATION = "PJT.wsgi.application"
 
@@ -183,3 +204,23 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "accounts.User"
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
+# 카카오
+LOGIN_REDIRECT_URL = 'places:index' # 로그인 후 리디렉션할 페이지
+ACCOUNT_LOGOUT_REDIRECT_URL = "accounts:login"  # 로그아웃 후 리디렉션 할 페이지
+ACCOUNT_LOGOUT_ON_GET = True # 로그아웃 버튼 클릭 시 자동 로그아웃
+
+# 카카오 로그인
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'kakao': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '729b29b97aeb12c9887dc5f71f9a5fc7',
+            'secret': '',
+            'key': ''
+        }
+    }
+}
