@@ -336,6 +336,10 @@ a{
 }
 /* 큰 */
 @media screen and (max-width:1011px){
+.imgwrap{
+  flex-direction: column;
+  flex-wrap: wrap;
+}
 .review-box{
   margin-right:50px;
   margin-left:50px;
@@ -387,7 +391,17 @@ min-width:500px;
 }
 
 @media screen and (max-width:815px){
-.img_text_1 {
+.box{
+  width:600px;
+}
+.flex-container{
+  display : flex;
+  justify-content : center;  /* 좌우 방향의 정렬 */
+  align-items : center;  /* 상하 방향의 정렬 */
+  flex-direction : column; /* flexbox의 방향 */
+  flex-wrap : wrap;
+}
+  .img_text_1 {
   position: absolute;
   right: 8rem;
   bottom: 16rem;
