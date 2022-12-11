@@ -206,8 +206,8 @@ AUTH_USER_MODEL = "accounts.User"
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
 # 카카오
-LOGIN_REDIRECT_URL = 'places:index' # 로그인 후 리디렉션할 페이지
-ACCOUNT_LOGOUT_REDIRECT_URL = "accounts:login"  # 로그아웃 후 리디렉션 할 페이지
+LOGIN_REDIRECT_URL = 'index' # 로그인 후 리디렉션할 페이지
+ACCOUNT_LOGOUT_REDIRECT_URL = "index"  # 로그아웃 후 리디렉션 할 페이지
 ACCOUNT_LOGOUT_ON_GET = True # 로그아웃 버튼 클릭 시 자동 로그아웃
 
 # 카카오 로그인
@@ -224,3 +224,8 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+# 카카오
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
+
+
