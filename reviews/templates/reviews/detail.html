@@ -13,96 +13,118 @@
   </div>
 </section>
 
-<div class="container">
+
+<div class="container my-5">
+  <div class="row">
+
+  </div>
+  <div class="row">
+    <div class="col-7">
+      <div class="row">
+    
   <!--목록으로 <a name="place_reivew" id="" class="btn btn-primary" href="{% url "places:place_reviews" Review.place.pk %}" role="button">목록으로</a>-->
-  <div class="d-flex justify-content-center mt-4 px-4">
+  
     <!-- 리뷰 내용 -->
-    <div class="row">
+    <div class="col-md-6" >
       <br>
-      <h5>ID:{{Review.user}}
-        <h5>
-          <br>
-          <h4>
-            <b>제목:{{Review.title}}
-              <h4>
+      <h5>ID:{{Review.user}}</h5>
+      <br>
+      <h4>
+        <b>{{Review.title}}
+      </h4>
+        <div class="d-felxalign-items-center" style="padding-left:50px; margin:30px;width:550px; max-height: 600px;">
+          {% for photo in Review.review_images.all %}
+            <!--이미지-->
+            <img src="{{photo.image.url}}">
+            {% empty %}
+            <img class="align-items-center"src="https://i.esdrop.com/d/f/bvRLlOwptP/Tx9Me0oz1k.jpg" style=" object-fit:cover;width:100%; height:300px;" alt="no img detault">
+            <hr>
+            {% endfor %}
+            {% comment %} <!-- {% if request.user.pk == Review.user.pk %} <form action="{% url "reviews:image_delete" Review.pk photo.pk %}" method="POST"> {% csrf_token %} <input type="submit" value="삭제"> </form> {% endif %} {% endfor %} {% if request.user.pk == Review.user.pk %} <form action="{% url "reviews:image_add" Review.pk %}" method="POST" enctype="multipart/form-data"> {% csrf_token %} <input type="file" name="image[]" multiple="multiple" accept="image/*"> <input type="submit"> </form> {% endif %} --> {% endcomment %}
+            
+        </div>
+      </div>
+    </div>
+  
+          
 
-                <h5 style="margin-top:10px; margin-bottom:20px;">내용:{{Review.content}}</h5>
+           
+<div class="col-md-6" >
 
-                <div class="col-5 text-center" style="display: table; width:100%; height: 500px;">
-                  <div style="display: table-cell; vertical-align:middle; margin-top:10px;width:100%; height: 500px;">
-                    {% for photo in Review.review_images.all %}
-                      <!--이미지-->
-                      <img src="{{photo.image.url}}">
-                      {% empty %}
-                      <img src="https://i.esdrop.com/d/f/bvRLlOwptP/Tx9Me0oz1k.jpg" style=" object-fit:cover;width:100%; height:300px;" alt="no img detault">
-                      <hr>
-                      {% endfor %}
-                      {% comment %} <!-- {% if request.user.pk == Review.user.pk %} <form action="{% url "reviews:image_delete" Review.pk photo.pk %}" method="POST"> {% csrf_token %} <input type="submit" value="삭제"> </form> {% endif %} {% endfor %} {% if request.user.pk == Review.user.pk %} <form action="{% url "reviews:image_add" Review.pk %}" method="POST" enctype="multipart/form-data"> {% csrf_token %} <input type="file" name="image[]" multiple="multiple" accept="image/*"> <input type="submit"> </form> {% endif %} --> {% endcomment %}
-                      <div class="d-flex align-items-center ms-3" style="position:relative; margin-bottom:20px;margin-top:20px;">
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                          {% if request.user.is_authenticated %}
-                            <form id="like-form" data-review-pk="{{ Review.pk }}">
-                              {% csrf_token %}
-                              {% if request.user in Review.likes.all %}
-                                <input type="submit" class="btn btn-dark" value="좋아요 취소">
-                              {% else %}
-                                <input type="submit" class="btn btn-dark" value="좋아요">
-                              {% endif %}
-                             
-                            </form>
-                          {% endif %}
-                          <div>
-                            좋아요:<span id="likes-count">{{Review.likes_num}}</span></div>
-                          <!--글삭제-->
-                          {% if request.user.pk == Review.user.pk %}
-                            <form action="{% url 'reviews:delete' Review.pk %}" method="POST">
-                              {% csrf_token %}
-                              <button type="submit" class="btn btn-dark">삭제</button>
-                            </form>
-                          {% endif %}
-                          <!--수정-->
-                          {% if request.user.pk == Review.user.pk %}
-                            <form action="{% url 'reviews:update' Review.pk %}" method="GET">
-                              <button type="submit" class="btn btn-outline-dark">수정</button>
-                            </form>
-                            {% endif %}
-                            <a name="place_reivew" id="" class="btn btn-primary" href="{% url "places:place_reviews" Review.place.pk %}" role="button">place_reviews</a>
-                          </div>
-                        </div>
-                    {% endblock %}
-                    {% block script %}
-                      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-                      <script>
-                        const form = document.querySelector("#like-form")
-                        const csrftoken = document
-                          .querySelector('[name=csrfmiddlewaretoken]')
-                          .value
-                          form
-                          .addEventListener('submit', function (event) {
-                            event.preventDefault()
-                            axios({
-                              method: `post`,
-                              url: `reviews/likes/${event.target.dataset.reviewPk}`,
-                              headers: {
-                                'X-CSRFToken': csrftoken
-                              }
-                            })
-                              .then((response) => {
-                                console.log(response)
-                                const isliked = response.data.is_liked
-                                const likebtn = document.querySelector("#like-form > input[type=submit]")
-                                if (isliked === true) {
-                                  likebtn.value = '좋아요취소'
-                                } else {
-                                  likebtn.value = '좋아요'
-                                }
-                                const likescounttag = document.querySelector('#likes-count')
-                                const likenum = response.data.likesnum
-                                likescounttag.innerText = likenum
-                              })
-                              .catch((error) => {
-                                console.log(error.response)
-                              })
-                            })
-                      </script>
-                    {% endblock script %}
+<h5 >{{Review.content}}</h5>
+<br>
+
+<div class="d-flex " style="position:relative; margin-bottom:20px;margin-top:20px;">
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  
+        
+          <!--{% if request.user.is_authenticated %}
+            <form id="like-form" data-review-pk="{{ Review.pk }}">
+              {% csrf_token %}
+              {% if request.user in Review.likes.all %}
+                <input type="submit" class="btn btn-dark" value="좋아요 취소">
+              {% else %}
+                <input type="submit" class="btn btn-dark" value="좋아요">
+              {% endif %}
+            
+            </form>
+          {% endif %}
+          <div>
+            좋아요:<span id="likes-count">{{Review.likes_num}}</span></div>
+            -->
+          <!--글삭제-->
+          {% if request.user.pk == Review.user.pk %}
+            <form action="{% url 'reviews:delete' Review.pk %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-dark">삭제</button>
+            </form>
+          {% endif %}
+          <!--수정-->
+          {% if request.user.pk == Review.user.pk %}
+            <form action="{% url 'reviews:update' Review.pk %}" method="GET">
+              <button type="submit" class="btn btn-outline-dark">수정</button>
+            </form>
+            {% endif %}
+            <!--<a name="place_reivew" id="" class="btn btn-primary" href="{% url "places:place_reviews" Review.place.pk %}" role="button">place_reviews</a>-->
+    </div>
+  </div>
+
+</div>
+    {% endblock %}
+    <!--{% block script %}
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <script>
+        const form = document.querySelector("#like-form")
+        const csrftoken = document
+          .querySelector('[name=csrfmiddlewaretoken]')
+          .value
+          form
+          .addEventListener('submit', function (event) {
+            event.preventDefault()
+            axios({
+              method: `post`,
+              url: `reviews/likes/${event.target.dataset.reviewPk}`,
+              headers: {
+                'X-CSRFToken': csrftoken
+              }
+            })
+              .then((response) => {
+                console.log(response)
+                const isliked = response.data.is_liked
+                const likebtn = document.querySelector("#like-form > input[type=submit]")
+                if (isliked === true) {
+                  likebtn.value = '좋아요취소'
+                } else {
+                  likebtn.value = '좋아요'
+                }
+                const likescounttag = document.querySelector('#likes-count')
+                const likenum = response.data.likesnum
+                likescounttag.innerText = likenum
+              })
+              .catch((error) => {
+                console.log(error.response)
+              })
+            })
+      </script>
+    {% endblock script %}
+    -->
