@@ -71,7 +71,7 @@
   {% if place.photo_main %}
   
   
-  <div class="col-md-6 box" >
+  <div class="col-md-6" >
     <br><br>
     <img src="{{ place.photo_main.url }}" class="card-img-top " alt="" style="border-radius:3%;width:%100; height:400px;">
   </div>
@@ -84,7 +84,7 @@
   {% endif %}
 
 
-  <div class="col-md-6 box" style="font-size:16px;">
+  <div class="col-md-6" style="font-size:16px;">
     {% if request.user.is_staff %}
     <!--작성자가 아닌경우 안보여야함<a href="{% url 'places:delete' place.pk %}">삭제하기</a>
     <a href="{% url 'places:update' place.pk %}">수정하기</a>-->
