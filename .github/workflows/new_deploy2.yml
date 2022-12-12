@@ -1,4 +1,4 @@
-name: new_EB_Deploy
+name: new_EB_Deploy_2
 
 on:
   push:
@@ -31,8 +31,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: "WeSki_bean"
-          environment_name: "Weskibean-env-2"
+          application_name: "WeSki-bean"
+          environment_name: "Weskibean-env"
           version_label: "python-${{ steps.format-time.outputs.replaced }}"
           region: "ap-northeast-2"
           deployment_package: deploy.zip
