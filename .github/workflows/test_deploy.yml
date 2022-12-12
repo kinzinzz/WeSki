@@ -35,4 +35,4 @@ jobs:
           environment_name: "Weskibean-env"
           version_label: "python-${{ steps.format-time.outputs.replaced }}"
           region: "ap-northeast-2"
-          deployment_package: deploy2.zip
+          deployment_package: deploy.zip
