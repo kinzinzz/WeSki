@@ -1,4 +1,4 @@
-name: new_EB_Deploy_3
+name: EB_Deploy
 
 on:
   push:
