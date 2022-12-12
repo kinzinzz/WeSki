@@ -9,7 +9,7 @@
     </div>
     <div>
       <div class="carousel-caption hero-text" style=" max-height:100px;">
-        <div class="hero-text2" style="position:absolute; bottom:500px; right:3rem;font-size:3rem;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">{{ place.name }}</div>
+        <div class="hero-text2" style="position:absolute; bottom:500px; right:3rem;font-size:3rem;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;word-wrap: break-word; max-width:900px;">{{ place.name }}</div>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col-7">
       <div class="d-flex align-items-center ms-3" style="position:relative; margin-bottom:20px;margin-top:20px;">
-        <h3 id="place_name">{{ place.name }}</h3>
+        <h3 id="place_name" style="word-wrap: break-word;max-width:400px;">{{ place.name }}</h3>
         <!-- 즐겨찾기 -->
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% if request.user.is_authenticated %}
           <form class="like-forms" data-place-id="{{ place.pk }}">
@@ -90,28 +90,28 @@
             <tr>
               <br>
               <th style="padding-bottom:5px;">&nbsp;&nbsp;주소</th>
-              <td id="address" style="padding-bottom:5px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.address }}</td>
+              <td id="address" style="padding-bottom:5px;word-wrap: break-word; max-width:300px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.address }}</td>
             </tr>
             <tr>
               <th style="padding-bottom:5px;">
                 &nbsp;&nbsp;전화번호</th>
-              <td style="padding-bottom:5px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.contact_number }}</td>
+              <td style="padding-bottom:5px;word-wrap: break-word; max-width:300px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.contact_number }}</td>
             </tr>
             <tr>
               <th style="padding-bottom:5px;">&nbsp;&nbsp;영업시간</th>
-              <td style="padding-bottom:5px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.opening_time }}</td>
+              <td style="padding-bottom:5px;word-wrap: break-word; max-width:300px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.opening_time }}</td>
             </tr>
             <tr>
               <th style="padding-bottom:5px;">&nbsp;&nbsp;휴무일</th>
-              <td style="padding-bottom:5px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.break_day }}</td>
+              <td style="padding-bottom:5px;word-wrap: break-word; max-width:300px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.break_day }}</td>
             </tr>
             <tr>
               <th style="padding-bottom:5px;">&nbsp;&nbsp;금액</th>
-              <td style="padding-bottom:5px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.price }}</td>
+              <td style="padding-bottom:5px;word-wrap: break-word; max-width:300px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.price }}</td>
             </tr>
             <tr>
               <th style="padding-bottom:8px;">&nbsp;&nbsp;소개글</th>
-              <td style="padding-bottom:8px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.subtext }}</td>
+              <td style="padding-bottom:8px; word-wrap: break-word; max-width:300px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ place.subtext }}</td>
             </tr>
           </tbody>
         </table>

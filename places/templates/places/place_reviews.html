@@ -57,7 +57,7 @@
           <span>⭐</span>
           {% endif %}
           <br>
-          <div style="margin-top:1rem;">{{ review.title }}</div>
+          <div style="margin-top:1rem; width:300px;word-wrap: break-word;  ">{{ review.title }}</div>
         </h5>
 
 
@@ -84,8 +84,10 @@
                 </form>
               {% endif %}  
               <!--리뷰내용-->
-              <p style="font-size:17px;">{{ review.content }}</p>
-          <hr>
+              
+              <p style="word-wrap: break-word;  width:300px;font-size:17px;">{{ review.content }}</p>
+              
+              <hr>
         {% empty %}
         <!--누르면 수정 삭제-->
         <a href="{% url 'reviews:detail' review.pk %}" class="row text-dark" style="text-decoration: none;">
@@ -107,7 +109,9 @@
               </form>
             {% endif %}
             <!--리뷰내용-->
-        <p style="font-size:17px;">{{ review.content }}</p>
+            <div style="width:200px;">
+        <p style="font-size:17px; width:200px;">{{ review.content }}</p>
+            </div>
         <hr>
       
       </div>
