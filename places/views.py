@@ -30,7 +30,7 @@ def create(request):
     context = {
         "place_form": place_form,
     }
-    return render(request, "places/create.html", context=context)
+    return render(request, "places/create.html", context)
 
 
 def detail(request, pk):
