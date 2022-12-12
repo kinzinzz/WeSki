@@ -334,6 +334,13 @@ a{
   color:white;
   text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
+p{
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+
+
 /* 큰 */
 @media screen and (max-width:1011px){
 .imgwrap{
