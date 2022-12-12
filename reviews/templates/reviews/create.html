@@ -5,15 +5,17 @@
 
 {% block content %}
 
-  <!--상단이미지-->
-  <section class="hero">
-    <img src="https://i.esdrop.com/d/f/bvRLlOwptP/1aDwWuWMwP.png" style="max-height:250px; alt="review create img">
-    <div class="row-2"></div>
-    <div class="col-md-1">
-      <div class="carousel-caption hero-text" style=" max-height:100px;">
-        <div class="hero-text2" style="font-size:55px;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">리뷰 등록</div>
+<!--상단이미지-->
+<section class="hero">
+  <img src="https://i.esdrop.com/d/f/bvRLlOwptP/1aDwWuWMwP.png" style="max-height:250px;" alt="review create img">
+  <div class="row-2"></div>
+  <div class="col-md-1">
+    <div class="carousel-caption hero-text" style="max-height:100px;">
+      <div class="hero-text2"
+        style="font-size:55px;padding-top:0px; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;">리뷰 등록
       </div>
     </div>
+  </div>
   </div>
 </section>
 
@@ -22,15 +24,15 @@
     <div class="my-4">
       <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <!-- {{form.as_p}}-->
+
         {% bootstrap_form Review_form %}
         <input type="file" name="image[]" multiple="multiple" accept="image/*">
         <br>
         <div style="margin-top:10px; text-align:center;">
-          <!--<button class="login_btn btn" type="submit">작성완료</button>-->
+
           <br>
           <button type="button submit" class="btn btn-dark" style="text-align:center;">작성완료</button>
-          <!--<input type="submit">-->
+
         </div>
       </form>
     </div>
