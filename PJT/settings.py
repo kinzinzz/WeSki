@@ -19,7 +19,7 @@ DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = [
     # "Elastic Beanstalk URL",
-    "Weski-env.eba-7wafkpzi.ap-northeast-2.elasticbeanstalk.com",
+    "Weskibean-env.eba-mcy4q5sn.ap-northeast-2.elasticbeanstalk.com",
     "127.0.0.1",
     "localhost",
 ]
