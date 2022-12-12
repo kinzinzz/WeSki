@@ -20,6 +20,7 @@ class Place(models.Model):
     photo_food = models.ImageField(upload_to="places", blank=True)
     photo_facilities = models.ImageField(upload_to="places", blank=True)
     photo_accommodation = models.ImageField(upload_to="places", blank=True)
-    
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.name
