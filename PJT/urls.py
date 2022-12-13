@@ -25,13 +25,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('accounts/', include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
     path('', include('places.urls')),
     re_path(r'reviews/',include('reviews.urls')),
-    #path("reviews/",include('reviews.urls')),
-    # 카카오 로그인
-    re_path(r'^accounts/', include('accounts.urls')),
-    re_path(r'^accounts/', include('allauth.urls')),
-    # path('accounts/', include('allauth.urls')),
-    
+    #path("reviews/",include('reviews.urls')),   
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
