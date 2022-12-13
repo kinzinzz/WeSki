@@ -12,8 +12,5 @@ urlpatterns = [
     path("<int:pk>/delete/", views.delete, name="delete"),
     path("<int:pk>/like/", views.like, name="like"),
     # 스키장별로 리뷰보기 url 추가(2022.12.01)
-    path("<int:pk>/reviews", views.place_reviews, name="place_reviews"),
-    # 카카오 로그인
-    # re_path(r'^index/(?P<user_id>[ㄱ-힣a-zA-Z0-9-_.]*)/$', views.index, name='index'),
-    
+    path("<int:pk>/reviews", views.place_reviews, name="place_reviews"), 
 ]
