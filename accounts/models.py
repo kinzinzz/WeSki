@@ -15,11 +15,11 @@ class User(AbstractUser):
         options={"quality": 90},
     )
 
-    # def profile_image(self):
-        # if self.image and hasattr(self.image, "url"):
-            # return self.image.url
-        # else:
-            # return "https://i.esdrop.com/d/f/bvRLlOwptP/D1wDSBrqJO.jpg"
+    def profile_image(self):
+        if self.image and hasattr(self.image, "url"):
+            return self.image.url
+        else:
+            return "https://i.esdrop.com/d/f/bvRLlOwptP/D1wDSBrqJO.jpg"
 
 
 # 결제 정보
