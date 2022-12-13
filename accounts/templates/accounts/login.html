@@ -31,20 +31,20 @@
       <strong>Welcome!</strong>
       WE-SKI 방문을 환영합니다.
     </h2>
-    <h5 class="info text-center">스키 정보를 한 눈에 비교하고 최적의 스키장을 찾아보세요</h5>
+    <h5 class="info text-center" style="color: black;">스키 정보를 한 눈에 비교하고 최적의 스키장을 찾아보세요</h5>
     <!-- 로그인 폼 -->
     <form action="{% url 'accounts:login' %}" method="POST">
       {% csrf_token %}
       <!-- {% bootstrap_form forms %} -->
       <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" class="form-control" placeholder="사용자 이름" required="" id="id_username">
       <input type="password" name="password" autocomplete="current-password" class="form-control" placeholder="비밀번호" required="" id="id_password">
-      <input type="submit" value="로그인"/>
-      <p>
+      <input id="login_btn" type="submit" value="로그인"/>
+      <p id="change">
         * 비밀번호를 타 사이트와 같이 사용할 경우 도용 위험이 있으니,<br/>
         정기적으로 비밀번호를 변경하세요!
       </p>
     </form>
-    <div class="actions">
+    <div id="lists" class="actions">
       <a href="{% url 'accounts:signup' %}">회원가입</a>
       <a href="javascript:void(0)">아이디 찾기</a>
       <a href="javascript:void(0)">비밀번호 찾기</a>
@@ -58,4 +58,14 @@
 </section>
 <br>
 
+<script>
+  const back = document.querySelector('#change');
+  back.style.color = '#6495ED';
+
+  const back = document.querySelector('#lists');
+  back.style.color = '#000000';
+
+  const back = document.querySelector('#login_btn');
+  back.style.color = '#00BFFF';
+</script>
 {% endblock %}
