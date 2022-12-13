@@ -25,7 +25,7 @@
       <strong>탈퇴하시겠습니까?</strong>
     </h2>
     <div class="row mb-3">
-      <!-- 회원탈퇴-->
+      <!-- 회원탈퇴 여부 -->
       <div class="col d-flex flex-row justify-content-center" style="margin:30px 30px 20px;">
         <a href="{% url 'accounts:delete' customer.pk %}" class="btn float-end" style='border: 1px solid #20b2aa; background-color: #20b2aa; color: #FFFAFA; font-weight: 500'>회원탈퇴</a>
         <a href="{% url 'accounts:detail' customer.pk %}" id="back" class="btn float-end" style='border: 1px solid #808080; background-color: #808080; font-weight: 500'>돌아가기</a>
@@ -45,5 +45,4 @@
   back.style.color = '#FFFFFF';
 </script>
 
-<!-- <div class="h-100 d-flex flex-column justify-content-center align-items-center"> <img src="{% static 'images/.png' %}" class="delete-img"> <h1 class="fw-bold retro">탈퇴하시겠습니까?</h1> <div class="d-flex"> <a href="{% url 'accounts:detail' request.user.pk %}" class="text-decoration-none text-white"> <div class="detail-btn">취소</div> </a> <a href="{% url 'accounts:delete' request.user.pk %}" class="text-decoration-none text-white"> <div class="detail-btn" style="background-color: rgb(166, 166, 166)">탈퇴</div> </a> </div> </div> -->
 {% endblock %}
