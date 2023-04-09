@@ -15,7 +15,7 @@
 <img src="https://user-images.githubusercontent.com/107156650/230765683-4fa619d9-3b7f-4a53-b67d-2fca082f7bf1.jpg">
 <img src="https://user-images.githubusercontent.com/107156650/230765684-64ed3480-ad6b-4ec8-894f-57aaa888a487.jpg">
 <img src="https://user-images.githubusercontent.com/107156650/230765686-2ea4bc6d-0f57-4e2a-9a71-29ea4129dec6.jpg">
-<img src="https://user-images.githubusercontent.com/107156650/230765687-e203ec0b-58e5-492c-b4df-4c6823a5ad9a.jp">
+<img src="https://user-images.githubusercontent.com/107156650/230765687-e203ec0b-58e5-492c-b4df-4c6823a5ad9a.jpg">
 
 ## 서비스 페이지
 <img src="https://user-images.githubusercontent.com/107156650/230765689-93bd96b4-76fa-47a8-934e-2ed5f7a740d4.jpg">
